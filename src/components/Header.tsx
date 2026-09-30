@@ -9,7 +9,6 @@ import {
   cn,
   getGithubLink,
   getLinkedinLink,
-  getResumeFileLink,
   getYoutubeLink,
 } from "@/lib/utils";
 import Link from "next/link";
@@ -20,7 +19,7 @@ import ThemeSwitch from "./ThemeSwitch";
 
 export default function Header() {
   return (
-    <header className="mt-8 flex w-full items-center justify-center xl:justify-between xl:rounded-xl xl:border xl:border-white/25 xl:bg-white/25">
+    <header className="mt-8 flex w-full items-center justify-center xl:justify-between xl:rounded-xl xl:border xl:border-white/25 xl:bg-white/25 print:hidden">
       <DynamicLogo size="small" className="xl:hidden" />
       <div className="hidden gap-10 p-4 text-16 xl:flex">
         <DynamicLogo size="small" />
@@ -53,11 +52,10 @@ export default function Header() {
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuLink
-                href={getResumeFileLink()}
-                target="_blank"
+                href="/resume"
                 className={navigationMenuTriggerStyle()}
               >
-                CV File
+                Resume
               </NavigationMenuLink>
             </NavigationMenuItem>
             {/* TODO: implement later */}

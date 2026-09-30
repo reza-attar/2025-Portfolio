@@ -1,6 +1,6 @@
 "use client";
 
-import { cn, getResumeFileLink } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IconType } from "react-icons";
@@ -38,10 +38,9 @@ const items: Item[] = [
     PassiveIcon: RiPencilLine,
   },
   {
-    target: "_blank",
-    link: getResumeFileLink(),
-    ActiveIcon: PiReadCvLogoLight,
-    PassiveIcon: PiReadCvLogoFill,
+    link: "/resume",
+    ActiveIcon: PiReadCvLogoFill,
+    PassiveIcon: PiReadCvLogoLight,
   },
 ] as const;
 
@@ -56,7 +55,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-3 flex min-w-[358px] justify-between rounded-xl border border-nav-border/30 bg-nav-background/30 px-4 py-2.5 dark:border-nav-border/40 dark:bg-nav-background/60 xl:hidden">
+    <nav className="fixed bottom-3 flex min-w-[358px] justify-between rounded-xl border border-nav-border/30 bg-nav-background/30 px-4 py-2.5 dark:border-nav-border/40 dark:bg-nav-background/60 xl:hidden print:hidden">
       {items.map((item) => (
         <Item key={item.link} isActive={item.link === pathname} {...item} />
       ))}

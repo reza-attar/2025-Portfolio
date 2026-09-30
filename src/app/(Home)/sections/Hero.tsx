@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/Button";
-import { getResumeFileLink } from "@/lib/utils";
 import Portrait from "@public/portrait.jpg";
 import Image from "next/image";
 import Link from "next/link";
@@ -32,9 +31,7 @@ export default function Hero() {
           className="flex flex-col items-center gap-4 xl:flex-row"
         >
           <Button variant={"primary"} className="xl:w-fit">
-            <Link target="_blank" href={getResumeFileLink()}>
-              See my Resume
-            </Link>
+            <Link href={"/resume"}>See my Resume</Link>
           </Button>{" "}
           <Button variant={"secondary"} className="xl:w-fit">
             <Link href={"/contact"}>Get in Touch</Link>

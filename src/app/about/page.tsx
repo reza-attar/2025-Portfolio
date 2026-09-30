@@ -3,7 +3,7 @@ import Divider from "@/components/ui/Divider";
 import PortraitImage from "@public/portrait.jpg";
 import { SendHorizontal } from "lucide-react";
 
-import { getResumeFileLink, getYoutubeLink } from "@/lib/utils";
+import { getYoutubeLink } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import Signature from "@/components/about/Signature";
@@ -85,10 +85,7 @@ export default function AboutPage() {
           <p className="text-15 text-gray-dark [&>a]:text-onyx [&>a]:underline [&>a]:dark:text-white">
             Feel free to reach out via{" "}
             <Link href={"mailto:attarzadeh76@gmail.com"}>e-mail</Link> or
-            <Link href={getResumeFileLink()} target="_blank">
-              Resume
-            </Link>
-            , or Connect with me on{" "}
+            <Link href={"/resume"}>Resume</Link>, or Connect with me on{" "}
             <Link href={"link to linkedin"}>LinkedIn</Link>.
           </p>
           <div className="space-y-4">

@@ -5,7 +5,7 @@ import { getGithubLink, getLinkedinLink, getYoutubeLink } from "@/lib/utils";
 
 export default function Footer() {
   return (
-    <div className="mt-32">
+    <div className="mt-32 print:hidden">
       <Divider />
       <footer className="mx-auto max-w-screen-lg space-y-12 pb-24 pl-4 pt-12 dark:text-gray-light xl:flex xl:flex-row-reverse xl:justify-between xl:space-y-0">
         <div className="space-y-10 xl:flex xl:flex-row-reverse xl:gap-32 xl:space-y-0">
@@ -31,6 +31,7 @@ export default function Footer() {
             <Link href={"/about"}>About</Link>
             <Link href={"/works"}>Work</Link>
             <Link href={"/contact"}>Contact</Link>
+            <Link href={"/resume"}>Resume</Link>
           </div>
         </div>
         <div className="flex flex-col justify-between">

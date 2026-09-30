@@ -85,6 +85,33 @@ body {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply text-foreground bg-background;
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Print / "Save as PDF" output for the /resume page */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 16mm;
+  }
+  html,
+  html.dark {
+    color-scheme: light;
+  }
+  body {
+    background: #fff !important;
+    color: #181818 !important;
+    max-width: none !important;
+    zoom: 0.8;
+  }
+  .dark body * {
+    color: #181818 !important;
+  }
+  .text-gray-dark {
+    color: #4a4a4a !important;
+  }
+  a {
+    text-decoration: none !important;
   }
 }

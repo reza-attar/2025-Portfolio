@@ -60,7 +60,7 @@ function Gradient({ className }: { className: ClassValue }) {
       src={GradientImage}
       alt="gradient image"
       className={cn(
-        "pointer-events-none absolute -z-10 h-96 w-[100vw] object-cover",
+        "pointer-events-none absolute -z-10 h-96 w-[100vw] object-cover print:hidden",
         className,
       )}
     />
