@@ -1,8 +1,9 @@
 import Card from "@/components/ui/Card";
 import Divider from "@/components/ui/Divider";
 import { ProjectPlaceholder } from "@/components/ui/Widget";
-import { alsoBuilt, projects } from "@/lib/projects";
+import { moreCaseStudies, projects } from "@/lib/projects";
 import { cn } from "@/lib/utils";
+import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 const focusRing =
@@ -30,9 +31,9 @@ export default function WorksPage() {
       </div>
 
       <section aria-label="more projects" className="space-y-6">
-        <h2 className="text-32 font-bold text-ink-strong">Also built</h2>
+        <h2 className="text-32 font-bold text-ink-strong">More case studies</h2>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,380px),1fr))] gap-4">
-          {alsoBuilt.map((project) => (
+          {moreCaseStudies.map((project) => (
             <article
               key={project.name}
               className="flex flex-col gap-3 rounded-3xl border border-panel-border bg-panel p-8"
@@ -66,6 +67,18 @@ export default function WorksPage() {
                 <span className="font-medium text-ink-strong">Stack:</span>{" "}
                 {project.stack}
               </p>
+              <Link
+                href={project.caseHref}
+                aria-label={`Read ${project.name} case study`}
+                className={cn(
+                  "mt-1 inline-flex w-fit items-center gap-1 rounded text-16 font-medium text-ink-strong hover:underline hover:underline-offset-4",
+                  focusRing,
+                  "focus-visible:outline-offset-[3px]",
+                )}
+              >
+                Read case study
+                <ChevronRight aria-hidden="true" className="h-5 w-5" />
+              </Link>
             </article>
           ))}
         </div>

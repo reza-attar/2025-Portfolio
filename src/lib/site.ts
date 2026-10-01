@@ -33,9 +33,9 @@ export const site = {
 
   products: {
     myca: {
-      name: "Myca",
-      domain: "myca.mora-ed.com",
-      href: "https://myca.mora-ed.com",
+      name: "Maica",
+      domain: "maica.ir",
+      href: "https://maica.ir",
     },
   },
 };

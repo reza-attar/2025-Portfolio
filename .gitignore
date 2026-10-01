@@ -40,3 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 public/Reza_Attar_Resume.pdf
+
+# design handoff packages
+/design_handoff_*/

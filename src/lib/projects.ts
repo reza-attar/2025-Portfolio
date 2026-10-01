@@ -2,52 +2,57 @@ import cleafin from "@public/Projects/cleafin.png";
 import moraBlog from "@public/Projects/mora-blog.png";
 import moraDash from "@public/Projects/mora-dash.png";
 import myca from "@public/Projects/myca.png";
-import aria from "@public/Projects/aria-electric.png";
 import { CardProps } from "@/components/ui/Card";
+import { caseStudyHref } from "./case-studies";
 import { site } from "./site";
 
-export type AlsoBuilt = {
+export type MoreCaseStudy = {
   name: string;
   meta: string;
   description: string;
   stack: string;
+  caseHref: string;
   link?: string;
   href?: string;
 };
 
-// Smaller builds listed under "Also built" on /works
-export const alsoBuilt: AlsoBuilt[] = [
+// Listed under "More case studies" on /works
+export const moreCaseStudies: MoreCaseStudy[] = [
   {
     name: "Ticket Yar",
-    meta: "Lead engineer · Dotin",
+    meta: "Technical lead · Dotin",
     description:
-      "Multi-tenant AI support platform that connects to Jira and drafts first-line replies to support tickets using retrieval-augmented generation over each business’s own knowledge base.",
-    stack: "NestJS, PostgreSQL, pgvector, Vercel AI SDK, locally hosted LLMs",
+      "An internal tool that reads support tickets from Jira, finds relevant knowledge, and drafts a reply in Persian for a human agent to approve.",
+    stack: "NestJS, Prisma + PostgreSQL, Vercel AI SDK + Zod, Jira",
+    caseHref: caseStudyHref("ticket-yar"),
+  },
+  {
+    name: "MyBody",
+    meta: "Backend developer · Client product",
+    description:
+      "The API behind a platform where fitness coaches sell programmes and members follow workouts and nutrition plans.",
+    stack: "NestJS 11, Prisma 7, PostgreSQL, Socket.IO, Zarinpal",
+    link: "mybodyapp.ir",
+    href: "https://mybodyapp.ir",
+    caseHref: caseStudyHref("mybody"),
+  },
+  {
+    name: "Medicine matching",
+    meta: "Sole developer · Client prototype",
+    description:
+      "Matches messy Persian drug names to a 33.8K-drug registry and sends uncertain matches to a person for review.",
+    stack: "Bun, PostgreSQL + pg_trgm, React, Docker",
+    caseHref: caseStudyHref("medicine-matching"),
   },
   {
     name: "Cashio",
-    meta: "Own product",
+    meta: "Solo builder · Own product",
     description:
-      "Farsi-first personal finance PWA: expenses, income and investments in one feed, with charts, recaps and CSV export. Custom JWT auth, offline-capable RTL app shell, Jalali calendar, web push. Self-hosted on Debian.",
-    stack: "Next.js 15 Server Actions, React 19, Prisma, PostgreSQL, Apache, PM2",
+      "A Farsi-first personal finance PWA for tracking expenses, income, debts and investments.",
+    stack: "Next.js 15, Prisma 7, PostgreSQL, Web Push",
     link: "cashio.ir",
     href: "https://cashio.ir",
-  },
-  {
-    name: "MyBodyApp",
-    meta: "Client work",
-    description:
-      "Backend for a coaching and fitness platform, in active development: real-time messaging over WebSockets with cursor-based history, JWT auth, AWS S3 media storage, Swagger docs, Pino logging, Jest unit and e2e tests.",
-    stack: "NestJS, Prisma, PostgreSQL, Socket.IO, Docker",
-    link: "mybodyapp.ir",
-    href: "https://mybodyapp.ir",
-  },
-  {
-    name: "Persian Medicine Data Matching",
-    meta: "Client work",
-    description:
-      "Matches messy free-text Persian drug descriptions against a 33,000-entry reference database using Persian text normalization, PostgreSQL trigram fuzzy search, and weighted confidence scoring. Low-confidence matches go to human review, and each correction is saved so the system improves over time.",
-    stack: "Bun, React, PostgreSQL, Docker",
+    caseHref: caseStudyHref("cashio"),
   },
 ];
 
@@ -57,8 +62,18 @@ export const projects: CardProps[] = [
     title: site.products.myca.name,
     logo: "/Projects/myca-icon.svg",
     href: site.products.myca.href,
+    caseHref: caseStudyHref("maica"),
     description:
-      "Myca is an online service to manage and log your car services, get notified when it's due, and more",
+      "A Persian PWA that tells drivers when their car's periodic services are due, based on mileage. Co-founded; I built most of the backend.",
+  },
+  {
+    image: moraBlog,
+    title: "Mora Blog",
+    description:
+      "The production blog for Mora, an AI-education platform. Performance work took desktop Lighthouse from 58 to 98.",
+    logo: "/Projects/mora-logo.ico",
+    href: "https://mora-ed.com",
+    caseHref: caseStudyHref("mora-blog"),
   },
   {
     image: moraDash,
@@ -69,27 +84,11 @@ export const projects: CardProps[] = [
       "Mora is an online school platform developed to manage students teachers and every aspect of school management",
   },
   {
-    image: moraBlog,
-    title: "Mora Blog",
-    description:
-      "Mora Blog designed to teach people about AI, It's content is based on topics and trends of Artificial Intelligence and how people can adapt and write prompts",
-    logo: "/Projects/mora-logo.ico",
-    href: "https://mora-ed.com",
-  },
-  {
     image: cleafin,
     title: "Cleafin Marketplace",
     description:
       "MLM Marketplace to manage every aspect of selling online stuff, including digital content or real life products. It has unique features to manage stock, users and ... which supports Multi language websites with different currencies.",
     logo: "/Projects/cleafin-logo.webp",
     href: "https://cleafin.shop",
-  },
-  {
-    image: aria,
-    title: "Wordpress Website",
-    description:
-      "Worked on so many Wordpress projects. this is the most recent one. This website is designed to showcase electric products on their website.",
-    logo: "/Projects/wordpress-logo.png",
-    href: "https://aria-electric.com",
   },
 ];
