@@ -6,7 +6,7 @@ type Props = {
 };
 export default function Label({ children }: Props) {
   return (
-    <div className="rounded-3xl bg-white/70 px-3 py-1.5 text-14 text-gray-dark dark:bg-onyx dark:text-gray-light">
+    <div className="rounded-3xl border border-tag-border bg-tag px-3 py-1.5 text-14 text-tag-fg">
       {children}
     </div>
   );

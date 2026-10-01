@@ -1,9 +1,9 @@
 "use client";
 
-import { Button } from "@/components/ui/Button";
+import { buttonVariants } from "@/components/ui/Button";
 import { cn, generateEmailLink } from "@/lib/utils";
 import { ClassValue } from "clsx";
-import Link from "next/link";
+import { SendHorizontal } from "lucide-react";
 import {
   Dispatch,
   HTMLInputTypeAttribute,
@@ -19,7 +19,7 @@ export default function ContactForm() {
 
   return (
     <>
-      <div className="space-y-4">
+      <div className="flex flex-col gap-4">
         <InputContainer
           id="email"
           label="Email"
@@ -43,22 +43,30 @@ export default function ContactForm() {
         />
       </div>
 
+      <label htmlFor="message" className="sr-only">
+        Message
+      </label>
       <textarea
+        id="message"
+        name="message"
         onChange={(e) => setBody(e.target.value)}
-        className="mt-6 min-h-80 w-full rounded-xl bg-white-faint p-6 placeholder:text-gray-dark dark:bg-background"
+        className="border-field-border min-h-80 w-full resize-y rounded-xl border bg-field p-6 text-16 text-ink placeholder:text-ink-faint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
         placeholder="Write your message here"
       />
 
-      <Button className="mb-6 xl:w-fit xl:self-end">
-        <Link
-          href={generateEmailLink({
-            subject,
-            body: `This email is from ${name} ${from}, ${body}`,
-          })}
-        >
-          Send
-        </Link>
-      </Button>
+      <a
+        href={generateEmailLink({
+          subject,
+          body: `This email is from ${name} ${from}, ${body}`,
+        })}
+        className={cn(
+          "mb-6 text-18 xl:w-fit xl:self-end",
+          buttonVariants({ variant: "primary" }),
+        )}
+      >
+        <SendHorizontal aria-hidden="true" />
+        Send
+      </a>
     </>
   );
 }
@@ -82,11 +90,11 @@ function InputContainer({
   return (
     <div
       className={cn(
-        "flex gap-2 border-b border-b-gray-light pb-4 last:border-b-0 dark:border-b-white/10",
+        "flex items-center gap-2 border-b border-field-line pb-4 last:border-b-0",
         className,
       )}
     >
-      <label htmlFor={id} className="text-14 font-medium xl:text-16">
+      <label htmlFor={id} className="text-16 font-medium text-ink-strong">
         {label}:
       </label>
       <input
@@ -94,7 +102,7 @@ function InputContainer({
         name={id}
         type={inputType}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full bg-transparent text-14 placeholder:text-gray-dark focus:outline-none dark:placeholder:text-gray-medium xl:text-16"
+        className="min-w-0 flex-1 rounded bg-transparent text-16 text-ink placeholder:text-ink-faint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus"
         placeholder={placeholder}
       />
     </div>

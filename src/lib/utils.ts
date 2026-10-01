@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { site } from "./site";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -12,7 +13,7 @@ type GenerateEmailParams = {
 };
 
 export function generateEmailLink({
-  to = "attarzadeh76@gmail.com",
+  to = site.email,
   subject = "Let's work together on the new project",
   body = "I saw your website and want to start working together on a this new idea I have, the idea is about ...",
 }: Partial<GenerateEmailParams>): string {

@@ -31,28 +31,29 @@ export type ProjectGroup = {
   items: Project[];
 };
 
+import { site } from "./site";
+
 export const resume = {
-  name: "Reza Attar",
+  name: site.name,
   title:
     "Full-Stack Engineer · TypeScript · Next.js · NestJS · PostgreSQL · applied LLMs",
-  location: "Iran",
-  availability:
-    "Open to relocation to the Netherlands or Germany · Eligible for EU Blue Card · Open to EU-remote",
-  email: "attarzadeh76@gmail.com",
+  location: site.country,
+  availability: `${site.relocation.availability} · ${site.workAuthorization}`,
+  email: site.email,
   links: {
     github: "https://github.com/Re9iNee",
     stackOverflow: "https://stackoverflow.com/users/9745726/re9inee",
   },
 
   summary:
-    "Full-stack engineer with 11 years of production JavaScript/TypeScript experience. The last five centred on React and Next.js, the most recent year on TypeScript backends and applied LLMs. I'm currently lead engineer on Ticket Yar, an AI support platform at a banking-software company, where I moved the backend to NestJS, built the Jira and RAG pipeline on PostgreSQL/pgvector, and cut compile time by 77%. I build the whole path from schema to interface. Previously I led a three-person frontend team for a German company, fully remote.",
+    `Full-stack engineer with ${site.experience} of production JavaScript/TypeScript experience. The last five centred on React and Next.js, the most recent year on TypeScript backends and applied LLMs. I'm currently lead engineer on ${site.products.myca.name}, an AI support platform at a banking-software company, where I moved the backend to NestJS, built the Jira and RAG pipeline on PostgreSQL/pgvector, and cut compile time by 77%. I build the whole path from schema to interface. Previously I led a three-person frontend team for a German company, fully remote.`,
 
   experience: [
     {
-      company: "Dotin",
-      role: "Senior Engineer",
+      company: site.company,
+      role: site.role,
       period: "Jun 2025 – Present",
-      location: "Iran",
+      location: site.country,
       groups: [
         {
           heading: "Ticket Yar (AI support platform) · Lead engineer",
@@ -153,8 +154,11 @@ export const resume = {
       heading: "Own products",
       items: [
         {
-          name: "Maica",
-          link: { label: "maica.ir", href: "https://maica.ir" },
+          name: site.products.myca.name,
+          link: {
+            label: site.products.myca.domain,
+            href: site.products.myca.href,
+          },
           description:
             "Persian-language installable PWA for car maintenance. Users define their own recurring services and Maica computes what's due from live mileage updates. Built solo with phone-and-OTP auth, full RTL, and an animated marketing site.",
           stack: "Next.js 16, React 19, Prisma, PostgreSQL, GSAP, Lenis",

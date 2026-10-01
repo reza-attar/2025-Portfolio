@@ -81,6 +81,42 @@ export default {
         button: "0px 7px 4px rgba(0, 0, 0, 0.15)",
       },
       colors: {
+        ink: {
+          DEFAULT: "var(--ink)",
+          strong: "var(--ink-strong)",
+          muted: "var(--ink-muted)",
+          faint: "var(--ink-faint)",
+          label: "var(--ink-label)",
+        },
+        tag: {
+          DEFAULT: "var(--tag-bg)",
+          fg: "var(--tag-fg)",
+          border: "var(--tag-border)",
+        },
+        panel: {
+          DEFAULT: "var(--panel)",
+          border: "var(--panel-border)",
+        },
+        hdr: {
+          DEFAULT: "var(--hdr-bg)",
+          border: "var(--hdr-border)",
+        },
+        sep: "var(--sep)",
+        divider: "var(--divider)",
+        "card-hover": "var(--card-hover-border)",
+        dash: "var(--dash)",
+        field: {
+          DEFAULT: "var(--field)",
+          line: "var(--field-line)",
+        },
+        "win-line": "var(--win-line)",
+        "nav-hover": "var(--nav-hover)",
+        control: {
+          DEFAULT: "var(--control)",
+          fg: "var(--control-fg)",
+          border: "var(--control-border)",
+        },
+        focus: "var(--focus-ring)",
         "shad-background": "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

@@ -3,12 +3,13 @@ import { cva, VariantProps } from "class-variance-authority";
 import { ReactNode } from "react";
 
 export const buttonVariants = cva(
-  "w-full inline-flex rounded-lg font-medium transition-all justify-center items-center px-8 py-4 font-inter font-medium gap-2",
+  "w-full inline-flex rounded-lg border border-transparent font-medium transition-all justify-center items-center px-[31px] py-[15px] font-inter font-medium gap-2 hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus focus-visible:outline-offset-[3px]",
   {
     variants: {
       variant: {
-        primary: "dark:drop-shadow-button bg-dark-gradient text-white",
-        secondary: "bg-white-faint text-onyx dark:text-gray-dark dark:bg-onyx ",
+        primary:
+          "bg-dark-gradient text-white dark:bg-none dark:bg-[#F5F5F5] dark:text-black",
+        secondary: "border-control-border bg-control text-control-fg",
         text: "",
       },
     },
