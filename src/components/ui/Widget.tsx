@@ -1,10 +1,10 @@
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 import { cn } from "@/lib/utils";
-import { SendHorizontal, Stars } from "lucide-react";
+import { ArrowRight, SendHorizontal, Stars } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "./Button";
+import { buttonVariants } from "./Button";
 
 type WidgetProps = {
   href: string;
@@ -28,22 +28,32 @@ export default function Widget({
   const Content = (
     <div
       className={cn(
-        "flex h-full max-h-[400px] flex-col justify-between pt-8",
+        "flex h-full flex-col justify-between gap-6 pt-8",
         isComingSoon && "transition-all group-hover:blur group-hover:grayscale",
       )}
     >
       <div className="space-y-1 px-4">
-        <h4 className="text-24 font-extrabold xl:text-32">{title}</h4>
-        <h5 className="text-15 text-gray-dark xl:text-16">{subtitle}</h5>
+        <h3 className="flex items-center justify-center gap-2 text-24 font-bold text-ink-strong xl:text-32">
+          {title}
+          <ArrowRight
+            aria-hidden="true"
+            className={cn("h-6 w-6 shrink-0", openInNewTab && "-rotate-45")}
+          />
+        </h3>
+        <p className="text-15 text-ink-muted xl:text-16">{subtitle}</p>
       </div>
 
-      <div className="grid place-items-center overflow-hidden rounded-b-4xl">
-        <Image src={image} alt={imageAlt} />
+      <div className="flex h-[260px] items-end justify-center overflow-hidden rounded-b-4xl">
+        <Image
+          src={image}
+          alt={imageAlt}
+          className="max-h-full object-contain object-bottom"
+        />
       </div>
     </div>
   );
   const containerClassNames = cn(
-    "flex max-h-fit flex-col justify-between rounded-4xl border border-card-border bg-card-background text-center dark:bg-widget-background group",
+    "group flex max-h-[400px] flex-col justify-between overflow-hidden rounded-4xl border border-panel-border bg-panel text-center text-ink transition-[transform,border-color] duration-200 hover:-translate-y-1 hover:border-card-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus focus-visible:outline-offset-[3px]",
   );
 
   if (isComingSoon)
@@ -60,6 +70,9 @@ export default function Widget({
     <Link
       href={href}
       target={openInNewTab ? "_blank" : "_self"}
+      aria-label={
+        openInNewTab ? `${title} on Goodreads (opens in new tab)` : undefined
+      }
       className={containerClassNames}
     >
       {Content}
@@ -69,50 +82,61 @@ export default function Widget({
 
 export function ProjectPlaceholder() {
   return (
-    <div className="flex h-[420px] flex-col items-center justify-between gap-6 rounded-4xl border border-dashed border-gray-medium bg-card-background px-6 py-8 dark:border-card-border dark:bg-widget-background/50">
+    <div className="flex min-h-[420px] flex-col items-center justify-between gap-6 rounded-4xl border border-dashed border-dash bg-panel px-6 py-8 text-center">
       <div className="flex flex-col items-center gap-2">
         <div className="grid h-28 w-28 place-items-center">
           <Stars
             width={49}
             height={50}
-            className="text-gray-dark dark:text-gray-light"
+            aria-hidden="true"
+            className="text-ink-muted"
           />
         </div>
-        <h4 className="text-20 font-extrabold xl:text-32">
+        <h3 className="text-20 font-extrabold text-ink-strong xl:text-32">
           YOUR PROJECT GOES HERE
-        </h4>
-        <h5 className="mt-2 text-gray-dark xl:text-16">
+        </h3>
+        <p className="mt-2 text-ink-muted xl:text-16">
           Let&apos;s turn your idea into a visual reality
-        </h5>
+        </p>
       </div>
 
-      <Button variant={"primary"} icon={<SendHorizontal />} className="w-fit">
-        <Link href={"/contact"}>Get in Touch</Link>
-      </Button>
+      <Link
+        href={"/contact"}
+        className={cn("w-fit text-18", buttonVariants({ variant: "primary" }))}
+      >
+        <SendHorizontal aria-hidden="true" />
+        Get in Touch
+      </Link>
     </div>
   );
 }
 
 export function LetsWorkTogether() {
   return (
-    <div className="flex flex-col justify-between gap-8 bg-background text-center xl:flex-row xl:items-center xl:gap-0 xl:text-left">
+    <section
+      aria-label="contact call to action"
+      className="flex flex-col justify-between gap-8 bg-background text-center xl:flex-row xl:items-center xl:gap-0 xl:text-left"
+    >
       <div className="xl:max-w-[50%]">
-        <h4 className="text-32 font-bold xl:text-48">
+        <h2 className="text-32 font-bold text-ink-strong xl:text-48">
           Let&apos;s work Together
-        </h4>
-        <h5 className="text-15 text-gray-medium xl:text-20">
+        </h2>
+        <p className="text-15 text-ink-faint xl:text-20">
           Want to discuss an opportunity to create something great? I&apos;m
           ready when you are.
-        </h5>
+        </p>
       </div>
 
-      <Button
-        variant={"primary"}
-        icon={<SendHorizontal />}
-        className="xl:w-fit"
+      <Link
+        href="/contact"
+        className={cn(
+          "text-18 xl:w-fit",
+          buttonVariants({ variant: "primary" }),
+        )}
       >
-        <Link href="/contact">Get in Touch</Link>
-      </Button>
-    </div>
+        <SendHorizontal aria-hidden="true" />
+        Get in Touch
+      </Link>
+    </section>
   );
 }

@@ -25,10 +25,28 @@ export default function ThemeSwitch() {
     );
 
   if (resolvedTheme === "dark") {
-    return <FiSun onClick={() => setTheme("light")} />;
+    return (
+      <button
+        type="button"
+        aria-label="Switch to light mode"
+        onClick={() => setTheme("light")}
+        className="flex rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus"
+      >
+        <FiSun aria-hidden="true" />
+      </button>
+    );
   }
 
   if (resolvedTheme === "light") {
-    return <FiMoon onClick={() => setTheme("dark")} />;
+    return (
+      <button
+        type="button"
+        aria-label="Switch to dark mode"
+        onClick={() => setTheme("dark")}
+        className="flex rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus"
+      >
+        <FiMoon aria-hidden="true" />
+      </button>
+    );
   }
 }

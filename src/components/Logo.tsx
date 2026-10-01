@@ -1,10 +1,10 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import LogoLargeBlack from "@public/Logos/lg-dark.svg";
-import LogoLargeWhite from "@public/Logos/lg-light.svg";
-import LogoSmallBlack from "@public/Logos/sm-dark.svg";
-import LogoSmallWhite from "@public/Logos/sm-light.svg";
+import LogoLargeBlack from "@public/Logos/ra-lg-dark.svg";
+import LogoLargeWhite from "@public/Logos/ra-lg-light.svg";
+import LogoSmallBlack from "@public/Logos/ra-sm-dark.svg";
+import LogoSmallWhite from "@public/Logos/ra-sm-light.svg";
 import { ClassValue } from "clsx";
 
 import { useTheme } from "next-themes";
@@ -50,7 +50,14 @@ export default function DynamicLogo({ size, className }: Props) {
   const Logo = logos[size][resolvedTheme === "dark" ? "light" : "dark"];
 
   return (
-    <Link href={"/"} className={cn("my-auto", className)}>
+    <Link
+      href={"/"}
+      aria-label="Home"
+      className={cn(
+        "my-auto flex rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus",
+        className,
+      )}
+    >
       <Logo />
     </Link>
   );

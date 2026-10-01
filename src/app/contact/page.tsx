@@ -10,11 +10,12 @@ import ContactForm from "./form";
 
 function ContactPage() {
   return (
-    <main className="mt-20 w-full max-w-screen-lg space-y-16 [&>*]:px-4">
+    <main className="mt-20 flex w-full max-w-screen-lg flex-col gap-16 px-4">
       <section className="max-w-[80%] space-y-2">
-        <h1 className="sr-only">Contact Reza Attar</h1>
-        <h1 className="text-48 font-bold xl:text-80">Get in touch</h1>
-        <h2 className="text-16 text-gray-medium xl:text-24">
+        <h1 className="text-48 font-bold leading-[1.1] text-ink-strong xl:text-80">
+          Get in touch
+        </h1>
+        <h2 className="text-16 text-ink-faint xl:text-24">
           Let&apos;s build something awesome.
         </h2>
       </section>
@@ -23,18 +24,21 @@ function ContactPage() {
 
       <section
         aria-label="contact window"
-        className="mx-4 flex flex-col gap-6 rounded-xl border border-card-border bg-card-background dark:bg-onyx"
+        className="bg-win flex flex-col gap-6 rounded-xl border border-panel-border px-4"
       >
         <div
-          className="relative border-b border-b-black/5 py-4 text-center"
+          className="relative border-b border-win-line py-4 text-center"
           aria-label="contact window header"
         >
-          <div className="absolute left-4 top-[50%] flex -translate-y-[50%] items-center gap-2 p-1">
+          <div
+            aria-hidden="true"
+            className="absolute left-0 top-[50%] flex -translate-y-[50%] items-center gap-2 p-1"
+          >
             <Close />
             <Minimize />
             <Fullscreen />
           </div>
-          <h4 className="text-16 font-medium">New message</h4>
+          <h2 className="text-16 font-medium text-ink-strong">New message</h2>
         </div>
 
         <ContactForm />
@@ -42,16 +46,30 @@ function ContactPage() {
 
       <section
         aria-label="link to other social medias"
-        className="mx-auto grid w-fit grid-cols-4 gap-11 text-24 xl:flex [&>*]:cursor-pointer"
+        className="mx-auto flex w-fit justify-center gap-11 text-24"
       >
-        <Link href={generateEmailLink({})}>
-          <MdEmail />
+        <a
+          href={generateEmailLink({})}
+          aria-label="Email"
+          className="grid h-11 w-11 place-items-center rounded-md text-ink-strong hover:bg-nav-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+        >
+          <MdEmail aria-hidden="true" />
+        </a>
+        <Link
+          href={getLinkedinLink()}
+          target="_blank"
+          aria-label="LinkedIn (opens in new tab)"
+          className="grid h-11 w-11 place-items-center rounded-md text-ink-strong hover:bg-nav-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+        >
+          <FaLinkedin aria-hidden="true" />
         </Link>
-        <Link href={getLinkedinLink()} target="_blank">
-          <FaLinkedin />
-        </Link>
-        <Link href={getGithubLink()} target="_blank">
-          <FaGithub />
+        <Link
+          href={getGithubLink()}
+          target="_blank"
+          aria-label="GitHub (opens in new tab)"
+          className="grid h-11 w-11 place-items-center rounded-md text-ink-strong hover:bg-nav-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+        >
+          <FaGithub aria-hidden="true" />
         </Link>
       </section>
     </main>

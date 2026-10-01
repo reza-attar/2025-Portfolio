@@ -20,31 +20,37 @@ export default function Card({
   image,
 }: CardProps) {
   return (
-    <div className="group flex w-full justify-between gap-4 space-y-4 rounded-4xl border border-card-border bg-card-background dark:bg-black/50">
-      <div className="flex flex-col justify-between gap-4 px-6 py-8 xl:p-16 xl:pr-0">
+    <div className="group flex w-full flex-wrap justify-between gap-4 overflow-hidden rounded-4xl border border-panel-border bg-panel">
+      <div className="flex flex-[1_1_300px] flex-col justify-between gap-4 px-6 py-8 xl:px-12 xl:py-14">
         <div className="space-y-4">
           <Image
             src={logo}
             width={70}
             height={70}
             alt={`${title} logo`}
-            className="grayscale transition-all group-hover:grayscale-0"
           />
-          <h3 className="text-20 font-extrabold">{title}</h3>
-          <p className="text-15 text-gray-dark">{description}</p>
+          <h3 className="text-20 font-extrabold text-ink-strong">{title}</h3>
+          <p className="text-pretty text-15 leading-[1.5] text-ink-muted">
+            {description}
+          </p>
         </div>
-        <div className="flex items-center text-18">
-          <Link target="_blank" href={href} className="flex items-center gap-1">
-            Visit Site <ChevronRight width={20} className="pt-0.5" />
-          </Link>
-        </div>
+        <Link
+          target="_blank"
+          href={href}
+          aria-label={`Visit ${title} site (opens in new tab)`}
+          className="flex w-fit items-center gap-1 rounded-md text-18 text-ink-strong hover:underline hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus"
+        >
+          Visit Site
+          <ChevronRight aria-hidden="true" width={20} className="pt-0.5" />
+        </Link>
       </div>
-      <Image
-        width={650}
-        src={image}
-        alt={`screenshot of ${title} project`}
-        className="hidden grayscale transition-all group-hover:grayscale-0 xl:block"
-      />
+      <div className="mx-auto mt-4 flex aspect-[1.12] w-full min-w-0 max-w-[560px] flex-[1_1_420px] items-center justify-center self-center">
+        <Image
+          src={image}
+          alt={`screenshot of ${title} project`}
+          className="h-full w-full object-contain"
+        />
+      </div>
     </div>
   );
 }
