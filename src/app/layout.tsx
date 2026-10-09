@@ -2,6 +2,7 @@ import Navbar from "@/components/ui/Navbar";
 import { cn } from "@/lib/utils";
 import GradientImage from "@public/Gradient.png";
 import { ClassValue } from "clsx";
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import { Inter, Nanum_Pen_Script } from "next/font/google";
 import Image from "next/image";
@@ -24,8 +25,8 @@ const nanum = Nanum_Pen_Script({
 });
 
 export const metadata: Metadata = {
-  title: site.title,
-  description: `${site.role} · ${site.focus}`,
+  metadataBase: new URL(site.url),
+  ...pageMetadata({ title: site.title, path: "/" }),
 };
 
 export default function RootLayout({

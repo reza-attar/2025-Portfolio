@@ -5,6 +5,8 @@ import {
   CaseStudyImage,
   CaseStudySection,
 } from "@/lib/case-studies";
+import { pageMetadata } from "@/lib/metadata";
+import { moreCaseStudies, projects } from "@/lib/projects";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
@@ -21,6 +23,11 @@ const focusRing =
 
 const prose = "text-pretty text-16 leading-[1.7] text-ink-muted xl:text-18";
 
+// Previous / next follow the order the case studies appear on /works
+const ordered = [...projects, ...moreCaseStudies]
+  .map((p) => caseStudies.find((s) => caseStudyHref(s.slug) === p.caseHref))
+  .filter((s) => s !== undefined);
+
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -31,21 +38,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const study = caseStudies.find((s) => s.slug === slug);
   if (!study) return {};
-  return {
+  return pageMetadata({
     title: `${study.name} · ${site.name}`,
     description: study.lede,
-  };
+    path: caseStudyHref(study.slug),
+  });
 }
 
 export default async function CaseStudyPage({ params }: Props) {
   const { slug } = await params;
-  const index = caseStudies.findIndex((s) => s.slug === slug);
+  const index = ordered.findIndex((s) => s.slug === slug);
   if (index === -1) notFound();
 
-  const study = caseStudies[index];
-  const count = caseStudies.length;
-  const prev = caseStudies[(index - 1 + count) % count];
-  const next = caseStudies[(index + 1) % count];
+  const study = ordered[index];
+  const count = ordered.length;
+  const prev = ordered[(index - 1 + count) % count];
+  const next = ordered[(index + 1) % count];
 
   const meta: { label: string; value: ReactNode }[] = [
     { label: "Role", value: study.role },
@@ -67,7 +75,7 @@ export default async function CaseStudyPage({ params }: Props) {
           {study.liveLabel}
         </Link>
       ) : (
-        "Not public"
+        (study.linkNote ?? "Not public")
       ),
     },
   ];

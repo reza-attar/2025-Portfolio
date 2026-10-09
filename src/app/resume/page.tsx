@@ -2,6 +2,7 @@ import { buttonVariants } from "@/components/ui/Button";
 import Divider from "@/components/ui/Divider";
 import Label from "@/components/ui/Tag";
 import { ExperienceGroup, RESUME_PDF_PATH, resume } from "@/lib/resume";
+import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
 import { cn, getLinkedinLink } from "@/lib/utils";
 import { Download, SendHorizontal } from "lucide-react";
@@ -9,10 +10,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ReactNode } from "react";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: `Resume · ${site.name}`,
-  description: `Resume of ${site.name}, ${site.title}`,
-};
+  description: `Resume of ${site.name}, ${site.role}`,
+  path: "/resume",
+});
 
 const inlineLink =
   "rounded-[3px] text-ink-strong underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus";

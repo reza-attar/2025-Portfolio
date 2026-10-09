@@ -43,12 +43,14 @@ export type CaseStudy = {
   role: string;
   live?: string;
   liveLabel?: string;
+  // Shown in the Link row when there is no live URL (defaults to "Not public")
+  linkNote?: string;
   note?: string;
   hero?: CaseStudyImage;
   sections: CaseStudySection[];
 };
 
-// Order here is the order of the previous / next navigation.
+// Previous / next order comes from /works (src/lib/projects.ts), not from here.
 export const caseStudies: CaseStudy[] = [
   {
     slug: "ticket-yar",
@@ -129,8 +131,8 @@ export const caseStudies: CaseStudy[] = [
     type: "Team product (NUWA)",
     period: "Nov 2023 – Aug 2025",
     role: "Full-stack developer",
-    live: "https://mora-ed.com",
-    liveLabel: "mora-ed.com",
+    // mora-ed.com no longer resolves
+    linkNote: "No longer live",
     hero: { src: moraBlog, alt: "Mora Blog homepage" },
     sections: [
       {
@@ -460,8 +462,8 @@ export const caseStudies: CaseStudy[] = [
     type: "Own product",
     period: "2026",
     role: "Solo builder",
-    live: "https://cashio.ir",
-    liveLabel: "cashio.ir",
+    live: "https://mycashio.ir",
+    liveLabel: "mycashio.ir",
     sections: [
       {
         label: "The problem",

@@ -1,15 +1,22 @@
+import { pageMetadata } from "@/lib/metadata";
+import type { Metadata } from "next";
 import { buttonVariants } from "@/components/ui/Button";
 import Divider from "@/components/ui/Divider";
 import PortraitImage from "@public/portrait.jpg";
 import { ChevronRight, Download, SendHorizontal } from "lucide-react";
 
 import Signature from "@/components/about/Signature";
-import { resume } from "@/lib/resume";
+import { RESUME_PDF_PATH, resume } from "@/lib/resume";
 import { site, siteLanguages } from "@/lib/site";
 import { cn, getLinkedinLink, getYoutubeLink } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
+
+export const metadata: Metadata = pageMetadata({
+  title: `About · ${site.name}`,
+  path: "/about",
+});
 
 const focusRing =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus";
@@ -62,7 +69,8 @@ export default function AboutPage() {
               Get in touch
             </Link>
             <Link
-              href="/resume"
+              href={RESUME_PDF_PATH}
+              download="Reza_Attar_Resume.pdf"
               className={cn(
                 "text-18",
                 buttonVariants({ variant: "secondary" }),
@@ -100,9 +108,9 @@ export default function AboutPage() {
             </AboutBlock>
             <AboutBlock title="What I do">
               I&apos;m a {site.role} at {site.company}, where I lead{" "}
-              <Strong>{site.products.myca.name}</Strong>, an AI support platform
-              for banking software. I moved its backend to NestJS, built the
-              Jira and RAG pipeline on PostgreSQL and pgvector, and{" "}
+              <Strong>{site.products.ticketYar.name}</Strong>, an AI support
+              platform for banking software. I moved its backend to NestJS,
+              built the Jira and RAG pipeline on PostgreSQL and pgvector, and{" "}
               <Strong>cut compile time by 77%</Strong>. Before that, I led a
               three-person frontend team for a German company, fully remote. I
               also run a{" "}

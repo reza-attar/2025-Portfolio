@@ -11,7 +11,7 @@ function SelectedWork({ className }: { className?: ClassValue }) {
       </h2>
       <div className="space-y-9">
         {projects.map((project) => (
-          <Card {...project} key={project.href} />
+          <Card {...project} key={String(project.title)} />
         ))}
       </div>
     </section>

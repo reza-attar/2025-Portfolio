@@ -1,11 +1,13 @@
 "use client";
 
 import { buttonVariants } from "@/components/ui/Button";
+import { site } from "@/lib/site";
 import { cn, generateEmailLink } from "@/lib/utils";
 import { ClassValue } from "clsx";
 import { SendHorizontal } from "lucide-react";
 import {
   Dispatch,
+  FormEvent,
   HTMLInputTypeAttribute,
   SetStateAction,
   useState,
@@ -17,8 +19,18 @@ export default function ContactForm() {
   const [subject, setSubject] = useState<string>("");
   const [body, setBody] = useState<string>("");
 
+  // The Send button opens the visitor's mail client; the browser's built-in
+  // validation (required, type="email") runs first.
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    window.location.href = generateEmailLink({
+      subject,
+      body: `${body}\n\n${name} <${from}>`,
+    });
+  }
+
   return (
-    <>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-6">
       <div className="flex flex-col gap-4">
         <InputContainer
           id="email"
@@ -49,25 +61,35 @@ export default function ContactForm() {
       <textarea
         id="message"
         name="message"
+        required
         onChange={(e) => setBody(e.target.value)}
         className="border-field-border min-h-80 w-full resize-y rounded-xl border bg-field p-6 text-16 text-ink placeholder:text-ink-faint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
         placeholder="Write your message here"
       />
 
-      <a
-        href={generateEmailLink({
-          subject,
-          body: `This email is from ${name} ${from}, ${body}`,
-        })}
-        className={cn(
-          "mb-6 text-18 xl:w-fit xl:self-end",
-          buttonVariants({ variant: "primary" }),
-        )}
-      >
-        <SendHorizontal aria-hidden="true" />
-        Send
-      </a>
-    </>
+      <div className="mb-6 flex flex-col-reverse gap-4 xl:flex-row xl:items-center xl:justify-between">
+        <p className="text-14 text-ink-muted">
+          Send opens your email app. No mail app? Write to{" "}
+          <a
+            href={`mailto:${site.email}`}
+            className="rounded-[3px] text-ink-strong underline underline-offset-[3px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+          >
+            {site.email}
+          </a>
+          .
+        </p>
+        <button
+          type="submit"
+          className={cn(
+            "text-18 xl:w-fit",
+            buttonVariants({ variant: "primary" }),
+          )}
+        >
+          <SendHorizontal aria-hidden="true" />
+          Send
+        </button>
+      </div>
+    </form>
   );
 }
 
@@ -101,6 +123,7 @@ function InputContainer({
         id={id}
         name={id}
         type={inputType}
+        required
         onChange={(e) => onChange(e.target.value)}
         className="min-w-0 flex-1 rounded bg-transparent text-16 text-ink placeholder:text-ink-faint focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus"
         placeholder={placeholder}

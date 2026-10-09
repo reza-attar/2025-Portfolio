@@ -7,6 +7,8 @@ export const site = {
   pronunciation: "Rezâ",
   // <title> / metadata title for the home page
   title: "Reza Attar Portfolio Website",
+  // Production origin, used for canonical URLs, Open Graph and the sitemap
+  url: "https://www.rezaattar.dev",
 
   role: "Senior Engineer",
   company: "Dotin",
@@ -32,6 +34,10 @@ export const site = {
   ] as { name: string; level?: string }[],
 
   products: {
+    // Lead-engineer product at Dotin (About, resume summary)
+    ticketYar: {
+      name: "Ticket Yar",
+    },
     myca: {
       name: "Maica",
       domain: "maica.ir",

@@ -50,8 +50,8 @@ export const moreCaseStudies: MoreCaseStudy[] = [
     description:
       "A Farsi-first personal finance PWA for tracking expenses, income, debts and investments.",
     stack: "Next.js 15, Prisma 7, PostgreSQL, Web Push",
-    link: "cashio.ir",
-    href: "https://cashio.ir",
+    link: "mycashio.ir",
+    href: "https://mycashio.ir",
     caseHref: caseStudyHref("cashio"),
   },
 ];
@@ -72,22 +72,20 @@ export const projects: CardProps[] = [
     description:
       "The production blog for Mora, an AI-education platform. Performance work took desktop Lighthouse from 58 to 98.",
     logo: "/Projects/mora-logo.ico",
-    href: "https://mora-ed.com",
     caseHref: caseStudyHref("mora-blog"),
   },
   {
     image: moraDash,
     title: "Mora Dashboard",
     logo: "/Projects/mora-logo.ico",
-    href: "https://demo.mora-ed.com",
     description:
-      "Mora is an online school platform developed to manage students teachers and every aspect of school management",
+      "The school-management dashboard behind Mora, an online school: one place to manage students, teachers, classes and the rest of day-to-day administration.",
   },
   {
     image: cleafin,
     title: "Cleafin Marketplace",
     description:
-      "MLM Marketplace to manage every aspect of selling online stuff, including digital content or real life products. It has unique features to manage stock, users and ... which supports Multi language websites with different currencies.",
+      "An MLM marketplace for selling both digital content and physical products, with stock and user management and multi-language, multi-currency storefronts. The live shop is in German.",
     logo: "/Projects/cleafin-logo.webp",
     href: "https://cleafin.shop",
   },

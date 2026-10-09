@@ -1,3 +1,6 @@
+import { pageMetadata } from "@/lib/metadata";
+import type { Metadata } from "next";
+import { site } from "@/lib/site";
 import Card from "@/components/ui/Card";
 import Divider from "@/components/ui/Divider";
 import { ProjectPlaceholder } from "@/components/ui/Widget";
@@ -5,6 +8,11 @@ import { moreCaseStudies, projects } from "@/lib/projects";
 import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+
+export const metadata: Metadata = pageMetadata({
+  title: `Works · ${site.name}`,
+  path: "/works",
+});
 
 const focusRing =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus";
@@ -25,7 +33,7 @@ export default function WorksPage() {
 
       <div className="space-y-4">
         {projects.map((project) => (
-          <Card {...project} key={project.href} />
+          <Card {...project} key={String(project.title)} />
         ))}
         <ProjectPlaceholder />
       </div>

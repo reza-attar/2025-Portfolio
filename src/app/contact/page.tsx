@@ -1,3 +1,6 @@
+import { pageMetadata } from "@/lib/metadata";
+import type { Metadata } from "next";
+import { site } from "@/lib/site";
 import Divider from "@/components/ui/Divider";
 import Close from "@public/Contact Window/close.svg";
 import Fullscreen from "@public/Contact Window/fullscreen.svg";
@@ -7,6 +10,11 @@ import { generateEmailLink, getGithubLink, getLinkedinLink } from "@/lib/utils";
 import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
 import ContactForm from "./form";
+
+export const metadata: Metadata = pageMetadata({
+  title: `Contact · ${site.name}`,
+  path: "/contact",
+});
 
 function ContactPage() {
   return (

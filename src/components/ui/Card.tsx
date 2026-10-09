@@ -8,7 +8,8 @@ import { ReactNode } from "react";
 import { buttonVariants } from "./Button";
 
 export type CardProps = {
-  href: string;
+  // Omit when the project is no longer live; the "Visit Site" link is hidden
+  href?: string;
   title: ReactNode;
   description: string;
   image: StaticImport;
@@ -45,15 +46,17 @@ export default function Card({
               Read case study
             </Link>
           )}
-          <Link
-            target="_blank"
-            href={href}
-            aria-label={`Visit ${title} site (opens in new tab)`}
-            className="flex w-fit items-center gap-1 rounded-md text-18 text-ink-strong hover:underline hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus"
-          >
-            Visit Site
-            <ChevronRight aria-hidden="true" width={20} className="pt-0.5" />
-          </Link>
+          {href && (
+            <Link
+              target="_blank"
+              href={href}
+              aria-label={`Visit ${title} site (opens in new tab)`}
+              className="flex w-fit items-center gap-1 rounded-md text-18 text-ink-strong hover:underline hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus"
+            >
+              Visit Site
+              <ChevronRight aria-hidden="true" width={20} className="pt-0.5" />
+            </Link>
+          )}
         </div>
       </div>
       <div className="mx-auto mt-4 flex aspect-[1.12] w-full min-w-0 max-w-[560px] flex-[1_1_420px] items-center justify-center self-center">

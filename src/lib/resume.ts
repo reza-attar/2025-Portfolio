@@ -41,12 +41,11 @@ export const resume = {
   availability: `${site.relocation.availability} · ${site.workAuthorization}`,
   email: site.email,
   links: {
-    github: "https://github.com/Re9iNee",
+    github: "https://github.com/reza-attar",
     stackOverflow: "https://stackoverflow.com/users/9745726/re9inee",
   },
 
-  summary:
-    `Full-stack engineer with ${site.experience} of production JavaScript/TypeScript experience. The last five centred on React and Next.js, the most recent year on TypeScript backends and applied LLMs. I'm currently lead engineer on ${site.products.myca.name}, an AI support platform at a banking-software company, where I moved the backend to NestJS, built the Jira and RAG pipeline on PostgreSQL/pgvector, and cut compile time by 77%. I build the whole path from schema to interface. Previously I led a three-person frontend team for a German company, fully remote.`,
+  summary: `Full-stack engineer with ${site.experience} of production JavaScript/TypeScript experience. The last five centred on React and Next.js, the most recent year on TypeScript backends and applied LLMs. I'm currently lead engineer on ${site.products.ticketYar.name}, an AI support platform at a banking-software company, where I moved the backend to NestJS, built the Jira and RAG pipeline on PostgreSQL/pgvector, and cut compile time by 77%. I build the whole path from schema to interface. Previously I led a three-person frontend team for a German company, fully remote.`,
 
   experience: [
     {
@@ -165,7 +164,7 @@ export const resume = {
         },
         {
           name: "Cashio",
-          link: { label: "cashio.ir", href: "https://cashio.ir" },
+          link: { label: "mycashio.ir", href: "https://mycashio.ir" },
           description:
             "Farsi-first personal finance PWA: expenses, income and investments in one feed, with charts, recaps and CSV export. Custom JWT auth, offline-capable RTL app shell, Jalali calendar, web push. Self-hosted on Debian.",
           stack:
