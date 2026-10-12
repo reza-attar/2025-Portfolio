@@ -5,7 +5,7 @@ import { site } from "./site";
 // `path` is relative to site.url, e.g. "/about".
 export function pageMetadata({
   title,
-  description = `${site.role} · ${site.focus}`,
+  description = `${site.tagline} ${site.role} · ${site.focus}`,
   path,
 }: {
   title: string;

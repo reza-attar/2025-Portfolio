@@ -9,6 +9,8 @@ export const site = {
   title: "Reza Attar Portfolio Website",
   // Production origin, used for canonical URLs, Open Graph and the sitemap
   url: "https://www.rezaattar.dev",
+  // One-line positioning, used in page descriptions and the share card
+  tagline: "I build products from schema to interface.",
 
   role: "Senior Engineer",
   company: "Dotin",
