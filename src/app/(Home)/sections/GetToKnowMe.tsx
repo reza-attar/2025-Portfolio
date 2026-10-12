@@ -1,3 +1,4 @@
+import SectionHeading from "@/components/ui/SectionHeading";
 import Widget from "@/components/ui/Widget";
 import { getGoodreadsLink } from "@/lib/utils";
 import Bookshelf from "@public/Widgets/Bookshelf.png";
@@ -6,9 +7,11 @@ import FaceEmoji from "@public/Widgets/emoji.png";
 function GetToKnowMe() {
   return (
     <section aria-label="get to know me">
-      <h2 className="mb-4 text-32 font-bold text-ink-strong xl:mb-8 xl:text-48">
-        Get to know me
-      </h2>
+      <SectionHeading
+        index="05"
+        kicker="off the clock"
+        title="Get to know me"
+      />
       <div className="space-y-9 xl:grid xl:grid-cols-2 xl:gap-4 xl:space-y-0">
         <Widget
           href="/about"

@@ -4,6 +4,7 @@ import moraDash from "@public/Projects/mora-dash.png";
 import myca from "@public/Projects/myca.png";
 import { CardProps } from "@/components/ui/Card";
 import { caseStudyHref } from "./case-studies";
+import { LayerId } from "./layers";
 import { site } from "./site";
 
 export type MoreCaseStudy = {
@@ -12,6 +13,7 @@ export type MoreCaseStudy = {
   description: string;
   stack: string;
   caseHref: string;
+  layers: LayerId[];
   link?: string;
   href?: string;
 };
@@ -25,6 +27,7 @@ export const moreCaseStudies: MoreCaseStudy[] = [
       "An internal tool that reads support tickets from Jira, finds relevant knowledge, and drafts a reply in Persian for a human agent to approve.",
     stack: "NestJS, Prisma + PostgreSQL, Vercel AI SDK + Zod, Jira",
     caseHref: caseStudyHref("ticket-yar"),
+    layers: ["data", "backend", "ai", "interface"],
   },
   {
     name: "MyBody",
@@ -35,6 +38,7 @@ export const moreCaseStudies: MoreCaseStudy[] = [
     link: "mybodyapp.ir",
     href: "https://mybodyapp.ir",
     caseHref: caseStudyHref("mybody"),
+    layers: ["data", "backend"],
   },
   {
     name: "Medicine matching",
@@ -43,6 +47,7 @@ export const moreCaseStudies: MoreCaseStudy[] = [
       "Matches messy Persian drug names to a 33.8K-drug registry and sends uncertain matches to a person for review.",
     stack: "Bun, PostgreSQL + pg_trgm, React, Docker",
     caseHref: caseStudyHref("medicine-matching"),
+    layers: ["data", "backend", "interface"],
   },
   {
     name: "Cashio",
@@ -53,6 +58,7 @@ export const moreCaseStudies: MoreCaseStudy[] = [
     link: "mycashio.ir",
     href: "https://mycashio.ir",
     caseHref: caseStudyHref("cashio"),
+    layers: ["data", "backend", "interface"],
   },
 ];
 
@@ -63,6 +69,7 @@ export const projects: CardProps[] = [
     logo: "/Projects/myca-icon.svg",
     href: site.products.myca.href,
     caseHref: caseStudyHref("maica"),
+    layers: ["data", "backend", "interface"],
     description:
       "A Persian PWA that tells drivers when their car's periodic services are due, based on mileage. Co-founded; I built most of the backend.",
   },
@@ -73,6 +80,7 @@ export const projects: CardProps[] = [
       "The production blog for Mora, an AI-education platform. Performance work took desktop Lighthouse from 58 to 98.",
     logo: "/Projects/mora-logo.ico",
     caseHref: caseStudyHref("mora-blog"),
+    layers: ["data", "backend", "interface"],
   },
   {
     image: moraDash,
@@ -80,6 +88,7 @@ export const projects: CardProps[] = [
     logo: "/Projects/mora-logo.ico",
     description:
       "The school-management dashboard behind Mora, an online school: one place to manage students, teachers, classes and the rest of day-to-day administration.",
+    layers: ["data", "backend", "interface"],
   },
   {
     image: cleafin,
@@ -88,5 +97,6 @@ export const projects: CardProps[] = [
       "An MLM marketplace for selling both digital content and physical products, with stock and user management and multi-language, multi-currency storefronts. The live shop is in German.",
     logo: "/Projects/cleafin-logo.webp",
     href: "https://cleafin.shop",
+    layers: ["interface"],
   },
 ];

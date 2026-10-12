@@ -3,9 +3,11 @@ import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 import Link from "next/link";
 
+import { LayerId } from "@/lib/layers";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 import { buttonVariants } from "./Button";
+import LayerStrip from "./LayerStrip";
 
 export type CardProps = {
   // Omit when the project is no longer live; the "Visit Site" link is hidden
@@ -15,6 +17,8 @@ export type CardProps = {
   image: StaticImport;
   logo: string | StaticImport;
   caseHref?: string;
+  // Which system layers the project touched (see src/lib/layers.ts)
+  layers?: LayerId[];
 };
 export default function Card({
   logo,
@@ -23,6 +27,7 @@ export default function Card({
   description,
   image,
   caseHref,
+  layers,
 }: CardProps) {
   return (
     <div className="group flex w-full flex-wrap justify-between gap-4 overflow-hidden rounded-4xl border border-panel-border bg-panel">
@@ -33,6 +38,7 @@ export default function Card({
           <p className="text-pretty text-15 leading-[1.5] text-ink-muted">
             {description}
           </p>
+          {layers && <LayerStrip active={layers} className="pt-2" />}
         </div>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
           {caseHref && (
@@ -59,11 +65,11 @@ export default function Card({
           )}
         </div>
       </div>
-      <div className="mx-auto mt-4 flex aspect-[1.12] w-full min-w-0 max-w-[560px] flex-[1_1_420px] items-center justify-center self-center">
+      <div className="mx-auto flex w-full min-w-0 max-w-[560px] flex-[1_1_420px] items-center justify-center self-center px-4 pb-6 md:mt-4 md:aspect-[1.12] md:px-0 md:pb-0">
         <Image
           src={image}
           alt={`screenshot of ${title} project`}
-          className="h-full w-full object-contain"
+          className="h-auto w-full object-contain md:h-full"
         />
       </div>
     </div>

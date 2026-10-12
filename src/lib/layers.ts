@@ -28,7 +28,10 @@ export const layers: Layer[] = [
     summary:
       "Schemas that hold up under real traffic: relational models, vector search and fuzzy matching, inside one Postgres.",
     stack: ["PostgreSQL", "pgvector", "pg_trgm", "Prisma"],
-    metric: { value: "1.15 s → 9 ms", caption: "Query time on the hottest read paths" },
+    metric: {
+      value: "1.15 s → 9 ms",
+      caption: "Query time on the hottest read paths",
+    },
     href: "/works/medicine-matching",
   },
   {
@@ -40,7 +43,10 @@ export const layers: Layer[] = [
     summary:
       "APIs and the work behind them: auth, multi-tenancy, scheduled jobs, third-party sync and real-time messaging.",
     stack: ["NestJS", "Node.js", "Socket.IO", "Jira REST", "Docker"],
-    metric: { value: "2m 25s → 34s", caption: "Backend compile time after moving to SWC" },
+    metric: {
+      value: "2m 25s → 34s",
+      caption: "Backend compile time after moving to SWC",
+    },
     href: "/works/mybody",
   },
   {
@@ -52,7 +58,10 @@ export const layers: Layer[] = [
     summary:
       "Retrieval, structured output and model hosting, built so a model's answer can be checked before a person sees it.",
     stack: ["RAG", "Embeddings", "Vercel AI SDK", "Zod", "Local LLMs", "MCP"],
-    metric: { value: "3rd place", caption: "LLM Agents Hackathon, Sharif University, 2025" },
+    metric: {
+      value: "3rd place",
+      caption: "LLM Agents Hackathon, Sharif University, 2025",
+    },
     href: "/works/ticket-yar",
   },
   {
@@ -63,7 +72,10 @@ export const layers: Layer[] = [
     summary:
       "Fast, accessible interfaces and the component systems underneath them, in English and right-to-left Persian.",
     stack: ["Next.js", "React", "Tailwind", "shadcn/ui", "PWA", "RTL"],
-    metric: { value: "58 → 98", caption: "Lighthouse performance on the Mora blog" },
+    metric: {
+      value: "58 → 98",
+      caption: "Lighthouse performance on the Mora blog",
+    },
     href: "/works/mora-blog",
   },
 ];

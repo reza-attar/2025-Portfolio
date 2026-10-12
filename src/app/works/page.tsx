@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { site } from "@/lib/site";
 import Card from "@/components/ui/Card";
 import Divider from "@/components/ui/Divider";
+import LayerStrip from "@/components/ui/LayerStrip";
 import { ProjectPlaceholder } from "@/components/ui/Widget";
 import { moreCaseStudies, projects } from "@/lib/projects";
 import { cn } from "@/lib/utils";
@@ -25,7 +26,7 @@ export default function WorksPage() {
           Projects
         </h1>
         <p className="text-16 text-ink-faint xl:text-24">
-          Projects and ideas I’ve worked on
+          Products I’ve built, and the layers of each one I built myself
         </p>
       </section>
 
@@ -71,6 +72,7 @@ export default function WorksPage() {
               <p className="text-pretty text-15 leading-[1.6] text-ink-muted">
                 {project.description}
               </p>
+              <LayerStrip active={project.layers} className="pt-1" />
               <p className="mt-auto pt-2 text-14 leading-normal text-ink-muted">
                 <span className="font-medium text-ink-strong">Stack:</span>{" "}
                 {project.stack}
