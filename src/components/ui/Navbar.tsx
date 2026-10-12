@@ -61,7 +61,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-3 flex min-w-[358px] justify-between rounded-xl border border-nav-border/30 bg-nav-background/80 px-4 py-2.5 backdrop-blur dark:border-nav-border/40 dark:bg-nav-background/60 xl:hidden print:hidden">
+    <nav className="fixed bottom-3 flex w-[min(358px,calc(100vw-24px))] justify-between rounded-xl border border-nav-border/30 bg-nav-background/80 px-4 py-2.5 backdrop-blur dark:border-nav-border/40 dark:bg-nav-background/60 xl:hidden print:hidden">
       {items.map((item) => (
         <Item key={item.link} isActive={item.link === pathname} {...item} />
       ))}
@@ -87,10 +87,8 @@ const Item = ({
       aria-label={label}
       aria-current={isActive ? "page" : undefined}
       className={cn(
-        "grid h-10 w-14 place-items-center rounded-xl text-white-faint",
-        isActive
-          ? "w-14 rounded-xl bg-black/50 text-white"
-          : "hover:bg-black/20",
+        "grid h-10 w-12 place-items-center rounded-xl text-white-faint min-[375px]:w-14",
+        isActive ? "rounded-xl bg-black/50 text-white" : "hover:bg-black/20",
       )}
     >
       {isActive ? (

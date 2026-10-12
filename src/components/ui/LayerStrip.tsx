@@ -28,7 +28,7 @@ export default function LayerStrip({
               />
               <p
                 className={cn(
-                  "truncate font-mono text-[11px] uppercase",
+                  "truncate font-mono text-[10px] uppercase tracking-[-0.02em] sm:text-[11px] sm:tracking-normal",
                   on ? "text-ink-muted" : "text-ink-faint opacity-50",
                 )}
               >

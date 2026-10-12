@@ -36,7 +36,7 @@ const glance = [
 
 export default function AboutPage() {
   return (
-    <main className="mt-20 flex max-w-screen-lg flex-col gap-16 [&>*]:px-4">
+    <main className="mt-20 flex w-full max-w-screen-lg flex-col gap-16 [&>*]:px-4">
       <section className="flex max-w-[80%] flex-col gap-2">
         <h1 className="text-balance text-48 font-bold leading-[1.1] text-ink-strong xl:text-80">
           A little bit about me
