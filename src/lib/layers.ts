@@ -15,7 +15,8 @@ export type Layer = {
   summary: string;
   stack: string[];
   metric: { value: string; caption: string };
-  href?: string;
+  // Where the metric comes from; the link under it points here
+  source: { label: string; href: string };
 };
 
 export const layers: Layer[] = [
@@ -32,7 +33,7 @@ export const layers: Layer[] = [
       value: "1.15 s → 9 ms",
       caption: "Query time on the hottest read paths",
     },
-    href: "/works/medicine-matching",
+    source: { label: "Resume: NUWA", href: "/resume" },
   },
   {
     id: "backend",
@@ -47,7 +48,7 @@ export const layers: Layer[] = [
       value: "2m 25s → 34s",
       caption: "Backend compile time after moving to SWC",
     },
-    href: "/works/mybody",
+    source: { label: "Ticket Yar case study", href: "/works/ticket-yar" },
   },
   {
     id: "ai",
@@ -62,7 +63,7 @@ export const layers: Layer[] = [
       value: "3rd place",
       caption: "LLM Agents Hackathon, Sharif University, 2025",
     },
-    href: "/works/ticket-yar",
+    source: { label: "Resume: awards", href: "/resume" },
   },
   {
     id: "interface",
@@ -76,7 +77,7 @@ export const layers: Layer[] = [
       value: "58 → 98",
       caption: "Lighthouse performance on the Mora blog",
     },
-    href: "/works/mora-blog",
+    source: { label: "Mora Blog case study", href: "/works/mora-blog" },
   },
 ];
 

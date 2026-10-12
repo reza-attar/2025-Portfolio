@@ -61,15 +61,13 @@ export default function StackLayers() {
               <p className="text-14 leading-snug text-ink-muted">
                 {layer.metric.caption}
               </p>
-              {layer.href && (
-                <Link
-                  href={layer.href}
-                  className="mt-2 inline-flex w-fit items-center gap-1 rounded text-14 font-medium text-ink-strong hover:underline hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus"
-                >
-                  See it in a case study
-                  <ArrowRight aria-hidden="true" className="h-4 w-4" />
-                </Link>
-              )}
+              <Link
+                href={layer.source.href}
+                className="mt-2 inline-flex w-fit items-center gap-1 rounded text-14 font-medium text-ink-strong hover:underline hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus"
+              >
+                {layer.source.label}
+                <ArrowRight aria-hidden="true" className="h-4 w-4" />
+              </Link>
             </div>
           </li>
         ))}
