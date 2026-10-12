@@ -4,7 +4,7 @@ import GradientImage from "@public/Gradient.png";
 import { ClassValue } from "clsx";
 import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
-import { Inter, Nanum_Pen_Script } from "next/font/google";
+import { Inter, JetBrains_Mono, Nanum_Pen_Script } from "next/font/google";
 import Image from "next/image";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -16,6 +16,12 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   weight: ["400", "500", "600", "700", "800"],
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  weight: ["400", "500"],
 });
 
 const nanum = Nanum_Pen_Script({
@@ -37,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${nanum.variable} relative mx-auto flex min-h-screen max-w-screen-lg flex-col items-center justify-between overflow-x-hidden font-inter text-ink antialiased`}
+        className={`${inter.variable} ${mono.variable} ${nanum.variable} relative mx-auto flex min-h-screen max-w-screen-lg flex-col items-center justify-between overflow-x-hidden font-inter text-ink antialiased`}
       >
         <TopGradient />
 

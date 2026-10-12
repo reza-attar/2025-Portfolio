@@ -47,6 +47,7 @@ export default {
       "10": "10px",
       "11": "11px",
       "12": "12px",
+      "13": "13px",
       "14": "14px",
       "15": "15px",
       "16": "16px",
@@ -62,6 +63,7 @@ export default {
     fontFamily: {
       inter: ["var(--font-inter)", "Inter", "sans-serif"],
       nanum: ["var(--font-nanum)"],
+      mono: ["var(--font-mono)", "ui-monospace", "monospace"],
     },
     extend: {
       borderRadius: {
@@ -117,6 +119,12 @@ export default {
           border: "var(--control-border)",
         },
         focus: "var(--focus-ring)",
+        layer: {
+          data: "var(--layer-data)",
+          backend: "var(--layer-backend)",
+          ai: "var(--layer-ai)",
+          interface: "var(--layer-interface)",
+        },
         "shad-background": "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

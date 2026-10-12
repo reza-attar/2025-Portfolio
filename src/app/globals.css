@@ -108,6 +108,13 @@
   --win-line: rgba(0, 0, 0, 0.06);
 
   --focus-ring: #5b5bd6;
+
+  /* System layers: data → backend → AI → interface */
+  --layer-data: #3f64ea;
+  --layer-backend: #e5484d;
+  --layer-ai: #8e4ec6;
+  --layer-interface: #d18a00;
+  --grid-dot: rgba(0, 0, 0, 0.09);
 }
 
 .dark {
@@ -142,6 +149,48 @@
   --win-line: rgba(255, 255, 255, 0.08);
 
   --focus-ring: #a5a3f7;
+
+  --layer-data: #7b93ff;
+  --layer-backend: #ff6b70;
+  --layer-ai: #c08cf0;
+  --layer-interface: #ffc53d;
+  --grid-dot: rgba(255, 255, 255, 0.08);
+}
+
+/* A request travelling down the system diagram (see SystemDiagram) */
+@keyframes packet {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes node-ping {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  6% {
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--node) 28%, transparent);
+  }
+  18% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+.bg-dot-grid {
+  background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
+  background-size: 16px 16px;
 }
 
 body {
