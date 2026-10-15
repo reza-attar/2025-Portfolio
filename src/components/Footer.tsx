@@ -1,83 +1,97 @@
-import Link from "next/link";
-import DynamicLogo from "./Logo";
-import Divider from "./ui/Divider";
+import { resume } from "@/lib/resume";
 import { site } from "@/lib/site";
 import { getGithubLink, getLinkedinLink, getYoutubeLink } from "@/lib/utils";
+import Link from "next/link";
+import { FiArrowUpRight } from "react-icons/fi";
+import Logo from "./Logo";
+
+const link =
+  "rounded text-15 text-ink-muted transition-colors hover:text-ink-strong focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus";
+
+// Rendered at build time, so this is when the site was last published
+const built = new Date();
 
 export default function Footer() {
+  const elsewhere = [
+    { label: "LinkedIn", href: getLinkedinLink() },
+    { label: "GitHub", href: getGithubLink() },
+    { label: "YouTube", href: getYoutubeLink() },
+    { label: "Stack Overflow", href: resume.links.stackOverflow },
+  ];
+
   return (
-    <div className="mt-32 print:hidden">
-      <Divider />
-      <footer className="mx-auto max-w-screen-lg space-y-12 pb-24 pl-4 pt-12 text-ink-muted xl:flex xl:flex-row-reverse xl:justify-between xl:space-y-0">
-        <div className="space-y-10 xl:flex xl:flex-row-reverse xl:gap-32 xl:space-y-0">
-          <div className="flex flex-col gap-4">
-            <h2 className="mb-4 text-16 font-bold text-ink-strong">
-              Elsewhere
-            </h2>
-            <Link
-              href={`mailto:${site.email}`}
-              className="w-fit rounded hover:text-ink-strong hover:underline hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus"
-            >
-              Email
-            </Link>
-            <Link
-              target="_blank"
-              href={getYoutubeLink()}
-              className="w-fit rounded hover:text-ink-strong hover:underline hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus"
-            >
-              Youtube
-            </Link>
-            <Link
-              target="_blank"
-              href={getLinkedinLink()}
-              className="w-fit rounded hover:text-ink-strong hover:underline hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus"
-            >
-              LinkedIn
-            </Link>
-            <Link
-              target="_blank"
-              href={getGithubLink()}
-              className="w-fit rounded hover:text-ink-strong hover:underline hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus"
-            >
-              Github
-            </Link>
-          </div>
-          <div className="flex flex-col gap-4">
-            <h2 className="mb-4 text-16 font-bold text-ink-strong">Links</h2>
-            <Link
-              href={"/about"}
-              className="w-fit rounded hover:text-ink-strong hover:underline hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus"
-            >
-              About
-            </Link>
-            <Link
-              href={"/works"}
-              className="w-fit rounded hover:text-ink-strong hover:underline hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus"
-            >
-              Work
-            </Link>
-            <Link
-              href={"/contact"}
-              className="w-fit rounded hover:text-ink-strong hover:underline hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus"
-            >
-              Contact
-            </Link>
-            <Link
-              href={"/resume"}
-              className="w-fit rounded hover:text-ink-strong hover:underline hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus"
-            >
-              Resume
-            </Link>
-          </div>
+    <footer className="mt-32 w-full px-4 pb-28 xl:pb-12 print:hidden">
+      <div className="grid grid-cols-2 gap-10 border-t border-divider pt-10 md:grid-cols-[1fr_auto_auto] md:gap-x-16 xl:gap-x-24">
+        <div className="col-span-2 max-w-[38ch] space-y-4 md:col-span-1">
+          <Logo size="small" />
+          <p className="text-pretty text-15 leading-[1.6] text-ink-muted">
+            {site.tagline} Based in {resume.location},{" "}
+            {site.relocation.sentence}.
+          </p>
+          <a
+            href={`mailto:${resume.email}`}
+            className={`${link} block w-fit font-medium text-ink-strong underline underline-offset-4`}
+          >
+            {resume.email}
+          </a>
         </div>
-        <div className="flex flex-col justify-between">
-          <div className="space-y-4">
-            <DynamicLogo size="large" />
-            <p>Thanks for stopping by ッ </p>
-          </div>
-          <p className="text-14">© 2026 {site.name}. All Rights Reserved.</p>
+
+        <nav aria-labelledby="footer-pages">
+          <FooterHeading id="footer-pages">pages</FooterHeading>
+          <ul className="space-y-2.5">
+            {site.nav.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className={link}>
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div>
+          <FooterHeading id="footer-elsewhere">elsewhere</FooterHeading>
+          <ul aria-labelledby="footer-elsewhere" className="space-y-2.5">
+            {elsewhere.map((item) => (
+              <li key={item.label}>
+                <Link
+                  href={item.href}
+                  target="_blank"
+                  aria-label={`${item.label} (opens in new tab)`}
+                  className={`${link} group inline-flex items-center gap-1`}
+                >
+                  {item.label}
+                  <FiArrowUpRight
+                    aria-hidden="true"
+                    className="h-3.5 w-3.5 text-ink-faint transition-colors group-hover:text-ink-strong"
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
-      </footer>
-    </div>
+      </div>
+
+      <div className="mt-12 flex flex-col gap-2 text-13 text-ink-faint sm:flex-row sm:items-baseline sm:justify-between">
+        <p>
+          © {built.getFullYear()} {site.name}. Thanks for stopping by ッ
+        </p>
+        <p className="font-mono">
+          updated{" "}
+          {built
+            .toLocaleDateString("en-GB", { month: "short", year: "numeric" })
+            .toLowerCase()}
+        </p>
+      </div>
+    </footer>
+  );
+}
+
+function FooterHeading({ id, children }: { id: string; children: string }) {
+  return (
+    <p id={id} className="mb-4 font-mono text-13 text-ink-faint">
+      <span aria-hidden="true">// </span>
+      {children}
+    </p>
   );
 }

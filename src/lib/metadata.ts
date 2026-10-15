@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { resume } from "./resume";
 import { site } from "./site";
 
 // Per-page title, description, canonical URL and share-card tags.
 // `path` is relative to site.url, e.g. "/about".
 export function pageMetadata({
   title,
-  description = `${site.role} · ${site.focus}`,
+  description = `${site.tagline} ${resume.role} · ${site.focus}`,
   path,
 }: {
   title: string;

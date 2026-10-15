@@ -114,23 +114,29 @@ export function ProjectPlaceholder() {
 export function LetsWorkTogether() {
   return (
     <section
-      aria-label="contact call to action"
-      className="flex flex-col justify-between gap-8 bg-background text-center xl:flex-row xl:items-center xl:gap-0 xl:text-left"
+      aria-labelledby="work-together-title"
+      className="bg-dot-grid flex flex-col gap-8 rounded-4xl border border-panel-border bg-panel px-6 py-10 xl:flex-row xl:items-end xl:justify-between xl:px-12 xl:py-14"
     >
-      <div className="xl:max-w-[50%]">
-        <h2 className="text-32 font-bold text-ink-strong xl:text-48">
-          Let&apos;s work Together
+      <div className="space-y-3 xl:max-w-[60%]">
+        <p className="font-mono text-13 text-ink-faint">
+          <span aria-hidden="true">// </span>06 next request
+        </p>
+        <h2
+          id="work-together-title"
+          className="text-balance text-32 font-bold leading-[1.15] text-ink-strong xl:text-48"
+        >
+          Have a product that needs every layer?
         </h2>
-        <p className="text-15 text-ink-faint xl:text-20">
-          Want to discuss an opportunity to create something great? I&apos;m
-          ready when you are.
+        <p className="text-pretty text-16 text-ink-muted xl:text-18">
+          From the first table to the last pixel, and the AI in between. Tell me
+          what you&apos;re building.
         </p>
       </div>
 
       <Link
         href="/contact"
         className={cn(
-          "text-18 xl:w-fit",
+          "shrink-0 text-18 xl:w-fit",
           buttonVariants({ variant: "primary" }),
         )}
       >

@@ -35,15 +35,8 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-## Resume page
+## Resume
 
-The `/resume` page renders from `src/lib/resume.ts`. Its "Download PDF" button serves `public/Reza_Attar_Resume.pdf`, which is a print of that page.
-After editing the resume content, regenerate the PDF:
-
-```bash
-pnpm build && pnpm start -p 3123 &
-"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --no-pdf-header-footer \
-  --virtual-time-budget=8000 --print-to-pdf="$PWD/public/Reza_Attar_Resume.pdf" http://localhost:3123/resume
-```
+Edit `content/resume.md`. The site reads it; `pnpm dev` rebuilds `public/Reza_Attar_Resume.pdf` on save, `pnpm resume:pdf` rebuilds it once, and `pnpm build` fails if the PDF is stale and Chrome isn't available. Commit the PDF and `content/resume.pdf.sha256` with it.
 
 Visitors can also use the browser's Print → Save as PDF on `/resume`; print styles hide the site chrome.

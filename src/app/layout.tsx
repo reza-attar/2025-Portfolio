@@ -3,8 +3,8 @@ import { cn } from "@/lib/utils";
 import GradientImage from "@public/Gradient.png";
 import { ClassValue } from "clsx";
 import { pageMetadata } from "@/lib/metadata";
-import type { Metadata } from "next";
-import { Inter, Nanum_Pen_Script } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Inter, JetBrains_Mono, Nanum_Pen_Script } from "next/font/google";
 import Image from "next/image";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -18,6 +18,12 @@ const inter = Inter({
   weight: ["400", "500", "600", "700", "800"],
 });
 
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  weight: ["400", "500"],
+});
+
 const nanum = Nanum_Pen_Script({
   weight: "400",
   subsets: ["latin"],
@@ -27,6 +33,31 @@ const nanum = Nanum_Pen_Script({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   ...pageMetadata({ title: site.title, path: "/" }),
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  // Let search engines show large image previews and full snippets
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  // Set GOOGLE_SITE_VERIFICATION to the Search Console token to verify the domain
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
+};
+
+// Browser UI colour, matching the page background in each theme
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
+    { media: "(prefers-color-scheme: dark)", color: "#0d0d0d" },
+  ],
 };
 
 export default function RootLayout({
@@ -37,7 +68,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${nanum.variable} relative mx-auto flex min-h-screen max-w-screen-lg flex-col items-center justify-between overflow-x-hidden font-inter text-ink antialiased`}
+        className={`${inter.variable} ${mono.variable} ${nanum.variable} relative mx-auto flex min-h-screen max-w-screen-lg flex-col items-center justify-between overflow-x-hidden font-inter text-ink antialiased`}
       >
         <TopGradient />
 

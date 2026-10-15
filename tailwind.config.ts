@@ -6,6 +6,7 @@ export default {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/lib/**/*.{js,ts,jsx,tsx}",
   ],
   darkMode: ["class"],
   theme: {
@@ -47,6 +48,7 @@ export default {
       "10": "10px",
       "11": "11px",
       "12": "12px",
+      "13": "13px",
       "14": "14px",
       "15": "15px",
       "16": "16px",
@@ -62,6 +64,7 @@ export default {
     fontFamily: {
       inter: ["var(--font-inter)", "Inter", "sans-serif"],
       nanum: ["var(--font-nanum)"],
+      mono: ["var(--font-mono)", "ui-monospace", "monospace"],
     },
     extend: {
       borderRadius: {
@@ -117,6 +120,12 @@ export default {
           border: "var(--control-border)",
         },
         focus: "var(--focus-ring)",
+        layer: {
+          data: "var(--layer-data)",
+          backend: "var(--layer-backend)",
+          ai: "var(--layer-ai)",
+          interface: "var(--layer-interface)",
+        },
         "shad-background": "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -157,6 +166,13 @@ export default {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+      },
+      // The blinking cursor after the header's path, like the loader's
+      keyframes: {
+        caret: { "0%, 100%": { opacity: "1" }, "50%": { opacity: "0" } },
+      },
+      animation: {
+        caret: "caret 1.1s step-end infinite",
       },
     },
   },

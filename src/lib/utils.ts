@@ -1,6 +1,5 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { site } from "./site";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -12,19 +11,15 @@ type GenerateEmailParams = {
   subject: string;
 };
 
+// `to` is the resume email (resume.email); client components get it as a prop
 export function generateEmailLink({
-  to = site.email,
+  to,
   subject = "Let's work together on the new project",
   body = "I saw your website and want to start working together on a this new idea I have, the idea is about ...",
-}: Partial<GenerateEmailParams>): string {
+}: Pick<GenerateEmailParams, "to"> & Partial<GenerateEmailParams>): string {
   return `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
-export const getResumeFileLink = () => {
-  if (!process.env.NEXT_PUBLIC_RESUME_FILE)
-    throw new Error("Error: NEXT_PUBLIC_RESUME_FILE variable required");
-  return process.env.NEXT_PUBLIC_RESUME_FILE;
-};
 export const getLinkedinLink = () => {
   if (!process.env.LINKEDIN)
     throw new Error("Error: Linkedin variable required");
@@ -43,3 +38,11 @@ export const getGoodreadsLink = () => {
     throw new Error("Error: Goodreads variable required");
   return process.env.GOODREADS;
 };
+
+// "Solution Apps DG GmbH" -> "solution-apps-dg-gmbh", for URL fragments like /resume#nuwa
+export function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}

@@ -1,4 +1,8 @@
 import type { NextConfig } from "next";
+import path from "node:path";
+
+// Turns content/resume.md into the resume data (see scripts/resume/parse.cjs)
+const resumeLoader = path.resolve("scripts/resume/parse.cjs");
 
 const nextConfig: NextConfig = {
   // Custom webpack only used when running next build --webpack (Turbopack is default in v16)
@@ -6,6 +10,10 @@ const nextConfig: NextConfig = {
     config.module.rules.push({
       test: /\.svg$/i,
       use: ["@svgr/webpack"],
+    });
+    config.module.rules.push({
+      test: /\.md$/i,
+      use: [resumeLoader],
     });
 
     return config;
@@ -16,6 +24,10 @@ const nextConfig: NextConfig = {
     rules: {
       "*.svg": {
         loaders: ["@svgr/webpack"],
+        as: "*.js",
+      },
+      "*.md": {
+        loaders: [resumeLoader],
         as: "*.js",
       },
     },

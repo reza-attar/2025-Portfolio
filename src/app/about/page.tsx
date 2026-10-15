@@ -5,8 +5,10 @@ import Divider from "@/components/ui/Divider";
 import PortraitImage from "@public/portrait.jpg";
 import { ChevronRight, Download, SendHorizontal } from "lucide-react";
 
+import JsonLd from "@/components/JsonLd";
 import Signature from "@/components/about/Signature";
-import { RESUME_PDF_PATH, resume } from "@/lib/resume";
+import { profilePage } from "@/lib/structured-data";
+import { RESUME_PDF_PATH, productLaunch, resume } from "@/lib/resume";
 import { site, siteLanguages } from "@/lib/site";
 import { cn, getLinkedinLink, getYoutubeLink } from "@/lib/utils";
 import Image from "next/image";
@@ -15,6 +17,7 @@ import { ReactNode } from "react";
 
 export const metadata: Metadata = pageMetadata({
   title: `About · ${site.name}`,
+  description: `${site.name} is a ${resume.role.toLowerCase()} at ${resume.company} working across TypeScript, NestJS, PostgreSQL and applied LLMs, ${site.relocation.sentence}.`,
   path: "/about",
 });
 
@@ -28,15 +31,16 @@ const inlineLink = cn(
 );
 
 const glance = [
-  { label: "Role", value: `${site.role}, ${site.company}` },
-  { label: "Based in", value: `${site.country} · ${site.relocation.short}` },
+  { label: "Role", value: `${resume.role}, ${resume.company}` },
+  { label: "Based in", value: `${resume.location} · ${site.relocation.short}` },
   { label: "Languages", value: siteLanguages },
   { label: "Focus", value: site.focus },
 ];
 
 export default function AboutPage() {
   return (
-    <main className="mt-20 flex max-w-screen-lg flex-col gap-16 [&>*]:px-4">
+    <main className="mt-20 flex w-full max-w-screen-lg flex-col gap-16 [&>*]:px-4">
+      <JsonLd data={profilePage()} />
       <section className="flex max-w-[80%] flex-col gap-2">
         <h1 className="text-balance text-48 font-bold leading-[1.1] text-ink-strong xl:text-80">
           A little bit about me
@@ -103,13 +107,14 @@ export default function AboutPage() {
             <AboutBlock title="Who I am">
               I&apos;m <Strong>{site.name.split(" ")[0]}</Strong> (pronounced “
               {site.pronunciation}”), a full-stack engineer based in{" "}
-              {site.country}. I build the whole path from database schema to
+              {resume.location}. I build the whole path from database schema to
               interface, and I&apos;m {site.relocation.sentence}.
             </AboutBlock>
             <AboutBlock title="What I do">
-              I&apos;m a {site.role} at {site.company}, where I lead{" "}
-              <Strong>{site.products.ticketYar.name}</Strong>, an AI support
-              platform for banking software. I moved its backend to NestJS,
+              I&apos;m a {resume.role} at {resume.company}, where I work on{" "}
+              <Strong>{resume.product.name}</Strong>, an AI support platform
+              for banking software that launched in {productLaunch.month}. I
+              moved its backend to NestJS,
               built the Jira and RAG pipeline on PostgreSQL and pgvector, and{" "}
               <Strong>cut compile time by 77%</Strong>. Before that, I led a
               three-person frontend team for a German company, fully remote. I
@@ -126,7 +131,7 @@ export default function AboutPage() {
             </AboutBlock>
             <AboutBlock title="What I did">
               I started at 15 with Linux and WordPress, curious about how things
-              work. That turned into <Strong>{site.experience}</Strong> of
+              work. That turned into <Strong>{resume.experienceYears}</Strong> of
               production JavaScript and TypeScript. Along the way I{" "}
               <Strong>won two coding contests</Strong> and took third place at
               the Sharif University LLM Agents Hackathon in 2025.
