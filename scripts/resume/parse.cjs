@@ -18,7 +18,6 @@ const REQUIRED_FIELDS = [
   "availability",
   "product",
   "product_role",
-  "product_launched",
 ];
 
 // "## Heading" text (lower-cased) -> section key. The key is also the /resume#anchor.
@@ -83,9 +82,6 @@ function parseResume(source) {
   for (const key of REQUIRED_FIELDS) {
     if (!fields[key]) fail(i, `front matter is missing "${key}"`);
   }
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(fields.product_launched)) {
-    fail(i, "product_launched must be a date like 2026-10-13");
-  }
 
   const data = {
     name: fields.name,
@@ -104,7 +100,6 @@ function parseResume(source) {
     product: {
       name: fields.product,
       role: fields.product_role,
-      launched: fields.product_launched,
     },
     sectionTitles: {},
     summary: [],

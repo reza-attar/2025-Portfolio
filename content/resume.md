@@ -12,7 +12,6 @@ stackoverflow: https://stackoverflow.com/users/9745726/re9inee
 availability: Open to relocation to the Netherlands or Germany · Eligible for EU Blue Card · Open to EU-remote
 product: Ticket Yar
 product_role: Senior engineer
-product_launched: 2026-10-13
 ---
 
 <!--
@@ -24,7 +23,7 @@ product_launched: 2026-10-13
 
 ## Summary
 
-Full-stack engineer with 11 years of production JavaScript/TypeScript experience. The last five centred on React and Next.js, the most recent year on TypeScript backends and applied LLMs. I'm currently a senior engineer on Ticket Yar, an AI support platform at a banking-software company that launched in October 2026. I moved its backend to NestJS, built the Jira and RAG pipeline on PostgreSQL/pgvector, and cut compile time by 77%. I build the whole path from schema to interface. Previously I led a three-person frontend team for a German company, fully remote.
+Full-stack engineer with 11 years of production JavaScript/TypeScript experience. The last five centred on React and Next.js, the most recent year on TypeScript backends and applied LLMs. I'm currently a senior engineer on Ticket Yar, an AI support platform at a banking-software company. I moved its backend to NestJS, built the Jira and RAG pipeline on PostgreSQL/pgvector, and cut compile time by 77%. I build the whole path from schema to interface. Previously I led a three-person frontend team for a German company, fully remote.
 
 ## Experience
 
@@ -34,16 +33,14 @@ Senior Engineer · Jun 2025 – Present · Iran
 
 #### Ticket Yar (AI support platform) · Senior engineer
 
-- Senior engineer on Ticket Yar, a multi-tenant B2B platform, used internally, that connects to Jira, Confluence and other ticketing and knowledge systems through adapters, and drafts first-line replies to support tickets using retrieval-augmented generation over each business's own knowledge base. Launched in October 2026. Wrote the product spec and introduced spec-driven development to the team.
+- Senior engineer on Ticket Yar, a multi-tenant B2B platform, used internally, that connects to Jira, Confluence and other ticketing and knowledge systems and drafts first-line replies to support tickets using retrieval-augmented generation over each business's own knowledge base. Wrote the product spec and introduced spec-driven development to the team.
 - Designed and shipped an in-house RAG system on PostgreSQL and pgvector, serving semantic search over internal documents.
-- Ran evaluation and deployment of locally hosted LLMs, keeping sensitive banking data inside the company perimeter instead of sending it to a third-party API.
-- Built the AI layer: ticket classification with schema-validated structured output (Vercel AI SDK, Zod), semantic knowledge search, AI-scored knowledge validation, and a knowledge collector that turns unstructured Persian support notes into a searchable knowledge base. Added DeepSeek API support.
-- Integrated MCP servers so internal tools could call company data sources directly from assistant interfaces.
+- Built the AI layer: ticket classification with schema-validated structured output (Vercel AI SDK, Zod), semantic knowledge search, and AI-scored knowledge validation.
 
 #### Backend & platform
 
-- Migrated the backend from Next.js to NestJS and built its core: JWT auth with API versioning, multi-tenant business module, caching, scheduled jobs that generate AI replies automatically, background ingestion jobs, embedding pipelines that re-index on document change, unified Winston logging, Swagger docs, and a Prisma soft-delete extension. Restored the unit-test suite.
-- Built the Jira integration end to end (ticket, comment, and attachment sync, JQL validation, CSV import, SLA tracking), plus an approval workflow and knowledge-confidence limits so no AI reply reaches a customer unreviewed.
+- Migrated the backend from Next.js to NestJS and built its core: JWT auth with API versioning, multi-tenant business module, caching, background ingestion jobs, embedding pipelines that re-index on document change, unified Winston logging, Swagger docs, and a Prisma soft-delete extension. Restored the unit-test suite.
+- Built the Jira integration end to end (ticket, comment, and attachment sync, CSV import, SLA tracking), plus an approval workflow and knowledge-confidence limits so no AI reply reaches a customer unreviewed.
 - Cut the NestJS backend's compile time from 2 m 25 s to 34 s (−77%) by migrating compilation to SWC.
 
 #### Frontend
@@ -52,7 +49,7 @@ Senior Engineer · Jun 2025 – Present · Iran
 
 #### Recognition
 
-- Promoted to Senior Engineer (internal Ladder 7), scoring 80% on the formal promotion exam.
+- Promoted to Senior Engineer.
 
 ### NUWA
 
@@ -139,7 +136,7 @@ Node.js ingestion (mammoth, pdf-parse, tesseract.js) with Persian text-quality h
 - **Languages:** TypeScript, JavaScript (ES2015+), SQL, HTML, CSS, Python (data/ML tooling)
 - **Front-end:** React, Next.js (App Router, Server Actions), Redux Toolkit, Zustand, React Hook Form, Tailwind CSS, shadcn/ui, PWAs, RTL/i18n
 - **Back-end & data:** NestJS, Node.js, Express, Bun, REST, API versioning, WebSockets (Socket.IO), Prisma, PostgreSQL, pgvector, Caching, Cron scheduling, Winston, Swagger
-- **AI engineering:** RAG pipelines, Embeddings, Semantic search, Local LLM hosting, Prompt engineering, Structured output (Vercel AI SDK, Zod), Tool calling, MCP servers, DeepSeek API, Persian NLP, Claude Code
+- **AI engineering:** RAG pipelines, Embeddings, Semantic search, Local LLM hosting, Prompt engineering, Structured output (Vercel AI SDK, Zod), Tool calling, MCP servers, Persian NLP, Claude Code
 - **Infrastructure:** Docker, AWS (EC2, S3), Ubuntu/Debian, Apache, Nginx, PM2, GitHub Actions, GitLab CI, Git
 - **Testing & tooling:** Jest, Vitest, Cypress, SWC, Husky
 

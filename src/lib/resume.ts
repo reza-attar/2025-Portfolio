@@ -54,7 +54,7 @@ export type ResumeData = {
   availability: string;
   links: { linkedin: string; github: string; stackOverflow: string };
   // The product I'm working on now (home page, About page, Ticket Yar case study)
-  product: { name: string; role: string; launched: string };
+  product: { name: string; role: string };
   sectionTitles: Record<ResumeSection, string>;
   summary: string[];
   experience: Experience[];
@@ -72,19 +72,3 @@ export type ResumeData = {
 
 export const resume: ResumeData = data;
 
-const launched = new Date(`${resume.product.launched}T00:00:00Z`);
-
-// "October 2026" and "13 October 2026", from product_launched
-export const productLaunch = {
-  month: launched.toLocaleDateString("en-GB", {
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
-  }),
-  day: launched.toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
-  }),
-};

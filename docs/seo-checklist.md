@@ -11,7 +11,7 @@ Live site: https://www.rezaattar.dev. Tick items as they're done; re-run the "Af
 - [x] 404 page is `noindex` and links back to the home page and the work
 - [x] Leftover `/test` page removed
 - [x] Google Search Console verified
-- [ ] Sitemap submitted in Search Console: `https://www.rezaattar.dev/sitemap.xml`
+- [x] Sitemap submitted in Search Console: `https://www.rezaattar.dev/sitemap.xml`
 - [ ] Bing Webmaster Tools (import the site from Search Console)
 
 ## Content and metadata

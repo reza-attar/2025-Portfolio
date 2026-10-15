@@ -1,6 +1,6 @@
 import { caseStudies, caseStudyHref } from "@/lib/case-studies";
 import { moreCaseStudies, projects } from "@/lib/projects";
-import { productLaunch, resume } from "@/lib/resume";
+import { resume } from "@/lib/resume";
 import { site } from "@/lib/site";
 import { getGithubLink, getLinkedinLink } from "@/lib/utils";
 
@@ -20,7 +20,7 @@ export function GET() {
 
 ${resume.summary.join("\n\n")}
 
-Currently: ${resume.product.role.toLowerCase()} on ${resume.product.name}, launched in ${productLaunch.month}.
+Currently: ${resume.product.role.toLowerCase()} on ${resume.product.name}.
 
 ## Pages
 

@@ -1,7 +1,7 @@
 import SystemDiagram from "@/components/SystemDiagram";
 import { buttonVariants } from "@/components/ui/Button";
 import { caseStudyHref } from "@/lib/case-studies";
-import { productLaunch, resume } from "@/lib/resume";
+import { resume } from "@/lib/resume";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import Portrait from "@public/portrait.jpg";
@@ -61,8 +61,7 @@ export default function Hero() {
           >
             {resume.product.name}
           </Link>
-          , an AI support platform built on RAG and LLMs that launched in{" "}
-          {productLaunch.month}.
+          , an AI support platform built on RAG and LLMs.
         </p>
 
         <div

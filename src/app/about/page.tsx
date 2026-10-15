@@ -8,7 +8,7 @@ import { ChevronRight, Download, SendHorizontal } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
 import Signature from "@/components/about/Signature";
 import { profilePage } from "@/lib/structured-data";
-import { RESUME_PDF_PATH, productLaunch, resume } from "@/lib/resume";
+import { RESUME_PDF_PATH, resume } from "@/lib/resume";
 import { site, siteLanguages } from "@/lib/site";
 import { cn, getLinkedinLink, getYoutubeLink } from "@/lib/utils";
 import Image from "next/image";
@@ -113,7 +113,7 @@ export default function AboutPage() {
             <AboutBlock title="What I do">
               I&apos;m a {resume.role} at {resume.company}, where I work on{" "}
               <Strong>{resume.product.name}</Strong>, an AI support platform
-              for banking software that launched in {productLaunch.month}. I
+              for banking software. I
               moved its backend to NestJS,
               built the Jira and RAG pipeline on PostgreSQL and pgvector, and{" "}
               <Strong>cut compile time by 77%</Strong>. Before that, I led a
