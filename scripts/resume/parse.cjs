@@ -1,5 +1,6 @@
 // Parses content/resume.md into the data the site and the PDF render.
-// Shared by the Next.js loader (md-loader.cjs) and the PDF script (scripts/resume/pdf.mjs).
+// The default export is the Next.js loader (see next.config.ts), so
+// `import resume from "content/resume.md"` gives the parsed data; pdf.mjs uses parseResume.
 // The format is described at the top of content/resume.md; anything it doesn't
 // recognise is an error with a line number, so a typo can't silently drop content.
 
@@ -304,4 +305,7 @@ function splitOutsideParens(text) {
   return items;
 }
 
-module.exports = { parseResume };
+module.exports = function resumeMarkdownLoader(source) {
+  return `export default ${JSON.stringify(parseResume(source))};`;
+};
+module.exports.parseResume = parseResume;

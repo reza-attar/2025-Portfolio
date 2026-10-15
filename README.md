@@ -35,16 +35,8 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-## Resume (source of truth: `content/resume.md`)
+## Resume
 
-Edit `content/resume.md` and nothing else. The format is described in a comment at the top of the file.
-
-- **Website:** `/resume`, the About page, the home page and the Ticket Yar case study read it (through `src/lib/resume.ts`), so a save shows up on the next reload in `pnpm dev`. Every section can be linked to, e.g. `/resume#awards` or `/resume#nuwa`.
-- **PDF:** `public/Reza_Attar_Resume.pdf` is generated from the same file with headless Chrome (`scripts/resume/pdf.mjs`):
-  - `pnpm dev` rebuilds the PDF every time you save `resume.md`.
-  - `pnpm resume:pdf` rebuilds it once.
-  - `pnpm build` rebuilds it if `resume.md` changed, and fails if it changed on a machine without Chrome (for example a hosting build), so an out-of-date PDF can't ship. Commit the PDF and `content/resume.pdf.sha256` together with `resume.md`.
-
-Chrome is found at its default install path; set `CHROME_PATH` to use another one.
+Edit `content/resume.md`. The site reads it; `pnpm dev` rebuilds `public/Reza_Attar_Resume.pdf` on save, `pnpm resume:pdf` rebuilds it once, and `pnpm build` fails if the PDF is stale and Chrome isn't available. Commit the PDF and `content/resume.pdf.sha256` with it.
 
 Visitors can also use the browser's Print → Save as PDF on `/resume`; print styles hide the site chrome.

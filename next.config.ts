@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 import path from "node:path";
 
 // Turns content/resume.md into the resume data (see scripts/resume/parse.cjs)
-const resumeLoader = path.resolve("scripts/resume/md-loader.cjs");
+const resumeLoader = path.resolve("scripts/resume/parse.cjs");
 
 const nextConfig: NextConfig = {
   // Custom webpack only used when running next build --webpack (Turbopack is default in v16)

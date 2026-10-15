@@ -16,28 +16,8 @@ product_launched: 2026-10-13
 ---
 
 <!--
-  SOURCE OF TRUTH for the resume. Edit this file, nothing else:
-  - /resume, the About page and the home page read it (via src/lib/resume.ts).
-  - public/Reza_Attar_Resume.pdf is generated from it: `pnpm dev` rebuilds the PDF
-    whenever you save, `pnpm resume:pdf` does it once, and `pnpm build` refuses to
-    run with an out-of-date PDF.
-
-  Format (a typo is reported with its line number, so nothing is dropped silently):
-  - Front matter: one "key: value" per line. product / product_role / product_launched
-    describe the current product; the home and About pages use them.
-    product_launched is a date: YYYY-MM-DD.
-  - "## Section" headings: Summary, Experience, Products & Projects, Technical Skills,
-    Awards, Education, Languages. All seven are required; the page lays them out in a
-    fixed order. Each one can be linked to, e.g. /resume#awards.
-  - Experience: "### Company", then a "Role · Period · Location" line, then optional
-    "#### Group" headings with "- " bullets. A bullet can wrap onto indented lines.
-  - Products & Projects: "### Group", then "#### Name" or "#### Name · [label](url)",
-    a description paragraph and an optional "Stack: …" line.
-  - Technical Skills: "- **Label:** a, b, c" (commas inside parentheses stay together).
-  - Awards: "- **Title** — Organisation · Date", optional note on an indented next line.
-  - Education: "### Degree", then a "School · Period · Location" line.
-  - Languages: "- Name: Level".
-  - HTML comments like this one are ignored.
+  Source of truth for the resume: the site and public/Reza_Attar_Resume.pdf are built from it.
+  Format: see the error message if a line doesn't parse (scripts/resume/parse.cjs).
 -->
 
 # Reza Attar
