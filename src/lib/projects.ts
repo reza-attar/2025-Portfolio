@@ -5,7 +5,7 @@ import myca from "@public/Projects/myca.png";
 import { CardProps } from "@/components/ui/Card";
 import { caseStudyHref } from "./case-studies";
 import { LayerId } from "./layers";
-import { resume } from "./resume";
+import { productLaunch, resume } from "./resume";
 import { site } from "./site";
 
 export type MoreCaseStudy = {
@@ -22,26 +22,6 @@ export type MoreCaseStudy = {
 // Listed under "More case studies" on /works
 export const moreCaseStudies: MoreCaseStudy[] = [
   {
-    name: "Ticket Yar",
-    meta: `${resume.product.role} · ${resume.company}`,
-    description:
-      "An internal tool that reads support tickets from Jira, finds relevant knowledge, and drafts a reply in Persian for a human agent to approve.",
-    stack: "NestJS, Prisma + PostgreSQL, Vercel AI SDK + Zod, Jira",
-    caseHref: caseStudyHref("ticket-yar"),
-    layers: ["data", "backend", "ai", "interface"],
-  },
-  {
-    name: "MyBody",
-    meta: "Backend developer · Client product",
-    description:
-      "The API behind a platform where fitness coaches sell programmes and members follow workouts and nutrition plans.",
-    stack: "NestJS 11, Prisma 7, PostgreSQL, Socket.IO, Zarinpal",
-    link: "mybodyapp.ir",
-    href: "https://mybodyapp.ir",
-    caseHref: caseStudyHref("mybody"),
-    layers: ["data", "backend"],
-  },
-  {
     name: "Medicine matching",
     meta: "Sole developer · Client prototype",
     description:
@@ -50,20 +30,94 @@ export const moreCaseStudies: MoreCaseStudy[] = [
     caseHref: caseStudyHref("medicine-matching"),
     layers: ["data", "backend", "interface"],
   },
+];
+
+// The main list on /works and the home page, in this order
+export const projects: CardProps[] = [
   {
-    name: "Cashio",
+    title: resume.product.name,
+    meta: `${resume.product.role} · ${resume.company}`,
+    description: `A B2B support platform, used internally at ${resume.company}. It pulls tickets from Jira, Confluence and other systems through adapters, finds what the team already knows, and drafts a reply for a person to approve. Launched in ${productLaunch.month}.`,
+    note: "B2B product used internally, so there's no public link.",
+    caseHref: caseStudyHref("ticket-yar"),
+    layers: ["data", "backend", "ai", "interface"],
+    steps: [
+      {
+        label: "sources",
+        text: "Jira · Confluence · more adapters",
+        edge: "tickets",
+      },
+      {
+        label: "retrieve",
+        text: "Semantic search · pgvector",
+        layer: "data",
+        edge: "context",
+      },
+      {
+        label: "draft",
+        text: "LLM reply, schema-checked",
+        layer: "ai",
+        edge: "typed JSON",
+      },
+      {
+        label: "approve",
+        text: "An agent approves or edits",
+        layer: "interface",
+      },
+    ],
+  },
+  {
+    title: "Cashio",
     meta: "Solo builder · Own product",
+    logo: "/Projects/cashio-icon.png",
     description:
-      "A Farsi-first personal finance PWA for tracking expenses, income, debts and investments.",
-    stack: "Next.js 15, Prisma 7, PostgreSQL, Web Push",
-    link: "mycashio.ir",
+      "A Farsi-first personal finance PWA for tracking expenses, income, debts and investments, with Jalali dates and instalment reminders.",
     href: "https://mycashio.ir",
     caseHref: caseStudyHref("cashio"),
     layers: ["data", "backend", "interface"],
+    steps: [
+      {
+        label: "app",
+        text: "Installable RTL PWA",
+        layer: "interface",
+        edge: "Server Actions",
+      },
+      {
+        label: "server",
+        text: "Next.js 15 · JWT auth · Web Push",
+        layer: "backend",
+        edge: "Prisma 7",
+      },
+      { label: "data", text: "PostgreSQL · 7 models", layer: "data" },
+    ],
   },
-];
-
-export const projects: CardProps[] = [
+  {
+    title: "MyBody",
+    meta: "Backend developer · Client product",
+    description:
+      "The API behind a platform where fitness coaches sell programmes and members follow workouts and nutrition plans.",
+    href: "https://mybodyapp.ir",
+    caseHref: caseStudyHref("mybody"),
+    layers: ["data", "backend"],
+    steps: [
+      {
+        label: "clients",
+        text: "Member and coach apps",
+        edge: "REST + JWT · Socket.IO",
+      },
+      {
+        label: "api",
+        text: "NestJS 11 · 30+ modules",
+        layer: "backend",
+        edge: "Prisma 7",
+      },
+      {
+        label: "data",
+        text: "PostgreSQL · 52 models · S3 media",
+        layer: "data",
+      },
+    ],
+  },
   {
     image: myca,
     title: site.products.myca.name,

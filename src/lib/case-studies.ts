@@ -57,11 +57,11 @@ export const caseStudies: CaseStudy[] = [
     slug: "ticket-yar",
     name: "Ticket Yar",
     nameFa: "تیکت‌یار",
-    lede: "An internal tool that reads support tickets from Jira, finds relevant knowledge, and drafts a reply in Persian for a human agent to approve.",
-    type: "Internal product (Dotin)",
+    lede: "A B2B support platform that reads tickets from Jira, Confluence and other systems through adapters, finds relevant knowledge, and drafts a reply in Persian for a human agent to approve.",
+    type: "B2B product, used internally (Dotin)",
     period: "2025 – present",
     role: resume.product.role,
-    note: "No public link: this is an internal tool at Dotin, a banking software company. A short demo video is available on request.",
+    note: "No public link: it’s a B2B product used internally at Dotin, a banking software company. A short demo video is available on request.",
     sections: [
       {
         label: "The problem",
@@ -94,10 +94,10 @@ export const caseStudies: CaseStudy[] = [
       {
         label: "How it works",
         steps: [
-          "A **Jira connector** pulls tickets into a queue for each business, using validated JQL filters.",
+          "**Adapters** pull tickets into a queue for each business from Jira, Confluence and other ticketing and knowledge systems. The Jira adapter uses validated JQL filters.",
           "**Processing cycles** run on a schedule. Tickets are classified and matched against the knowledge base with semantic search.",
           "The model drafts a reply **inside a fixed schema**. If it cannot answer, it returns `INSUFFICIENT_KNOWLEDGE` (the gap is in the knowledge base) or `NEED_MORE_INFO` (the gap is in the ticket), rather than guessing.",
-          "A support agent **approves, edits or rejects** the draft, and approved replies are posted back to Jira.",
+          "A support agent **approves, edits or rejects** the draft, and approved replies are posted back to the ticketing system.",
           "A **knowledge collector** turns messy internal notes (Markdown) into clean knowledge entries.",
         ],
         after: [

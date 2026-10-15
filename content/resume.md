@@ -34,7 +34,7 @@ Senior Engineer · Jun 2025 – Present · Iran
 
 #### Ticket Yar (AI support platform) · Senior engineer
 
-- Senior engineer on Ticket Yar, a multi-tenant platform that connects to Jira and drafts first-line replies to support tickets using retrieval-augmented generation over each business's own knowledge base. Launched in October 2026. Wrote the product spec and introduced spec-driven development to the team.
+- Senior engineer on Ticket Yar, a multi-tenant B2B platform, used internally, that connects to Jira, Confluence and other ticketing and knowledge systems through adapters, and drafts first-line replies to support tickets using retrieval-augmented generation over each business's own knowledge base. Launched in October 2026. Wrote the product spec and introduced spec-driven development to the team.
 - Designed and shipped an in-house RAG system on PostgreSQL and pgvector, serving semantic search over internal documents.
 - Ran evaluation and deployment of locally hosted LLMs, keeping sensitive banking data inside the company perimeter instead of sending it to a third-party API.
 - Built the AI layer: ticket classification with schema-validated structured output (Vercel AI SDK, Zod), semantic knowledge search, AI-scored knowledge validation, and a knowledge collector that turns unstructured Persian support notes into a searchable knowledge base. Added DeepSeek API support.

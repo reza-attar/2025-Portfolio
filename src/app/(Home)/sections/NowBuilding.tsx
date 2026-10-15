@@ -13,7 +13,7 @@ const pipeline: { layer: LayerId; title: string; detail: ReactNode }[] = [
     layer: "backend",
     title: "Pull",
     detail:
-      "A Jira connector queues tickets for each business, filtered by validated JQL.",
+      "Adapters queue tickets for each business from Jira, Confluence and other systems.",
   },
   {
     layer: "ai",
@@ -61,7 +61,7 @@ export default function NowBuilding() {
             An AI layer that knows when not to answer
           </span>
         }
-        description={`${name} reads support tickets from Jira, finds what the team already knows, and drafts a reply for a person to approve. It launched in ${productLaunch.month}. I work on it at ${resume.company}, a banking-software company, from the database up.`}
+        description={`${name} reads support tickets from Jira, Confluence and other systems, finds what the team already knows, and drafts a reply for a person to approve. It launched in ${productLaunch.month}. I work on it at ${resume.company}, a banking-software company, from the database up.`}
       />
 
       <div className="bg-dot-grid rounded-4xl border border-panel-border bg-panel p-4 sm:p-6 xl:p-8">
@@ -102,8 +102,8 @@ export default function NowBuilding() {
         </ol>
 
         <p className="mt-4 font-mono text-12 text-ink-faint">
-          <span aria-hidden="true">↺ </span>approved replies are posted back to
-          Jira
+          <span aria-hidden="true">↺ </span>approved replies go back to the
+          ticketing system
         </p>
       </div>
 
