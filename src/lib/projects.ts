@@ -5,6 +5,7 @@ import myca from "@public/Projects/myca.png";
 import { CardProps } from "@/components/ui/Card";
 import { caseStudyHref } from "./case-studies";
 import { LayerId } from "./layers";
+import { resume } from "./resume";
 import { site } from "./site";
 
 export type MoreCaseStudy = {
@@ -22,7 +23,7 @@ export type MoreCaseStudy = {
 export const moreCaseStudies: MoreCaseStudy[] = [
   {
     name: "Ticket Yar",
-    meta: "Technical lead · Dotin",
+    meta: `${resume.product.role} · ${resume.company}`,
     description:
       "An internal tool that reads support tickets from Jira, finds relevant knowledge, and drafts a reply in Persian for a human agent to approve.",
     stack: "NestJS, Prisma + PostgreSQL, Vercel AI SDK + Zod, Jira",

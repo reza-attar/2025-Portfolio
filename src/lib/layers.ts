@@ -1,6 +1,6 @@
 // The four layers of a product, from schema to interface.
 // The home page diagram, the "layer by layer" section and the project cards read from here.
-// Metrics come from src/lib/resume.ts; keep them in sync.
+// Metrics come from content/resume.md; keep them in sync.
 
 export type LayerId = "data" | "backend" | "ai" | "interface";
 
@@ -33,7 +33,7 @@ export const layers: Layer[] = [
       value: "1.15 s → 9 ms",
       caption: "Query time on the hottest read paths",
     },
-    source: { label: "Resume: NUWA", href: "/resume" },
+    source: { label: "Resume: NUWA", href: "/resume#nuwa" },
   },
   {
     id: "backend",
@@ -63,7 +63,7 @@ export const layers: Layer[] = [
       value: "3rd place",
       caption: "LLM Agents Hackathon, Sharif University, 2025",
     },
-    source: { label: "Resume: awards", href: "/resume" },
+    source: { label: "Resume: awards", href: "/resume#awards" },
   },
   {
     id: "interface",

@@ -1,6 +1,6 @@
-// Personal and site-wide preferences.
-// Edit here: the pages, the resume data, page metadata and the footer read from this file.
-// After changing anything that appears on /resume, regenerate public/Reza_Attar_Resume.pdf (see README).
+// Site-wide preferences: branding, URLs and wording that only the website uses.
+// Career facts (role, company, location, experience, email, the current product) live in
+// content/resume.md, the source of truth for the resume; read them from "@/lib/resume".
 
 export const site = {
   name: "Reza Attar",
@@ -12,22 +12,14 @@ export const site = {
   // One-line positioning, used in page descriptions and the share card
   tagline: "I build products from schema to interface.",
 
-  role: "Senior Engineer",
-  company: "Dotin",
-  country: "Iran",
-  experience: "11 years",
   focus: "TypeScript, NestJS, applied LLMs",
-  email: "attarzadeh76@gmail.com",
 
   relocation: {
     // Short form for the "At a glance" row
     short: "open to NL / DE",
     // Appended to "Feel free to reach out … and I'm"
     sentence: "open to relocating to the Netherlands or Germany",
-    // Resume header line
-    availability: "Open to relocation to the Netherlands or Germany",
   },
-  workAuthorization: "Eligible for EU Blue Card · Open to EU-remote",
 
   languages: [
     { name: "English" },
@@ -36,10 +28,6 @@ export const site = {
   ] as { name: string; level?: string }[],
 
   products: {
-    // Lead-engineer product at Dotin (About, resume summary)
-    ticketYar: {
-      name: "Ticket Yar",
-    },
     myca: {
       name: "Maica",
       domain: "maica.ir",

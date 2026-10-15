@@ -2,7 +2,7 @@ import { buttonVariants } from "@/components/ui/Button";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { caseStudyHref } from "@/lib/case-studies";
 import { LayerId, layerBg, layerById } from "@/lib/layers";
-import { site } from "@/lib/site";
+import { productLaunch, resume } from "@/lib/resume";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { ReactNode } from "react";
@@ -49,7 +49,7 @@ const pipeline: { layer: LayerId; title: string; detail: ReactNode }[] = [
 ];
 
 export default function NowBuilding() {
-  const name = site.products.ticketYar.name;
+  const name = resume.product.name;
 
   return (
     <section aria-labelledby="now-building-title">
@@ -61,13 +61,16 @@ export default function NowBuilding() {
             An AI layer that knows when not to answer
           </span>
         }
-        description={`${name} reads support tickets from Jira, finds what the team already knows, and drafts a reply for a person to approve. I lead it at ${site.company}, a banking-software company, from the database up.`}
+        description={`${name} reads support tickets from Jira, finds what the team already knows, and drafts a reply for a person to approve. It launched in ${productLaunch.month}. I work on it at ${resume.company}, a banking-software company, from the database up.`}
       />
 
       <div className="bg-dot-grid rounded-4xl border border-panel-border bg-panel p-4 sm:p-6 xl:p-8">
         <div className="mb-5 flex flex-wrap items-center justify-between gap-2 font-mono text-12 text-ink-faint">
           <span>{name.toLowerCase().replace(" ", "-")} · pipeline</span>
-          <span>lead engineer · 2025 → now</span>
+          <span>
+            {resume.product.role.toLowerCase()} · launched{" "}
+            {productLaunch.month.toLowerCase()}
+          </span>
         </div>
 
         <ol className="grid gap-3 lg:grid-cols-5">

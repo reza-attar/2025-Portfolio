@@ -5,6 +5,7 @@ import moraPagespeedAfter from "@public/case-studies/mora-pagespeed-after.jpg";
 import moraSkeletonLoading from "@public/case-studies/mora-skeleton-loading.jpg";
 import moraBlog from "@public/Projects/mora-blog.png";
 import { StaticImageData } from "next/image";
+import { productLaunch, resume } from "./resume";
 
 // Text fields marked "rich" accept **bold** and `code`.
 
@@ -59,7 +60,7 @@ export const caseStudies: CaseStudy[] = [
     lede: "An internal tool that reads support tickets from Jira, finds relevant knowledge, and drafts a reply in Persian for a human agent to approve.",
     type: "Internal product (Dotin)",
     period: "2025 – present",
-    role: "Technical lead",
+    role: resume.product.role,
     note: "No public link: this is an internal tool at Dotin, a banking software company. A short demo video is available on request.",
     sections: [
       {
@@ -71,7 +72,7 @@ export const caseStudies: CaseStudy[] = [
       {
         label: "My role",
         paras: [
-          "**Technical lead and developer.** I designed the prompt and RAG architecture, built most of the backend, and worked on the client dashboard.",
+          `**${resume.product.role}.** I designed the prompt and RAG architecture, built most of the backend, and worked on the client dashboard.`,
         ],
       },
       {
@@ -113,6 +114,7 @@ export const caseStudies: CaseStudy[] = [
         ],
         list: [
           "Built to a working MVP, which was demoed internally in early 2026.",
+          `Launched on ${productLaunch.day}.`,
         ],
       },
       {

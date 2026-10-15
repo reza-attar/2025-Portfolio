@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "node scripts/resume/pdf.mjs dev",
+    "build": "node scripts/resume/pdf.mjs check && next build",
+    "resume:pdf": "node scripts/resume/pdf.mjs build",
     "start": "next start",
     "lint": "next lint"
   },

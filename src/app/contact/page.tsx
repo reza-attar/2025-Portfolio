@@ -9,6 +9,7 @@ import { MdEmail } from "react-icons/md";
 import { generateEmailLink, getGithubLink, getLinkedinLink } from "@/lib/utils";
 import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
+import { resume } from "@/lib/resume";
 import ContactForm from "./form";
 
 export const metadata: Metadata = pageMetadata({
@@ -49,7 +50,7 @@ function ContactPage() {
           <h2 className="text-16 font-medium text-ink-strong">New message</h2>
         </div>
 
-        <ContactForm />
+        <ContactForm email={resume.email} />
       </section>
 
       <section
@@ -57,7 +58,7 @@ function ContactPage() {
         className="mx-auto flex w-fit justify-center gap-11 text-24"
       >
         <a
-          href={generateEmailLink({})}
+          href={generateEmailLink({ to: resume.email })}
           aria-label="Email"
           className="grid h-11 w-11 place-items-center rounded-md text-ink-strong hover:bg-nav-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
         >

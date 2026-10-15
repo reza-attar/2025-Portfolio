@@ -1,10 +1,16 @@
 import { buttonVariants } from "@/components/ui/Button";
+import ScrollToHash from "@/components/ScrollToHash";
 import Divider from "@/components/ui/Divider";
 import Label from "@/components/ui/Tag";
-import { ExperienceGroup, RESUME_PDF_PATH, resume } from "@/lib/resume";
+import {
+  ExperienceGroup,
+  RESUME_PDF_PATH,
+  ResumeSection,
+  resume,
+} from "@/lib/resume";
 import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
-import { cn, getLinkedinLink } from "@/lib/utils";
+import { cn, slugify } from "@/lib/utils";
 import { Download, SendHorizontal } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -12,7 +18,7 @@ import { ReactNode } from "react";
 
 export const metadata: Metadata = pageMetadata({
   title: `Resume · ${site.name}`,
-  description: `Resume of ${site.name}, ${site.role}`,
+  description: `Resume of ${resume.name}, ${resume.role}`,
   path: "/resume",
 });
 
@@ -22,13 +28,14 @@ const inlineLink =
 export default function ResumePage() {
   const contactLinks = [
     { label: resume.email, href: `mailto:${resume.email}` },
-    { label: "LinkedIn", href: getLinkedinLink() },
+    { label: "LinkedIn", href: resume.links.linkedin },
     { label: "GitHub", href: resume.links.github },
     { label: "Stack Overflow", href: resume.links.stackOverflow },
   ];
 
   return (
     <main className="mt-20 w-full max-w-screen-lg space-y-16 print:mt-0 print:space-y-8 [&>*]:px-4 print:[&>*]:px-0">
+      <ScrollToHash />
       <section className="space-y-8 print:hidden">
         <div className="max-w-[80%] space-y-2">
           <h1 className="text-48 font-bold leading-[1.1] text-ink-strong xl:text-80">
@@ -89,18 +96,26 @@ export default function ResumePage() {
         <p className="text-15 text-ink-muted">{resume.availability}</p>
       </section>
 
-      <Section title="Summary">
-        <p className="text-pretty text-15 leading-[1.7] text-ink-muted xl:text-18">
-          {resume.summary}
-        </p>
+      <Section id="summary">
+        <div className="space-y-4 print:space-y-2">
+          {resume.summary.map((paragraph) => (
+            <p
+              key={paragraph}
+              className="text-pretty text-15 leading-[1.7] text-ink-muted xl:text-18"
+            >
+              {paragraph}
+            </p>
+          ))}
+        </div>
       </Section>
 
-      <Section title="Experience">
+      <Section id="experience">
         <div className="space-y-12 print:space-y-6">
           {resume.experience.map((job) => (
             <article
               key={job.company}
-              className="space-y-4 xl:grid xl:grid-cols-[200px_1fr] xl:gap-8 xl:space-y-0 print:block print:space-y-2"
+              id={slugify(job.company)}
+              className="scroll-mt-8 space-y-4 xl:grid xl:grid-cols-[200px_1fr] xl:gap-8 xl:space-y-0 print:block print:space-y-2"
             >
               <div className="text-14 leading-[1.6] text-ink-muted print:hidden">
                 <p>{job.period}</p>
@@ -133,7 +148,7 @@ export default function ResumePage() {
         </div>
       </Section>
 
-      <Section title="Products & Projects">
+      <Section id="projects">
         <div className="space-y-10 print:space-y-4">
           {resume.projects.map((group) => (
             <div key={group.heading} className="space-y-4 print:space-y-2">
@@ -179,7 +194,7 @@ export default function ResumePage() {
         </div>
       </Section>
 
-      <Section title="Technical Skills">
+      <Section id="skills">
         <div className="space-y-6 print:space-y-2">
           {resume.skills.map((group) => (
             <div
@@ -207,7 +222,7 @@ export default function ResumePage() {
       </Section>
 
       <div className="grid gap-16 md:grid-cols-2 print:grid-cols-2 print:gap-8">
-        <Section title="Awards">
+        <Section id="awards">
           <ul className="space-y-4 print:space-y-2">
             {resume.awards.map((award) => (
               <li key={award.title} className="space-y-1">
@@ -226,7 +241,7 @@ export default function ResumePage() {
         </Section>
 
         <div className="space-y-16 print:space-y-8">
-          <Section title="Education">
+          <Section id="education">
             {resume.education.map((edu) => (
               <div key={edu.degree} className="space-y-1">
                 <p className="text-16 font-semibold text-ink-strong">
@@ -240,7 +255,7 @@ export default function ResumePage() {
             ))}
           </Section>
 
-          <Section title="Languages">
+          <Section id="languages">
             <ul className="space-y-2">
               {resume.languages.map((lang) => (
                 <li key={lang.name} className="flex justify-between gap-4">
@@ -258,10 +273,19 @@ export default function ResumePage() {
   );
 }
 
-function Section({ title, children }: { title: string; children: ReactNode }) {
+// `id` is the URL fragment that links to this section, e.g. /resume#awards.
+// The heading text is the "## Section" heading in content/resume.md.
+function Section({ id, children }: { id: ResumeSection; children: ReactNode }) {
+  const title = resume.sectionTitles[id];
   return (
-    <section className="space-y-6 print:space-y-3">
-      <h2 className="text-16 font-semibold tracking-wide text-ink-label print:border-b print:border-black/20 print:pb-1 print:text-onyx">
+    <section
+      id={id}
+      aria-labelledby={`${id}-heading`}
+      className="group scroll-mt-8 space-y-6 print:space-y-3"
+    >
+      <h2
+        id={`${id}-heading`}
+        className="text-16 font-semibold tracking-wide text-ink-label group-target:text-ink-strong print:border-b print:border-black/20 print:pb-1 print:text-onyx">
         {title.toUpperCase()}
       </h2>
       {children}

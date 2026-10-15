@@ -1,7 +1,6 @@
 "use client";
 
 import { buttonVariants } from "@/components/ui/Button";
-import { site } from "@/lib/site";
 import { cn, generateEmailLink } from "@/lib/utils";
 import { ClassValue } from "clsx";
 import { SendHorizontal } from "lucide-react";
@@ -13,7 +12,8 @@ import {
   useState,
 } from "react";
 
-export default function ContactForm() {
+// `email` comes from content/resume.md via the server page
+export default function ContactForm({ email }: { email: string }) {
   const [from, setFrom] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [subject, setSubject] = useState<string>("");
@@ -24,6 +24,7 @@ export default function ContactForm() {
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     window.location.href = generateEmailLink({
+      to: email,
       subject,
       body: `${body}\n\n${name} <${from}>`,
     });
@@ -71,10 +72,10 @@ export default function ContactForm() {
         <p className="text-14 text-ink-muted">
           Send opens your email app. No mail app? Write to{" "}
           <a
-            href={`mailto:${site.email}`}
+            href={`mailto:${email}`}
             className="rounded-[3px] text-ink-strong underline underline-offset-[3px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
           >
-            {site.email}
+            {email}
           </a>
           .
         </p>

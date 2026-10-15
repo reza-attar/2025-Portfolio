@@ -1,6 +1,7 @@
 import Link from "next/link";
 import DynamicLogo from "./Logo";
 import Divider from "./ui/Divider";
+import { resume } from "@/lib/resume";
 import { site } from "@/lib/site";
 import { getGithubLink, getLinkedinLink, getYoutubeLink } from "@/lib/utils";
 
@@ -15,7 +16,7 @@ export default function Footer() {
               Elsewhere
             </h2>
             <Link
-              href={`mailto:${site.email}`}
+              href={`mailto:${resume.email}`}
               className="w-fit rounded hover:text-ink-strong hover:underline hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus"
             >
               Email
