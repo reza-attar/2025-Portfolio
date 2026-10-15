@@ -12,6 +12,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = pageMetadata({
   title: `Works · ${site.name}`,
+  description: `Products ${site.name} has built end to end, including Ticket Yar, Cashio and MyBody, with the layers built for each one.`,
   path: "/works",
 });
 

@@ -5,7 +5,9 @@ import Divider from "@/components/ui/Divider";
 import PortraitImage from "@public/portrait.jpg";
 import { ChevronRight, Download, SendHorizontal } from "lucide-react";
 
+import JsonLd from "@/components/JsonLd";
 import Signature from "@/components/about/Signature";
+import { profilePage } from "@/lib/structured-data";
 import { RESUME_PDF_PATH, productLaunch, resume } from "@/lib/resume";
 import { site, siteLanguages } from "@/lib/site";
 import { cn, getLinkedinLink, getYoutubeLink } from "@/lib/utils";
@@ -15,6 +17,7 @@ import { ReactNode } from "react";
 
 export const metadata: Metadata = pageMetadata({
   title: `About · ${site.name}`,
+  description: `${site.name} is a ${resume.role.toLowerCase()} at ${resume.company} working across TypeScript, NestJS, PostgreSQL and applied LLMs, ${site.relocation.sentence}.`,
   path: "/about",
 });
 
@@ -37,6 +40,7 @@ const glance = [
 export default function AboutPage() {
   return (
     <main className="mt-20 flex w-full max-w-screen-lg flex-col gap-16 [&>*]:px-4">
+      <JsonLd data={profilePage()} />
       <section className="flex max-w-[80%] flex-col gap-2">
         <h1 className="text-balance text-48 font-bold leading-[1.1] text-ink-strong xl:text-80">
           A little bit about me

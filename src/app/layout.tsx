@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import GradientImage from "@public/Gradient.png";
 import { ClassValue } from "clsx";
 import { pageMetadata } from "@/lib/metadata";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono, Nanum_Pen_Script } from "next/font/google";
 import Image from "next/image";
 import Footer from "../components/Footer";
@@ -33,6 +33,31 @@ const nanum = Nanum_Pen_Script({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   ...pageMetadata({ title: site.title, path: "/" }),
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  // Let search engines show large image previews and full snippets
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  // Set GOOGLE_SITE_VERIFICATION to the Search Console token to verify the domain
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
+};
+
+// Browser UI colour, matching the page background in each theme
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
+    { media: "(prefers-color-scheme: dark)", color: "#0d0d0d" },
+  ],
 };
 
 export default function RootLayout({

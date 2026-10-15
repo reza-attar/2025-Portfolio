@@ -14,6 +14,7 @@ import ContactForm from "./form";
 
 export const metadata: Metadata = pageMetadata({
   title: `Contact · ${site.name}`,
+  description: `Write to ${site.name} about a product that needs the database, backend, AI layer and interface built together.`,
   path: "/contact",
 });
 

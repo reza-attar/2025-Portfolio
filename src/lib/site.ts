@@ -6,7 +6,7 @@ export const site = {
   name: "Reza Attar",
   pronunciation: "Rezâ",
   // <title> / metadata title for the home page
-  title: "Reza Attar Portfolio Website",
+  title: "Reza Attar · Full-stack engineer, from schema to interface",
   // Production origin, used for canonical URLs, Open Graph and the sitemap
   url: "https://www.rezaattar.dev",
   // One-line positioning, used in page descriptions and the share card

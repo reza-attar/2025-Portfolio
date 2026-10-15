@@ -1,4 +1,6 @@
+import JsonLd from "@/components/JsonLd";
 import { LetsWorkTogether } from "@/components/ui/Widget";
+import { websiteGraph } from "@/lib/structured-data";
 
 import GetToKnowMe from "./sections/GetToKnowMe";
 import Hero from "./sections/Hero";
@@ -8,18 +10,21 @@ import StackLayers from "./sections/StackLayers";
 
 export default function Home() {
   return (
-    <main className="w-full space-y-24 p-4 xl:space-y-32">
-      <Hero />
+    <>
+      <JsonLd data={websiteGraph()} />
+      <main className="w-full space-y-24 p-4 xl:space-y-32">
+        <Hero />
 
-      <StackLayers />
+        <StackLayers />
 
-      <NowBuilding />
+        <NowBuilding />
 
-      <SelectedWork />
+        <SelectedWork />
 
-      <GetToKnowMe />
+        <GetToKnowMe />
 
-      <LetsWorkTogether />
-    </main>
+        <LetsWorkTogether />
+      </main>
+    </>
   );
 }

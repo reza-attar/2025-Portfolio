@@ -1,3 +1,5 @@
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbs } from "@/lib/structured-data";
 import Label from "@/components/ui/Tag";
 import {
   caseStudies,
@@ -82,6 +84,13 @@ export default async function CaseStudyPage({ params }: Props) {
 
   return (
     <main className="mt-20 flex w-full max-w-screen-lg flex-col gap-14 px-4">
+      <JsonLd
+        data={breadcrumbs([
+          { name: "Home", path: "/" },
+          { name: "Works", path: "/works" },
+          { name: study.name, path: caseStudyHref(study.slug) },
+        ])}
+      />
       <Link
         href="/works"
         className={cn(
