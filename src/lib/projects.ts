@@ -5,7 +5,7 @@ import myca from "@public/Projects/myca.png";
 import { CardProps } from "@/components/ui/Card";
 import { caseStudyHref } from "./case-studies";
 import { LayerId } from "./layers";
-import { productLaunch, resume } from "./resume";
+import { resume } from "./resume";
 import { site } from "./site";
 
 export type MoreCaseStudy = {
@@ -37,14 +37,14 @@ export const projects: CardProps[] = [
   {
     title: resume.product.name,
     meta: `${resume.product.role} · ${resume.company}`,
-    description: `A B2B support platform, used internally at ${resume.company}. It pulls tickets from Jira, Confluence and other systems through adapters, finds what the team already knows, and drafts a reply for a person to approve. Launched in ${productLaunch.month}.`,
+    description: `A B2B support platform, used internally at ${resume.company}. It pulls tickets from Jira, Confluence and other systems, finds what the team already knows, and drafts a reply for a person to approve.`,
     note: "B2B product used internally, so there's no public link.",
     caseHref: caseStudyHref("ticket-yar"),
     layers: ["data", "backend", "ai", "interface"],
     steps: [
       {
         label: "sources",
-        text: "Jira · Confluence · more adapters",
+        text: "Jira · Confluence · more",
         edge: "tickets",
       },
       {

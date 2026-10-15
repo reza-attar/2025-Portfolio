@@ -5,7 +5,7 @@ import moraPagespeedAfter from "@public/case-studies/mora-pagespeed-after.jpg";
 import moraSkeletonLoading from "@public/case-studies/mora-skeleton-loading.jpg";
 import moraBlog from "@public/Projects/mora-blog.png";
 import { StaticImageData } from "next/image";
-import { productLaunch, resume } from "./resume";
+import { resume } from "./resume";
 
 // Text fields marked "rich" accept **bold** and `code`.
 
@@ -57,11 +57,11 @@ export const caseStudies: CaseStudy[] = [
     slug: "ticket-yar",
     name: "Ticket Yar",
     nameFa: "تیکت‌یار",
-    lede: "A B2B support platform that reads tickets from Jira, Confluence and other systems through adapters, finds relevant knowledge, and drafts a reply in Persian for a human agent to approve.",
+    lede: "A B2B support platform that reads tickets from Jira, Confluence and other systems, finds relevant knowledge, and drafts a reply in Persian for a human agent to approve.",
     type: "B2B product, used internally (Dotin)",
     period: "2025 – present",
     role: resume.product.role,
-    note: "No public link: it’s a B2B product used internally at Dotin, a banking software company. A short demo video is available on request.",
+    note: "No public link: it’s a B2B product used internally at Dotin, a banking software company.",
     sections: [
       {
         label: "The problem",
@@ -83,8 +83,7 @@ export const caseStudies: CaseStudy[] = [
           "Prisma + PostgreSQL",
           "Semantic search over embeddings",
           "Vercel AI SDK generateObject + Zod",
-          "DeepSeek API",
-          "Jira REST / JQL",
+          "Jira REST",
           "Winston",
           "Cron schedulers",
           "Swagger",
@@ -94,14 +93,10 @@ export const caseStudies: CaseStudy[] = [
       {
         label: "How it works",
         steps: [
-          "**Adapters** pull tickets into a queue for each business from Jira, Confluence and other ticketing and knowledge systems. The Jira adapter uses validated JQL filters.",
-          "**Processing cycles** run on a schedule. Tickets are classified and matched against the knowledge base with semantic search.",
-          "The model drafts a reply **inside a fixed schema**. If it cannot answer, it returns `INSUFFICIENT_KNOWLEDGE` (the gap is in the knowledge base) or `NEED_MORE_INFO` (the gap is in the ticket), rather than guessing.",
+          "Tickets come in for each business from Jira, Confluence and other ticketing and knowledge systems.",
+          "Tickets are **classified** and matched against the knowledge base with semantic search.",
+          "The model drafts a reply **inside a fixed schema**. If it cannot answer, it says so and whether the gap is in the knowledge base or in the ticket, rather than guessing.",
           "A support agent **approves, edits or rejects** the draft, and approved replies are posted back to the ticketing system.",
-          "A **knowledge collector** turns messy internal notes (Markdown) into clean knowledge entries.",
-        ],
-        after: [
-          "Prompt design keeps the platform’s fixed rules in a system prompt. Instructions for each business sit in a clearly lower-priority section, so one business can’t override the safety rules.",
         ],
       },
       {
@@ -112,16 +107,11 @@ export const caseStudies: CaseStudy[] = [
             caption: "Build time after moving the backend to the SWC compiler",
           },
         ],
-        list: [
-          "Built to a working MVP, which was demoed internally in early 2026.",
-          `Launched on ${productLaunch.day}.`,
-        ],
       },
       {
         label: "What I learned",
         paras: [
           "Separating “missing knowledge” from “missing ticket info” makes a non-answer useful. It tells the team whether to add a knowledge base entry or to ask the customer for more details.",
-          "Test data for the knowledge collector also had to be as messy as real support notes. Clean sample documents hid problems that real notes exposed.",
         ],
       },
     ],
