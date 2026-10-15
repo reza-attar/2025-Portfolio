@@ -167,6 +167,13 @@ export default {
           "5": "hsl(var(--chart-5))",
         },
       },
+      // The blinking cursor after the header's path, like the loader's
+      keyframes: {
+        caret: { "0%, 100%": { opacity: "1" }, "50%": { opacity: "0" } },
+      },
+      animation: {
+        caret: "caret 1.1s step-end infinite",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

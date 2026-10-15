@@ -115,7 +115,7 @@ export default function ResumePage() {
             <article
               key={job.company}
               id={slugify(job.company)}
-              className="scroll-mt-8 space-y-4 xl:grid xl:grid-cols-[200px_1fr] xl:gap-8 xl:space-y-0 print:block print:space-y-2"
+              className="space-y-4 xl:grid xl:grid-cols-[200px_1fr] xl:gap-8 xl:space-y-0 print:block print:space-y-2"
             >
               <div className="text-14 leading-[1.6] text-ink-muted print:hidden">
                 <p>{job.period}</p>
@@ -281,7 +281,7 @@ function Section({ id, children }: { id: ResumeSection; children: ReactNode }) {
     <section
       id={id}
       aria-labelledby={`${id}-heading`}
-      className="group scroll-mt-8 space-y-6 print:space-y-3"
+      className="group space-y-6 print:space-y-3"
     >
       <h2
         id={`${id}-heading`}

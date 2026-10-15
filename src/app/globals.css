@@ -90,7 +90,7 @@
   --panel: #f4f4f4;
   --panel-border: #e4e4e4;
 
-  --hdr-bg: rgba(255, 255, 255, 0.7);
+  --hdr-bg: rgba(250, 250, 250, 0.82);
   --hdr-border: rgba(0, 0, 0, 0.06);
   --sep: rgba(0, 0, 0, 0.12);
   --divider: rgba(0, 0, 0, 0.08);
@@ -131,7 +131,7 @@
   --panel: #151515;
   --panel-border: #262626;
 
-  --hdr-bg: rgba(255, 255, 255, 0.04);
+  --hdr-bg: rgba(22, 22, 22, 0.8);
   --hdr-border: rgba(255, 255, 255, 0.08);
   --sep: rgba(255, 255, 255, 0.14);
   --divider: rgba(255, 255, 255, 0.08);
@@ -195,6 +195,16 @@
 
 body {
   background: hsl(var(--main-bg));
+}
+
+/* Anchor links (/resume#awards) land below the sticky desktop header */
+html {
+  scroll-padding-top: 2rem;
+}
+@media (min-width: 1280px) {
+  html {
+    scroll-padding-top: 6.5rem;
+  }
 }
 
 @layer base {

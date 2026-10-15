@@ -20,11 +20,6 @@ export function generateEmailLink({
   return `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
-export const getResumeFileLink = () => {
-  if (!process.env.NEXT_PUBLIC_RESUME_FILE)
-    throw new Error("Error: NEXT_PUBLIC_RESUME_FILE variable required");
-  return process.env.NEXT_PUBLIC_RESUME_FILE;
-};
 export const getLinkedinLink = () => {
   if (!process.env.LINKEDIN)
     throw new Error("Error: Linkedin variable required");
