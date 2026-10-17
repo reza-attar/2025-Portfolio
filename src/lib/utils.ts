@@ -20,24 +20,12 @@ export function generateEmailLink({
   return `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
-export const getLinkedinLink = () => {
-  if (!process.env.LINKEDIN)
-    throw new Error("Error: Linkedin variable required");
-  return process.env.LINKEDIN;
-};
-export const getGithubLink = () => {
-  if (!process.env.GITHUB) throw new Error("Error: Github variable required");
-  return process.env.GITHUB;
-};
-export const getYoutubeLink = () => {
-  if (!process.env.YOUTUBE) throw new Error("Error: Youtube variable required");
-  return process.env.YOUTUBE;
-};
-export const getGoodreadsLink = () => {
-  if (!process.env.GOODREADS)
-    throw new Error("Error: Goodreads variable required");
-  return process.env.GOODREADS;
-};
+// Keep LinkedIn/GitHub in sync with content/resume.md (not imported: client components use this file)
+export const getLinkedinLink = () => "https://www.linkedin.com/in/rezaattarzadeh/";
+export const getGithubLink = () => "https://github.com/reza-attar";
+export const getYoutubeLink = () => "https://www.youtube.com/@RezaAttarCode";
+export const getGoodreadsLink = () =>
+  "https://www.goodreads.com/review/list/97249582-re9inee?utf8=✓&shelf=read&view=covers&title=re9inee&per_page=infinite";
 
 // "Solution Apps DG GmbH" -> "solution-apps-dg-gmbh", for URL fragments like /resume#nuwa
 export function slugify(text: string): string {
