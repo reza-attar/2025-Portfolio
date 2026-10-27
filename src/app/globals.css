@@ -188,6 +188,28 @@
   }
 }
 
+/* Hero background (see HeroOrbs): blobs drift, oval orbits turn around the centre */
+@keyframes orb-drift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(6%, -8%) scale(1.08, 0.94);
+  }
+  100% {
+    transform: translate(-5%, 6%) scale(0.95, 1.06);
+  }
+}
+
+@keyframes orbit-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
 .bg-dot-grid {
   background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
   background-size: 16px 16px;

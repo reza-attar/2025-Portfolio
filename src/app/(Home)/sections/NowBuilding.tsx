@@ -30,7 +30,7 @@ const pipeline: { layer: LayerId; title: string; detail: ReactNode }[] = [
   {
     layer: "ai",
     title: "Draft",
-    detail: "A Persian reply, or an honest \"I don't know\" instead of a guess.",
+    detail: 'A Persian reply, or an honest "I don\'t know" instead of a guess.',
   },
   {
     layer: "interface",
@@ -40,13 +40,13 @@ const pipeline: { layer: LayerId; title: string; detail: ReactNode }[] = [
   },
 ];
 
-export default function NowBuilding() {
+export default function NowBuilding({ index }: { index: string }) {
   const name = resume.product.name;
 
   return (
     <section aria-labelledby="now-building-title">
       <SectionHeading
-        index="03"
+        index={index}
         kicker="now building"
         title={
           <span id="now-building-title">

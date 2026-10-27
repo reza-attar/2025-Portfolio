@@ -4,11 +4,11 @@ import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-export default function StackLayers() {
+export default function StackLayers({ index }: { index: string }) {
   return (
     <section aria-labelledby="stack-layers-title">
       <SectionHeading
-        index="02"
+        index={index}
         kicker="the stack, layer by layer"
         title={
           <span id="stack-layers-title">

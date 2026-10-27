@@ -1,4 +1,6 @@
 import { caseStudies, caseStudyHref } from "@/lib/case-studies";
+import { highlights } from "@/lib/highlights";
+import { contributions } from "@/lib/open-source";
 import { moreCaseStudies, projects } from "@/lib/projects";
 import { resume } from "@/lib/resume";
 import { site } from "@/lib/site";
@@ -22,6 +24,22 @@ ${resume.summary.join("\n\n")}
 
 Currently: ${resume.product.role.toLowerCase()} on ${resume.product.name}.
 
+## Highlights
+
+${highlights.map((h) => `- ${h.value} ${h.label}: ${h.context}`).join("\n")}
+
+## Experience
+
+${resume.experience.map((j) => `- ${j.role}, ${j.company} (${j.period}, ${j.location})`).join("\n")}
+${
+  contributions.length > 0
+    ? `
+## Open source
+
+${contributions.map((c) => `- [${c.project}: ${c.title}](${c.href}) (${c.kind}, ${c.date})`).join("\n")}
+`
+    : ""
+}
 ## Pages
 
 - [About](${url("/about")}): background, current work and past roles
