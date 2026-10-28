@@ -13,7 +13,7 @@
 
 ## Analytics (recommendation)
 
-- **Use Vercel Web Analytics** (`@vercel/analytics`, one line in `layout.tsx`). It sets no cookies, so you need no consent banner, and the free tier is enough.
+- **Done: Vercel Web Analytics** (`<Analytics />` in `layout.tsx`). Turn it on under the project's **Analytics** tab in Vercel. It sets no cookies, so you need no consent banner, and the free tier is enough.
 - Alternatives: Plausible or Umami (self-hosted, also cookieless). Skip GA4: it needs a consent banner and is overkill here.
 - Track only 3 events: resume download, contact submit, and outbound GitHub/LinkedIn clicks.
 
