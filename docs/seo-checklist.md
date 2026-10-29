@@ -27,21 +27,21 @@ Live site: https://www.rezaattar.dev. Tick items as they're done; re-run the "Af
 - [x] Home: `WebSite` + `Person` (role, company, school, skills, profile links)
 - [x] About: `ProfilePage`
 - [x] Case studies: `BreadcrumbList` (Home › Works › name)
-- [ ] Check each in Google's Rich Results Test after deploy
+- [x] Check each in Google's Rich Results Test after deploy
 
 ## AI agents
 
 - [x] `/llms.txt`: summary, pages and case studies, built from `content/resume.md` and the case studies
 - [x] `/resume.md`: the resume as Markdown
-- [ ] After deploy: `site:rezaattar.dev` on Google/Bing, and ask ChatGPT, Claude and Perplexity about Reza Attar
+- [x] After deploy: `site:rezaattar.dev` on Google/Bing, and ask ChatGPT, Claude and Perplexity about Reza Attar
 
 ## Open Graph and social cards
 
 - [x] `og:title`, `og:description`, `og:url`, `og:site_name`, `og:type`, `og:locale` on every page
 - [x] Share image `/og`, 1200 × 630, with alt text
 - [x] Twitter / X `summary_large_image` card
-- [ ] Preview the home page and one case study in LinkedIn Post Inspector, Facebook Sharing Debugger and opengraph.xyz after deploy
-- [ ] Own share image per case study (all pages use `/og` today)
+- [x] Preview the home page and one case study in LinkedIn Post Inspector, Facebook Sharing Debugger and opengraph.xyz after deploy
+- [] Own share image per case study (all pages use `/og` today)
 
 ## Icons and install
 
@@ -56,5 +56,5 @@ Live site: https://www.rezaattar.dev. Tick items as they're done; re-run the "Af
 ## After every deploy
 
 - [ ] PageSpeed Insights on the home page and `/works` (mobile): Core Web Vitals in the green
-- [ ] `https://www.rezaattar.dev/robots.txt`, `/sitemap.xml` and `/llms.txt` load
+- [X] `https://www.rezaattar.dev/robots.txt`, `/sitemap.xml` and `/llms.txt` load
 - [ ] Search Console: no new coverage errors
