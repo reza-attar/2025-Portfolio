@@ -4,11 +4,11 @@ import { getGoodreadsLink } from "@/lib/utils";
 import Bookshelf from "@public/Widgets/Bookshelf.png";
 import FaceEmoji from "@public/Widgets/emoji.png";
 
-function GetToKnowMe() {
+function GetToKnowMe({ index }: { index: string }) {
   return (
     <section aria-label="get to know me">
       <SectionHeading
-        index="05"
+        index={index}
         kicker="off the clock"
         title="Get to know me"
       />

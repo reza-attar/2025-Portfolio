@@ -6,11 +6,17 @@ import { ClassValue } from "clsx";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
-function SelectedWork({ className }: { className?: ClassValue }) {
+function SelectedWork({
+  index,
+  className,
+}: {
+  index: string;
+  className?: ClassValue;
+}) {
   return (
     <section aria-labelledby="selected-work-title" className={cn(className)}>
       <SectionHeading
-        index="04"
+        index={index}
         kicker="selected work"
         title={<span id="selected-work-title">Shipped, end to end</span>}
         description="The strip under each project shows which layers I built myself."

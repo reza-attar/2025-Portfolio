@@ -4,7 +4,7 @@ Live site: https://www.rezaattar.dev. Tick items as they're done; re-run the "Af
 
 ## Crawling and indexing
 
-- [x] `robots.txt` (`src/app/robots.ts`): everything allowed, AI crawlers included; points to the sitemap
+- [x] `robots.txt` (`src/app/robots.ts`): everything allowed; AI training and answer crawlers named and allowed on purpose; points to the sitemap
 - [x] `sitemap.xml` (`src/app/sitemap.ts`): 5 pages + every case study, `lastModified` = build date
 - [x] Canonical URL on every page (`src/lib/metadata.ts`)
 - [x] `rezaattar.dev` permanently redirects (308) to `https://www.rezaattar.dev`
@@ -33,6 +33,7 @@ Live site: https://www.rezaattar.dev. Tick items as they're done; re-run the "Af
 
 - [x] `/llms.txt`: summary, pages and case studies, built from `content/resume.md` and the case studies
 - [x] `/resume.md`: the resume as Markdown
+- [ ] After deploy: `site:rezaattar.dev` on Google/Bing, and ask ChatGPT, Claude and Perplexity about Reza Attar
 
 ## Open Graph and social cards
 

@@ -1,6 +1,7 @@
 import Navbar from "@/components/ui/Navbar";
 import { cn } from "@/lib/utils";
 import GradientImage from "@public/Gradient.png";
+import { Analytics } from "@vercel/analytics/next";
 import { ClassValue } from "clsx";
 import { pageMetadata } from "@/lib/metadata";
 import type { Metadata, Viewport } from "next";
@@ -81,6 +82,9 @@ export default function RootLayout({
         </Providers>
 
         <BottomGradient />
+
+        {/* Vercel Web Analytics: cookieless page views, so no consent banner is needed */}
+        <Analytics />
       </body>
     </html>
   );
