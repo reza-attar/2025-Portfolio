@@ -1,29 +1,34 @@
-"use client";
-
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import SignDark from "@public/Signature/signature-white.svg";
-import SignLight from "@public/Signature/signature-black.svg";
+import Image from "next/image";
 
 // Scales down below 329px so the About page fits narrow phones
 const size = "h-auto w-[329px] max-w-full";
 
+// Both signatures are plain images and CSS shows the one for the current theme, so this
+// needs no client JavaScript and nothing swaps after hydration. Lazy loading means the
+// hidden one (display: none) is never downloaded.
 export default function Signature() {
-  const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
-
-  // The theme is only known on the client; render an equally sized placeholder until then
-  if (!mounted) {
-    return (
-      <span aria-hidden="true" className={`block aspect-[329/203] ${size}`} />
-    );
-  }
-
-  if (resolvedTheme === "light") {
-    return <SignLight className={size} />;
-  } else {
-    return <SignDark className={size} />;
-  }
+  return (
+    <>
+      <Image
+        unoptimized
+        loading="lazy"
+        src="/Signature/signature-black.svg"
+        width={329}
+        height={203}
+        alt=""
+        aria-hidden="true"
+        className={`${size} dark:hidden`}
+      />
+      <Image
+        unoptimized
+        loading="lazy"
+        src="/Signature/signature-white.svg"
+        width={329}
+        height={203}
+        alt=""
+        aria-hidden="true"
+        className={`${size} hidden dark:block`}
+      />
+    </>
+  );
 }

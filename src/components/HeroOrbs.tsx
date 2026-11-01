@@ -2,8 +2,12 @@ import { cn } from "@/lib/utils";
 import { ClassValue } from "clsx";
 import { CSSProperties } from "react";
 
-// Soft blurred circles in the four layer colours, drifting behind the hero, plus two thin
-// oval orbits turning slowly. Pure CSS, decorative, and still for reduced motion.
+// Soft circles in the four layer colours, drifting behind the hero, plus two thin oval
+// orbits turning slowly. Pure CSS, decorative, and still for reduced motion.
+// The softness comes from a radial gradient, not a blur filter: a large animated blur is
+// repainted every frame and kept phones' main thread busy (slow LCP and TBT in PageSpeed),
+// while a gradient is painted once and the drift runs on the compositor. `scale` (separate
+// from the animated `transform`) grows each circle to the size the blur used to spread to.
 const blobs = [
   {
     color: "var(--layer-data)",
@@ -40,12 +44,12 @@ export default function HeroOrbs({ className }: { className?: ClassValue }) {
         <span
           key={i}
           className={cn(
-            "absolute rounded-full opacity-25 blur-3xl motion-safe:animate-[orb-drift_var(--d)_ease-in-out_infinite_alternate] dark:opacity-20",
+            "absolute opacity-25 will-change-transform [scale:1.7] motion-safe:animate-[orb-drift_var(--d)_ease-in-out_infinite_alternate] dark:opacity-20",
             blob.className,
           )}
           style={
             {
-              background: blob.color,
+              background: `radial-gradient(closest-side, ${blob.color} 25%, transparent)`,
               "--d": blob.d,
               animationDelay: `${-i * 4}s`,
             } as CSSProperties

@@ -157,10 +157,11 @@
   --grid-dot: rgba(255, 255, 255, 0.08);
 }
 
-/* A request travelling down the system diagram (see SystemDiagram) */
+/* A request travelling down the system diagram (see SystemDiagram). Only transform and
+   opacity change, so the browser runs it on the compositor without layout or paint. */
 @keyframes packet {
   0% {
-    top: 0;
+    transform: translateY(0);
     opacity: 0;
   }
   8% {
@@ -170,21 +171,19 @@
     opacity: 1;
   }
   100% {
-    top: 100%;
+    transform: translateY(100%);
     opacity: 0;
   }
 }
 
 @keyframes node-ping {
   0%,
+  18%,
   100% {
-    box-shadow: 0 0 0 0 transparent;
+    opacity: 0;
   }
   6% {
-    box-shadow: 0 0 0 6px color-mix(in srgb, var(--node) 28%, transparent);
-  }
-  18% {
-    box-shadow: 0 0 0 0 transparent;
+    opacity: 1;
   }
 }
 

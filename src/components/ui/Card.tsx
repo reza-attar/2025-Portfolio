@@ -80,10 +80,13 @@ export default function Card({
             <Link
               target="_blank"
               href={href}
-              aria-label={`Visit ${title} site (opens in new tab)`}
               className="flex w-fit items-center gap-1 rounded-md text-18 text-ink-strong hover:underline hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus"
             >
+              {/* The accessible name starts with the visible text (WCAG 2.5.3) */}
               Visit Site
+              <span className="sr-only">
+                : {title} (opens in new tab)
+              </span>
               <ChevronRight aria-hidden="true" width={20} className="pt-0.5" />
             </Link>
           )}
@@ -95,6 +98,9 @@ export default function Card({
           <Image
             src={image}
             alt={`screenshot of ${title} project`}
+            // Up to 560px wide (the column's max-width), full width on phones; without
+            // this the screenshots were fetched at their full 2-4K size
+            sizes="(min-width: 768px) 560px, 100vw"
             className="h-auto w-full object-contain md:h-full"
           />
         </div>

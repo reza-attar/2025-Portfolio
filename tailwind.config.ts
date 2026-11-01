@@ -63,7 +63,6 @@ export default {
     },
     fontFamily: {
       inter: ["var(--font-inter)", "Inter", "sans-serif"],
-      nanum: ["var(--font-nanum)"],
       mono: ["var(--font-mono)", "ui-monospace", "monospace"],
     },
     extend: {
@@ -167,7 +166,7 @@ export default {
           "5": "hsl(var(--chart-5))",
         },
       },
-      // The blinking cursor after the header's path, like the loader's
+      // The blinking cursor after the header's path, like a terminal's
       keyframes: {
         caret: { "0%, 100%": { opacity: "1" }, "50%": { opacity: "0" } },
       },
