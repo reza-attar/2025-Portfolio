@@ -33,12 +33,18 @@ export default function WorksPage() {
 
       <Divider className="w-full" />
 
-      <div className="space-y-4">
-        {projects.map((project) => (
-          <Card {...project} key={String(project.title)} />
-        ))}
-        <ProjectPlaceholder />
-      </div>
+      {/* The cards' titles are h3s, so the list gets an h2 to keep the heading order */}
+      <section aria-labelledby="featured-projects">
+        <h2 id="featured-projects" className="sr-only">
+          Featured projects
+        </h2>
+        <div className="space-y-4">
+          {projects.map((project) => (
+            <Card {...project} key={String(project.title)} />
+          ))}
+          <ProjectPlaceholder />
+        </div>
+      </section>
 
       <section aria-label="more projects" className="space-y-6">
         <h2 className="text-32 font-bold text-ink-strong">More case studies</h2>
@@ -80,7 +86,6 @@ export default function WorksPage() {
               </p>
               <Link
                 href={project.caseHref}
-                aria-label={`Read ${project.name} case study`}
                 className={cn(
                   "mt-1 inline-flex w-fit items-center gap-1 rounded text-16 font-medium text-ink-strong hover:underline hover:underline-offset-4",
                   focusRing,
@@ -88,6 +93,7 @@ export default function WorksPage() {
                 )}
               >
                 Read case study
+                <span className="sr-only">: {project.name}</span>
                 <ChevronRight aria-hidden="true" className="h-5 w-5" />
               </Link>
             </article>

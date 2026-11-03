@@ -70,12 +70,11 @@ export default function Widget({
     <Link
       href={href}
       target={openInNewTab ? "_blank" : "_self"}
-      aria-label={
-        openInNewTab ? `${title} on Goodreads (opens in new tab)` : undefined
-      }
       className={containerClassNames}
     >
       {Content}
+      {/* Appended rather than an aria-label, so the name keeps the visible text (WCAG 2.5.3) */}
+      {openInNewTab && <span className="sr-only"> (opens in new tab)</span>}
     </Link>
   );
 }

@@ -30,10 +30,13 @@ export default function SystemDiagram({
           aria-hidden="true"
           className="absolute bottom-8 left-3 top-8 w-px -translate-x-1/2 bg-sep"
         >
+          {/* The track moves (transform only, no layout per frame) and carries the dot */}
           <span
-            className="absolute left-1/2 hidden h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ink-strong shadow-[0_0_12px_2px_var(--ink-faint)] motion-safe:block motion-safe:animate-[packet_var(--d)_linear_infinite]"
+            className="absolute inset-0 hidden will-change-transform motion-safe:block motion-safe:animate-[packet_var(--d)_linear_infinite]"
             style={{ "--d": `${DURATION}s` } as CSSProperties}
-          />
+          >
+            <span className="absolute left-1/2 top-0 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ink-strong shadow-[0_0_12px_2px_var(--ink-faint)]" />
+          </span>
         </div>
 
         <ol aria-label="The layers I build, from database to interface">
@@ -42,15 +45,19 @@ export default function SystemDiagram({
               <div className="flex items-center gap-4">
                 <span
                   aria-hidden="true"
-                  className="relative z-10 grid h-6 w-6 shrink-0 place-items-center rounded-md border border-panel-border bg-background motion-safe:animate-[node-ping_var(--d)_linear_infinite]"
-                  style={
-                    {
-                      "--node": layerVar[layer.id],
-                      "--d": `${DURATION}s`,
-                      animationDelay: `${i * STEP - DURATION * 0.04}s`,
-                    } as CSSProperties
-                  }
+                  className="relative z-10 grid h-6 w-6 shrink-0 place-items-center rounded-md border border-panel-border bg-background"
                 >
+                  {/* The ping ring fades in and out (opacity only, no repaint per frame) */}
+                  <span
+                    className="absolute -inset-px rounded-md opacity-0 shadow-[0_0_0_6px_color-mix(in_srgb,var(--node)_28%,transparent)] motion-safe:animate-[node-ping_var(--d)_linear_infinite]"
+                    style={
+                      {
+                        "--node": layerVar[layer.id],
+                        "--d": `${DURATION}s`,
+                        animationDelay: `${i * STEP - DURATION * 0.04}s`,
+                      } as CSSProperties
+                    }
+                  />
                   <span
                     className={cn("h-2.5 w-2.5 rounded-sm", layerBg[layer.id])}
                   />

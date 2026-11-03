@@ -29,7 +29,9 @@ export default function LayerStrip({
               <p
                 className={cn(
                   "truncate font-mono text-[10px] uppercase tracking-[-0.02em] sm:text-[11px] sm:tracking-normal",
-                  on ? "text-ink-muted" : "text-ink-faint opacity-50",
+                  // Off labels stay readable (WCAG AA contrast); the bar above carries
+                  // the on/off colour, and a stronger ink marks the layers worked on
+                  on ? "text-ink-strong" : "text-ink-faint",
                 )}
               >
                 {layer.name}

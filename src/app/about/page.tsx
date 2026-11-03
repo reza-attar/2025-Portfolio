@@ -58,7 +58,9 @@ export default function AboutPage() {
             width={320}
             height={400}
             quality={100}
-            priority={false}
+            // Above the fold and the page's largest paint: load it first
+            preload
+            fetchPriority="high"
             placeholder="blur"
             src={PortraitImage}
             className="aspect-[4/5] w-full rounded-lg border border-panel-border object-cover"
