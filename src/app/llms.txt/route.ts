@@ -59,6 +59,7 @@ ${studies.map((s) => `- [${s.name}](${url(caseStudyHref(s.slug))}): ${s.lede}`).
 ## Contact
 
 - Email: ${resume.email}
+- [Contact form](${url("/contact")}): messages go to the same inbox
 - [LinkedIn](${getLinkedinLink()})
 - [GitHub](${getGithubLink()})
 `;

@@ -14,9 +14,6 @@ export const site = {
 
   focus: "TypeScript, NestJS, applied LLMs",
 
-  // Public inbox for the contact page; the contact form delivers here too
-  contactEmail: "contact@rezaattar.dev",
-
   relocation: {
     // Short form for the "At a glance" row
     short: "open to NL / DE",

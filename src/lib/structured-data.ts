@@ -18,6 +18,12 @@ export function person() {
     worksFor: { "@type": "Organization", name: resume.company },
     address: { "@type": "PostalAddress", addressCountry: resume.location },
     email: `mailto:${resume.email}`,
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "general inquiries",
+      email: resume.email,
+      url: `${site.url}/contact`,
+    },
     alumniOf: resume.education.map((e) => ({
       "@type": "CollegeOrUniversity",
       name: e.school,

@@ -2,6 +2,7 @@ import Divider from "@/components/ui/Divider";
 import ContactLinks from "@/features/contact/components/ContactLinks";
 import ContactWindow from "@/features/contact/components/ContactWindow";
 import { pageMetadata } from "@/lib/metadata";
+import { resume } from "@/lib/resume";
 import { site } from "@/lib/site";
 import type { Metadata } from "next";
 
@@ -25,9 +26,9 @@ function ContactPage() {
 
       <Divider className="w-full" />
 
-      <ContactWindow email={site.contactEmail} />
+      <ContactWindow email={resume.email} />
 
-      <ContactLinks email={site.contactEmail} />
+      <ContactLinks email={resume.email} />
     </main>
   );
 }

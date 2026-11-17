@@ -141,7 +141,11 @@ export default function AboutPage() {
           </div>
 
           <p className="text-pretty text-15 leading-[1.6] text-ink-muted">
-            Feel free to reach out via{" "}
+            Feel free to{" "}
+            <Link href="/contact" className={inlineLink}>
+              send me a message
+            </Link>{" "}
+            or an{" "}
             <Link href={`mailto:${resume.email}`} className={inlineLink}>
               e-mail
             </Link>
