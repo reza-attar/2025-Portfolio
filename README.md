@@ -35,6 +35,10 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
+## Documentation
+
+Project documentation lives in [`docs/okf/`](docs/okf/index.md), an [Open Knowledge Format](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) (OKF v0.2) bundle: architecture, pages, endpoints, content files, design system, SEO and step-by-step playbooks. Start at [`docs/okf/overview.md`](docs/okf/overview.md).
+
 ## Resume
 
 Edit `content/resume.md`. The site reads it; `pnpm dev` rebuilds `public/Reza_Attar_Resume.pdf` on save, `pnpm resume:pdf` rebuilds it once, and `pnpm build` fails if the PDF is stale and Chrome isn't available. Commit the PDF and `content/resume.pdf.sha256` with it.
