@@ -1,0 +1,32 @@
+/* Windows */
+.win {
+  position: absolute; display: flex; flex-direction: column; overflow: hidden;
+  background: var(--win); color: var(--ink);
+  border: var(--border-w) solid var(--border); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-win-back);
+}
+.win[data-animate="true"] { animation: win-in .14s ease-out; }
+.win[data-front="true"] { box-shadow: var(--shadow-win-front); }
+.win[data-maximized="true"] { border-radius: 0; box-shadow: none; }
+.win[data-settling="true"] { transition: left .16s ease-out, top .16s ease-out, width .16s ease-out, height .16s ease-out; }
+.win[data-dragging="true"] { transition: none !important; will-change: transform; }
+.win[data-leaving="close"] { animation: win-out .12s ease-in forwards; pointer-events: none; }
+.win[data-leaving="min"] { animation: win-min .14s ease-in forwards; transform-origin: 50% 0; pointer-events: none; }
+
+.win-titlebar {
+  flex: none; display: flex; align-items: center; gap: 8px; height: var(--titlebar-h); padding: 4px 4px 4px 12px;
+  background: var(--chrome-idle); border-bottom: var(--border-w) solid var(--border);
+  cursor: grab; user-select: none; -webkit-user-select: none; touch-action: none;
+}
+.win[data-front="true"] .win-titlebar { background: var(--chrome); }
+.win[data-maximized="true"] .win-titlebar { cursor: default; }
+.win-title { margin: 0; font: 600 12px/1 var(--font-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.win:not([data-front="true"]) .win-title { color: var(--muted); }
+.win-dot { width: 8px; height: 8px; border-radius: 2px; flex: none; }
+.win-spacer { flex: 1; }
+.win-body { flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; container-type: inline-size; }
+.win-resize {
+  position: absolute; right: 0; bottom: 0; width: 18px; height: 18px; cursor: nwse-resize; touch-action: none;
+  background: linear-gradient(135deg, transparent 0 52%, var(--muted) 52% 58%, transparent 58% 70%, var(--muted) 70% 76%, transparent 76%);
+}
+.win-404 { left: 150px; top: 24px; width: 460px; max-width: calc(100% - 24px); }

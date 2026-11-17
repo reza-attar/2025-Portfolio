@@ -1,0 +1,53 @@
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 15px/1.6 var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+html[data-mode="os"], html[data-mode="os"] body { overflow: hidden; }
+
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure, pre { margin: 0; }
+a { color: var(--link); text-underline-offset: 3px; }
+button { font: inherit; color: inherit; }
+img { max-width: 100%; height: auto; display: block; }
+code, kbd { font-family: var(--font-mono), ui-monospace, monospace; font-size: .88em; }
+code { background: var(--hover); padding: 1px 5px; border-radius: 4px; }
+kbd { border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 0 5px; font-size: 11px; color: var(--muted); }
+
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+[tabindex="-1"]:focus:not(:focus-visible) { outline: none; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: absolute; left: 8px; top: -64px; z-index: 100001;
+  padding: 10px 14px; background: var(--ink); color: var(--win);
+  border-radius: var(--radius-md); font-weight: 600; text-decoration: none;
+}
+.skip-link:focus { top: 8px; }
+
+@keyframes win-in { from { opacity: 0; transform: scale(.96) translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes win-out { from { opacity: 1; transform: none; } to { opacity: 0; transform: scale(.96) translateY(6px); } }
+@keyframes win-min { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(-40px) scale(.9); } }
+@keyframes blink { 50% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  html, body { overflow: visible !important; height: auto; background: #fff; }
+  .taskbar, .desktop-icons, .skip-link, .win:not([data-front="true"]), .win-titlebar,
+  .win-resize, .pdf-toolbar, .snap-preview { display: none !important; }
+  .shell, .desktop { display: block !important; height: auto !important; overflow: visible !important; background: none !important; }
+  .win { position: static !important; width: auto !important; height: auto !important; max-width: none !important; max-height: none !important;
+    border: 0 !important; box-shadow: none !important; animation: none !important; }
+  .win-body { overflow: visible !important; }
+  .paper { margin: 0 !important; padding: 0 !important; border: 0 !important; box-shadow: none !important; }
+}

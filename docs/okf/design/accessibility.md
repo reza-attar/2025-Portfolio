@@ -1,37 +1,28 @@
 ---
 type: Reference
 title: Accessibility
-description: The accessibility patterns the code follows, to repeat in new pages and components.
-tags: [design, accessibility, wcag]
-generated: { by: claude-code/2.1.326, at: 2026-11-17T10:00:00Z }
+description: Keyboard, focus, screen reader and contrast patterns in reza.os.
+tags: [design, accessibility, a11y]
+generated: { by: claude-code, at: 2026-11-17T12:00:00Z }
 sources:
-  - id: components
-    resource: https://github.com/reza-attar/2025-Portfolio/tree/main/src/components
-    title: src/components/
+  - id: focus
+    resource: https://github.com/reza-attar/2025-Portfolio/blob/main/src/features/os/open-app.ts
+    title: src/features/os/open-app.ts
 ---
 
-# Patterns
-
-| Pattern | Example in the code |
-|---------|---------------------|
-| **Visible focus ring** on every interactive element: `focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus` plus an offset | `focusRing` constants in pages, `buttonVariants` |
-| **One H1 per page**, headings in order. Where cards use H3, the list gets a visually hidden H2 | `/works` "Featured projects" (`sr-only`) |
-| **Accessible names start with the visible text** (WCAG 2.5.3). Extra context is appended in an `sr-only` span rather than replacing the text with `aria-label` | "Read case study<span class=sr-only>: Cashio</span>", `Widget`, `Card` |
-| **New-tab links say so**: `aria-label="LinkedIn (opens in new tab)"` | Contact, About, case-study links |
-| **Decorative things are hidden**: `aria-hidden="true"` on icons, the window controls, gradients, `CurrentPath`; empty `alt=""` on decorative images | Throughout |
-| **Language of parts**: Persian names are wrapped in `lang="fa" dir="rtl"` | Case-study titles |
-| **Contrast**: inactive labels in `LayerStrip` stay at AA contrast; colour is carried by the bar | `LayerStrip.tsx` |
-| **Keyboard**: the hidden desktop header comes back when it receives focus | `HeaderShell.tsx` |
-| **Reduced motion** respected | [motion](/design/motion-and-performance.md) |
-| **Form fields** have labels (visible, or `sr-only` for the message) and native validation | `contact/form.tsx` |
-| **Landmarks and labels**: `<nav aria-label="Main">`, labelled sections (`aria-labelledby` to the heading id) | Header, home sections |
-| **Document language**: `<html lang="en">` | `layout.tsx` |
-
-# When adding UI
-
-1. Use `focus` for focus styles and `ink-*` tokens for text (they are tuned
-   for contrast in both themes).
-2. Keep the heading order. Add an `sr-only` heading when a visual design skips
-   a level.
-3. Mark icons `aria-hidden` and give icon-only links an `aria-label`.
-4. Wrap any loop animation in `motion-safe:`.
+- Each window is `role="dialog"` `aria-modal="false"`, labelled by its title
+  `h2`. DOM order is open order, so Tab order is stable.
+- Opening a window from the keyboard (or in simple mode) moves focus to its
+  title; closing returns focus to the control that opened it.
+- A polite live region announces "about.md opened", "~/projects minimized",
+  "snapped left" and so on.
+- Nothing needs dragging: snap and maximize have shortcuts, every control is a
+  labelled button.
+- Tray buttons expose `aria-pressed`; the system menu is `role="menu"` with
+  arrow keys, Home/End and Esc.
+- "Skip to content" focuses the front window.
+- Focus ring: 2 px `--blue`, offset 2 px, never removed.
+- Contrast: text pairs pass 4.5:1 (hence ink text on orange buttons and
+  `--link` in dark mode).
+- Simple mode touch targets are at least 44 x 44 px.
+- Reduced motion disables all animation.

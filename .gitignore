@@ -42,3 +42,7 @@ next-env.d.ts
 
 # design handoff packages
 /design_handoff_*/
+
+# playwright
+/test-results/
+/playwright-report/

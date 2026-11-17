@@ -1,0 +1,30 @@
+:root {
+  --bg: #E5E7E0; --panel: #EEEFE9; --win: #FFFFFF; --chrome: #EEEFE9; --chrome-idle: #F7F7F4;
+  --ink: #151515; --muted: #4D4F46; --border: #151515; --line: #D0D1C9;
+  --shadow: rgba(21, 21, 21, .14); --wall-dot: #C4C6BC;
+  --hover: rgba(21, 21, 21, .07);
+  --link: #1D4AFF;
+
+  --accent: #F54E00; --yellow: #F7A501; --blue: #1D4AFF; --green: #2F9E44; --purple: #B62AD9;
+  --tile-orange: #FFE4D6; --tile-yellow: #FFF1C2; --tile-blue: #E6ECFF; --tile-green: #E3F5E6; --tile-purple: #F6E3FB;
+  /* Text on pastel tiles, both themes */
+  --on-pastel: #151515;
+
+  --radius-sm: 5px; --radius-md: 8px; --radius-lg: 10px; --radius-pill: 999px;
+  --border-w: 1.5px;
+  --shadow-btn: 0 3px 0 var(--border);
+  --shadow-win-front: 8px 8px 0 var(--shadow);
+  --shadow-win-back: 3px 3px 0 var(--shadow);
+  --taskbar-h: 52px; --titlebar-h: 36px;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #1B1D24; --panel: #22242C; --win: #2A2D36; --chrome: #353844; --chrome-idle: #2A2D36;
+  --ink: #EEEFE9; --muted: #B3B5AC; --border: #0B0C0F; --line: #41444F;
+  --shadow: rgba(0, 0, 0, .5); --wall-dot: #33363F;
+  --hover: rgba(238, 239, 233, .08);
+  /* --blue fails contrast on dark windows; links use a lighter blue */
+  --link: #8FA2FF;
+  color-scheme: dark;
+}

@@ -1,0 +1,37 @@
+/* Simple mode: phones (< 768 px) and visitors who opt out of the floating windows.
+   Same windows, stacked in one scrolling column; no drag, resize, snap or maximize. */
+[data-mode="simple"] .shell { height: auto; min-height: 100dvh; }
+[data-mode="simple"] .taskbar { position: sticky; top: 0; gap: 6px; padding: 6px 12px; }
+[data-mode="simple"] .tb-nav,
+[data-mode="simple"] .tray,
+[data-mode="simple"] .tb-clock,
+[data-mode="simple"] .tb-wall,
+[data-mode="simple"] .win-min,
+[data-mode="simple"] .win-max,
+[data-mode="simple"] .win-resize { display: none; }
+[data-mode="simple"] .tb-menu { display: inline-flex; }
+[data-mode="simple"] .menu-anchor-apps { margin-right: auto; }
+[data-mode="simple"] .tb-logo, [data-mode="simple"] .tb-menu, [data-mode="simple"] .icon-btn-md { height: 44px; min-width: 44px; }
+[data-mode="simple"] .tb-cta { height: 44px; }
+[data-mode="simple"] .menu-anchor-apps .menu { left: auto; right: auto; }
+
+[data-mode="simple"] .desktop { overflow: visible; display: flex; flex-direction: column; gap: 12px; padding: 12px; }
+[data-mode="simple"] .desktop-icons {
+  position: static; width: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 4px;
+}
+[data-mode="simple"] .dicon { width: auto; min-height: 44px; }
+
+[data-mode="simple"] .win {
+  position: relative; left: auto !important; top: auto !important; width: auto !important; height: auto !important;
+  max-width: none !important; max-height: none !important; scroll-margin-top: calc(var(--taskbar-h) + 12px);
+}
+[data-mode="simple"] .win-body { overflow: visible; }
+[data-mode="simple"] .win-titlebar { cursor: default; touch-action: auto; height: auto; padding: 2px 2px 2px 14px; }
+[data-mode="simple"] .win-titlebar .icon-btn-sm { width: 44px; height: 44px; }
+[data-mode="simple"] .empty-desk { position: static; transform: none; margin: 24px auto; }
+[data-mode="simple"] .app { padding: 20px 18px 24px; }
+[data-mode="simple"] .paper { margin: 10px; padding: 20px 18px; }
+
+@media (max-width: 420px) {
+  .tb-logo-text { display: none; }
+}

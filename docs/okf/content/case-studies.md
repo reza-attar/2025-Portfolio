@@ -1,7 +1,7 @@
 ---
 type: Data Source
 title: Case studies (src/lib/case-studies.ts)
-description: The data model behind each /works/<slug> page, the rich-text rule, and the six case studies on the site.
+description: The data model behind each /projects/<slug> window, the rich-text rule, and the six case studies on the site.
 tags: [content, case-study, works]
 generated: { by: claude-code/2.1.326, at: 2026-11-17T10:00:00Z }
 sources:
@@ -14,7 +14,7 @@ sources:
 
 ```ts
 type CaseStudy = {
-  slug: string;          // URL: /works/<slug>
+  slug: string;          // URL: /projects/<slug>
   name: string;
   nameFa?: string;       // Persian name, shown right-to-left after the title
   lede: string;          // Subtitle, meta description, llms.txt line
@@ -45,7 +45,7 @@ type CaseStudySection = {
 ```
 
 **Rich text** (`paras`, `steps`, `list`, `after`) accepts `**bold**` and
-`` `code` `` only. How each field renders is in [case-study page](/pages/case-study.md).
+`` `code` `` only. `ProjectSection` in `src/features/apps/project/` renders each field.
 
 Images are imported from `@public/case-studies/` or `@public/Projects/` as
 static imports, so Next.js knows their size and can generate blur
@@ -57,7 +57,7 @@ I'd do next.
 
 # The six studies
 
-Listed in `/works` order, which also sets the previous/next order.
+Listed here in file order; the window order (and "Next:") comes from [projects](/content/projects.md).
 
 | Slug | Name | Type | Period | Role | Link |
 |------|------|------|--------|------|------|
@@ -79,4 +79,4 @@ from [projects](/content/projects.md).
   details").
 - Products without a public link say why in `note` or `linkNote`.
 
-To add one, follow [add a case study](/playbooks/add-case-study.md).
+To add one, follow [add a project](/playbooks/add-project.md).

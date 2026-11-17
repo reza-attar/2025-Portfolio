@@ -41,11 +41,12 @@ content/resume.md
   ├─ /resume.md route (raw file, HTML comments removed)
   └─ scripts/resume/pdf.mjs ─► public/Reza_Attar_Resume.pdf (+ content/resume.pdf.sha256)
 
-src/lib/case-studies.ts ─► /works/[slug], sitemap.xml, /llms.txt
-src/lib/projects.ts     ─► /works, home "Selected work", case-study order, /llms.txt
-src/lib/layers.ts       ─► hero diagram, "layer by layer", cards, LayerStrip, /og
-src/lib/highlights.ts   ─► home "Highlights", /llms.txt
-src/lib/open-source.ts  ─► home "Open source" (hidden when empty), /llms.txt
+src/lib/case-studies.ts ─► project windows (/projects/[slug]), metadata, /llms.txt
+src/lib/projects.ts     ─► ~/projects, about.md cards, routes, sitemap.xml, /llms.txt
+src/lib/profile.ts      ─► about.md, Contact (built from the resume + site)
+src/lib/layers.ts       ─► /og
+src/lib/highlights.ts   ─► /llms.txt
+src/lib/open-source.ts  ─► /llms.txt
 ```
 
 `src/lib/resume.ts` imports `content/resume.md` directly. The custom loader
@@ -61,9 +62,6 @@ These are written in two places. Change both together.
 | LinkedIn and GitHub URLs | `content/resume.md` front matter | `getLinkedinLink()`, `getGithubLink()` in `src/lib/utils.ts` (client components import `utils.ts`, so it cannot import the resume loader) |
 | Highlight numbers (−77%, 128×, 13 s → 3 s, 3 engineers) | resume bullets | `src/lib/highlights.ts` |
 | Layer metrics | resume and case studies | `src/lib/layers.ts` |
-| Page links | `site.nav` (desktop header, footer) | `items` in `src/components/ui/Navbar.tsx` (mobile bottom bar, which also has Home and icons) |
-| Languages | `## Languages` in the resume | `site.languages` (About "At a glance") |
-| About-page story (77%, three-person team, two contests, Sharif hackathon) | resume | prose in `src/app/about/page.tsx` |
-| Ticket Yar pipeline | case study steps | `pipeline` in `src/app/(Home)/sections/NowBuilding.tsx` and the Ticket Yar card `steps` |
-| Layer colours on the share image | dark `--layer-*` values in `globals.css` | `layerColor` in `src/app/og/route.tsx` |
 | Page list in `/llms.txt` | the routes | the hard-coded "Pages" list in `src/app/llms.txt/route.ts` |
+| Project names | `name` in `src/lib/case-studies.ts` | `name` in `src/lib/projects.ts` (a unit test checks they match) |
+| Window routes | `src/app/*/page.tsx` | `href` in `src/features/os/app-meta.ts` |

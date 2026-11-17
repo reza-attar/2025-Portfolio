@@ -11,12 +11,10 @@ sources:
     title: src/app/sitemap.ts
 ---
 
-- Paths: `/`, `/about`, `/works`, `/resume`, `/contact`, then
-  `/works/<slug>` for every entry in `caseStudies`.
+- Paths: `/`, `/projects`, `/stack`, `/resume`, `/contact`, then
+  `/projects/<slug>` for every entry in `projects` (`/trash` is left out).
 - URLs are absolute on `site.url`; the home page is the bare origin.
 - `lastModified` is the build time for every URL.
 - Submitted in Google Search Console.
 
-When adding a page, add its path here ([add a page](/playbooks/add-page.md)).
-The case-study list comes from `caseStudies`, not from the `/works` order, so a
-study with no card is listed but returns 404 (see [case study](/pages/case-study.md)).
+When adding a window, add its path here ([add a window](/playbooks/add-window.md)).

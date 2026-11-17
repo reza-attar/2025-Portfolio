@@ -1,7 +1,7 @@
 ---
 type: Reference
 title: Build pipeline
-description: The custom SVG and Markdown loaders, the resume PDF build and staleness check, static generation, and linting.
+description: The custom Markdown loader, the resume PDF build and staleness check, static generation, and linting.
 tags: [architecture, build, resume, pdf]
 generated: { by: claude-code/2.1.326, at: 2026-11-17T10:00:00Z }
 sources:
@@ -18,17 +18,15 @@ sources:
 
 # Custom loaders
 
-`next.config.ts` registers two loaders, once for Turbopack (the default for
-`next dev` and `next build` in Next.js 16) and once for webpack (used only with
-`next build --webpack`):
-
-| Files | Loader | Result of `import x from "file"` |
-|-------|--------|-----------------------------------|
-| `*.svg` | `@svgr/webpack` | A React component (`FC<SVGProps<SVGElement>>`) |
-| `*.md` | `scripts/resume/parse.cjs` | The parsed resume data (`ResumeData`) |
-
-`svgr.d.ts` declares the types for both. The Markdown loader is meant only for
+`next.config.ts` registers one loader, for Turbopack (the default for
+`next dev` and `next build` in Next.js 16) and for webpack (used only with
+`next build --webpack`): `*.md` files go through `scripts/resume/parse.cjs`, so
+`import x from "content/resume.md"` gives the parsed resume data
+(`ResumeData`). `content.d.ts` declares the type. The loader is meant only for
 `content/resume.md`: any `.md` import goes through the resume parser.
+`vitest.config.mts` runs the same parser for unit tests.
+
+`next.config.ts` also holds the permanent redirects from the old routes.
 
 # Resume PDF
 
@@ -61,7 +59,7 @@ paths, then `google-chrome`, `google-chrome-stable`, `chromium` or
 `chromium-browser` on `PATH`.
 
 Visitors can also print `/resume` from the browser. Print styles in
-`globals.css` hide the site chrome (see [Resume page](/pages/resume.md)).
+`src/styles/base.css` print only the front window (see [windows](/pages/windows.md)).
 
 # Parser errors
 
@@ -86,9 +84,7 @@ The format is in [Resume source](/content/resume-source.md).
 
 # Linting and formatting
 
-- ESLint flat config (`eslint.config.mjs`) extends `next/core-web-vitals` and
-  `next/typescript` through `FlatCompat`.
-- The `lint` script calls `next lint`, which Next.js 16 removed. Run
-  `npx eslint .` until the script is updated (see [known issues](/architecture/known-issues.md)).
-- Prettier: 2-space indent, `prettier-plugin-tailwindcss` sorts class names.
+- ESLint flat config (`eslint.config.mjs`) spreads `eslint-config-next`'s
+  `core-web-vitals` and `typescript` configs. `bun run lint` runs `eslint .`.
+- Prettier: 2-space indent.
 - TypeScript: `strict`, `noUnusedLocals`, `moduleResolution: bundler`.

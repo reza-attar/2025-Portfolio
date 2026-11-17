@@ -15,7 +15,7 @@ the number is backed up.
 
 | Value | Label | Context | Links to |
 |-------|-------|---------|----------|
-| −77% | compile time | Ticket Yar backend, moved to NestJS + SWC | `/works/ticket-yar` |
+| −77% | compile time | Ticket Yar backend, moved to NestJS + SWC | `/projects/ticket-yar` |
 | 128× | faster queries | NUWA, hottest read paths from 1.15 s to 9 ms | `/resume#nuwa` |
 | 13 s → 3 s | page load | Mahaksoft, asset budgets and code splitting | `/resume#mahaksoft` |
 | 3 | engineers led | Remote React team for a German company | `/resume#solution-apps-dg-gmbh` |

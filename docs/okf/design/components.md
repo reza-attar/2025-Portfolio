@@ -1,50 +1,43 @@
 ---
 type: Reference
 title: Components
-description: A catalogue of the components in src/components, what each one does and where it is used.
-tags: [design, components, react]
-generated: { by: claude-code/2.1.326, at: 2026-11-17T10:00:00Z }
+description: The OS shell parts and content primitives, what each does and where it lives.
+tags: [design, components]
+generated: { by: claude-code, at: 2026-11-17T12:00:00Z }
 sources:
-  - id: components
-    resource: https://github.com/reza-attar/2025-Portfolio/tree/main/src/components
-    title: src/components/
+  - id: os
+    resource: https://github.com/reza-attar/2025-Portfolio/blob/main/src/features/os/components
+    title: src/features/os/components
+  - id: ui
+    resource: https://github.com/reza-attar/2025-Portfolio/blob/main/src/shared/components/ui
+    title: src/shared/components/ui
 ---
 
-"Client" marks client components (`"use client"`). Everything else renders on
-the server.
+Every interactive component is a real `<button>` or `<a href>`.
 
-# Site frame
+# OS shell (`src/features/os/components`)
 
-| Component | File | Notes |
-|-----------|------|-------|
-| `Header` | `components/Header.tsx` | Mobile: logo, current path, theme switch. Desktop (`xl`): `site.nav` links centred, "Get in touch" on the right. Hidden in print. |
-| `HeaderShell` (client) | `components/HeaderShell.tsx` | Desktop behaviour: clear over the hero, solid after 8 px of scroll, hidden while scrolling down past 160 px, shown on scroll up or keyboard focus. Ignores moves under 6 px. |
-| `HeaderNav` (client) | `components/HeaderNav.tsx` | Desktop links; `/works/<slug>` still marks Works as active. |
-| `CurrentPath` (client) | `components/HeaderNav.tsx` | Shell-style path next to the logo (`~`, `~/works/ticket-yar`) with a blinking caret. Decorative, hidden from screen readers. |
-| `Navbar` (client) | `components/ui/Navbar.tsx` | Mobile bottom bar below `xl`: Home, About, Works, Contact, Resume with filled/outline icons. Its own link list (see [data flow](/architecture/data-flow.md)). |
-| `Footer` | `components/Footer.tsx` | Logo, tagline, location, email; "pages" from `site.nav`; "elsewhere" (LinkedIn, GitHub, YouTube, Stack Overflow); build date. |
-| `Logo` | `components/Logo.tsx` | The `[ra]` mark in `currentColor`, linking home. Each instance gets its own clip-path id. |
-| `ThemeSwitch` (client) | `components/ThemeSwitch.tsx` | Light/dark toggle. |
-| `JsonLd` | `components/JsonLd.tsx` | Writes a `<script type="application/ld+json">`, escaping `<`. |
-| `ScrollToHash` (client) | `components/ScrollToHash.tsx` | Scrolls to the URL fragment after the page mounts. Used on `/resume`. |
+| Component | Does |
+|-----------|------|
+| `Shell` | Taskbar + desktop + live region; shortcuts, prefs on `<html>`, URL sync, skip link |
+| `Taskbar` | Logo/system menu, apps menu (simple mode), nav links, tray, wallpaper and theme buttons, clock, "Hire me" |
+| `SystemMenu` + `Menu` | Popover with `role="menu"`, arrow keys, Esc, outside click: About, Open everything, Close all, Tidy up, Simple mode |
+| `WindowTray` | One button per open window, in open order; `aria-pressed` on the front one, 60 % opacity when minimized |
+| `Desktop` / `DesktopIcon` | Wallpaper, icon column (a wrapping grid in simple mode), windows, snap preview, empty-desktop card |
+| `Window` / `WindowTitleBar` | Frame, dot + mono title (`h2`, focusable), — □ ×, resize handle |
+| `RouteWindow` / `StaticWindow` | Opens the route's window; server-renders it until hydration |
+| `SnapPreview`, `EmptyDesktop`, `Clock`, `LiveRegion`, `AppLink` | As named; `AppLink`/`appLinkClick` make real links open windows in place |
 
-# Visuals
+# Content primitives (`src/shared/components/ui`)
 
-| Component | File | Notes |
-|-----------|------|-------|
-| `SystemDiagram` | `components/SystemDiagram.tsx` | Hero diagram: the four layers top to bottom, with a dot ("request") travelling down and each node pinging as it passes. |
-| `HeroOrbs` | `components/HeroOrbs.tsx` | Soft circles in the layer colours, drifting, and two slow oval orbits behind the hero. |
-| `Signature` | `components/about/Signature.tsx` | Handwritten signature on About; light and dark images. |
-
-# UI pieces (`components/ui`)
-
-| Component | Notes |
+| Component | Rules |
 |-----------|-------|
-| `Button`, `buttonVariants` | `cva` variants `primary` (dark gradient in light mode, near-white in dark), `secondary` (`control` tokens), `text`. Links use `buttonVariants()` for the same look. |
-| `Card` | Project card: logo, title, meta, description, `LayerStrip`, "Read case study" and "Visit Site" (or `note`), then a screenshot or a `steps` path. See [projects](/content/projects.md). |
-| `LayerStrip` | Four segments, data → interface, with the layers a project touched coloured in. |
-| `SectionHeading` | `// 03 kicker`, an H2 title and an optional description. |
-| `Tag` (default export `Label`) | A chip, used for stacks and skills. |
-| `Widget`, `ProjectPlaceholder`, `LetsWorkTogether` | Image tiles on the home page, the "your project here" card on `/works`, and the closing call to action on the home page. |
-| `Divider` | A horizontal rule. |
-| `Link` (`CustomLink`) | A thin wrapper around `next/link`. |
+| `Button` | `primary` (orange) / `secondary` / `dark`, `md` 40 px or `lg` 46 px, offset shadow that lifts on hover. `<a>` when `href` is set. One primary per window |
+| `IconButton` | Icon-only; `label` is the accessible name. `danger` turns orange on hover |
+| `Chip`, `StatusBadge`, `Tile` | Mono pill; pill with a status dot; pastel square holding a stroke icon |
+| `ProjectCard` | Whole card is a link |
+| `FileTable` | Mono uppercase headers, 1 px rules, yellow row hover |
+| `Terminal` | Dark block, `$` prompt, coloured keys, blinking cursor |
+| `Callout` | Pale-yellow panel with a mono label chip |
+| `CommitLog` | History as `feat(scope): …` commits on a vertical rule |
+| `Icon` | Inline stroke SVGs on a 24 px grid; no emoji, no icon font |

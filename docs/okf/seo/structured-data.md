@@ -17,7 +17,7 @@ Built in `src/lib/structured-data.ts` and written to the page with
 |------|----------|-------|
 | `/` | `websiteGraph()` | `WebSite` (`#website`, publisher → person) and `Person` |
 | `/about` | `profilePage()` | `ProfilePage` with `mainEntity: Person` |
-| `/works/<slug>` | `breadcrumbs([...])` | `BreadcrumbList`: Home › Works › name |
+| `/projects/<slug>` | `breadcrumbs([...])` | `BreadcrumbList`: Home › Projects › name |
 
 # Person
 

@@ -1,7 +1,7 @@
-import { caseStudies, caseStudyHref } from "@/lib/case-studies";
+import { caseStudyHref, getCaseStudy } from "@/lib/case-studies";
 import { highlights } from "@/lib/highlights";
 import { contributions } from "@/lib/open-source";
-import { moreCaseStudies, projects } from "@/lib/projects";
+import { projects } from "@/lib/projects";
 import { resume } from "@/lib/resume";
 import { site } from "@/lib/site";
 import { getGithubLink, getLinkedinLink } from "@/lib/utils";
@@ -12,9 +12,7 @@ export const dynamic = "force-static";
 // Built from content/resume.md and the case studies, so it never drifts from the pages.
 export function GET() {
   const url = (path: string) => `${site.url}${path}`;
-  const studies = [...projects, ...moreCaseStudies]
-    .map((p) => caseStudies.find((s) => caseStudyHref(s.slug) === p.caseHref))
-    .filter((s) => s !== undefined);
+  const studies = projects.map((p) => getCaseStudy(p.slug)).filter((s) => s !== undefined);
 
   const text = `# ${site.name}
 
@@ -42,9 +40,12 @@ ${contributions.map((c) => `- [${c.project}: ${c.title}](${c.href}) (${c.kind}, 
 }
 ## Pages
 
-- [About](${url("/about")}): background, current work and past roles
-- [Works](${url("/works")}): products built end to end, with the layers (data, backend, AI, interface) built for each
-- [Resume](${url("/resume")}): experience, projects, skills, awards, education and languages
+The site is a small desktop OS: every page opens as a window, and every window is also a plain URL.
+
+- [about.md](${url("/")}): who I am, what I'm doing now, and the career as a commit log
+- [~/projects](${url("/projects")}): products built end to end; each one opens its own case study
+- [stack.sh](${url("/stack")}): the tools I use, by layer
+- [resume.pdf](${url("/resume")}): experience, projects, skills, awards, education and languages
 - [Contact](${url("/contact")}): how to get in touch
 
 ## Case studies

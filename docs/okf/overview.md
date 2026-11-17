@@ -1,7 +1,7 @@
 ---
 type: Website
 title: rezaattar.dev
-description: Portfolio and resume site of Reza Attar, a full-stack engineer, built with Next.js 16 and hosted on Vercel.
+description: Portfolio and resume site of Reza Attar, a full-stack engineer, built as a small desktop OS (reza.os) with Next.js 16 and hosted on Vercel.
 resource: https://www.rezaattar.dev
 tags: [overview, portfolio, nextjs]
 generated: { by: claude-code/2.1.326, at: 2026-11-17T10:00:00Z }
@@ -19,9 +19,11 @@ sources:
 
 # Purpose
 
-The personal portfolio of Reza Attar, a full-stack engineer ("I build products
-from schema to interface"). It shows his work, case studies and resume, and
-gives people a way to contact him.
+The personal portfolio of Reza Attar, a full-stack engineer. It runs as a small
+desktop operating system in the browser, **reza.os**: every page (about,
+projects, a single project, résumé, contact) opens as a draggable window on a
+desktop, with a taskbar along the top. It shows his work, case studies and
+resume, and gives people a way to contact him.
 
 It has three kinds of reader:
 
@@ -37,9 +39,11 @@ It has three kinds of reader:
 |------|-------|
 | Production URL | `https://www.rezaattar.dev` (the apex domain `rezaattar.dev` redirects there with a 308)[^seo-checklist] |
 | Framework | Next.js 16.1.6 (App Router), React 19, TypeScript in strict mode[^package] |
-| Styling | Tailwind CSS 3.4 with custom tokens, shadcn/ui conventions (`new-york`, `zinc`) |
-| Fonts | Inter and JetBrains Mono through `next/font/google` |
-| Theme | Light and dark, following the system by default (`next-themes`) |
+| Shell | [reza.os window manager](/architecture/window-manager.md): Zustand store, one window per app, real URL per window |
+| Styling | Plain CSS on custom properties ([tokens](/design/tokens-and-theming.md)); no CSS framework |
+| Fonts | IBM Plex Sans and IBM Plex Mono through `next/font/google` |
+| Theme | Light and dark (system by default), three wallpapers, saved in `localStorage['reza.os/prefs']` |
+| Tests | Vitest (store) and Playwright (`e2e/`) |
 | Hosting | Vercel, with Vercel Web Analytics (cookieless, so no consent banner) |
 | Package manager | Bun (`bun.lock`) |
 | Content | [`content/resume.md`](/content/resume-source.md) plus TypeScript data modules in `src/lib` |
@@ -49,12 +53,14 @@ It has three kinds of reader:
 
 | Path | Concept |
 |------|---------|
-| `/` | [Home](/pages/home.md) |
-| `/about` | [About](/pages/about.md) |
-| `/works` | [Works](/pages/works.md) |
-| `/works/<slug>` | [Case study](/pages/case-study.md) (six studies) |
-| `/contact` | [Contact](/pages/contact.md) |
-| `/resume` | [Resume](/pages/resume.md) |
+| `/` | `about.md` [window](/pages/windows.md) |
+| `/projects` | `~/projects` window |
+| `/projects/<slug>` | A project window (six case studies) |
+| `/stack` | `stack.sh` window |
+| `/resume` | `resume.pdf` window |
+| `/contact` | `Contact` window |
+| `/trash` | `Trash` window (easter egg) |
+| `/about`, `/works`, `/works/<slug>` | 308 redirects to `/`, `/projects`, `/projects/<slug>` |
 | any unknown path | [Not found (404)](/pages/not-found.md) |
 | `/llms.txt` | [llms.txt](/endpoints/llms-txt.md) |
 | `/resume.md` | [Resume as Markdown](/endpoints/resume-md.md) |
@@ -70,9 +76,11 @@ It has three kinds of reader:
   the PDF, JSON-LD and `/llms.txt` read it. Branding and wording that only the
   site uses live in [site preferences](/content/site-preferences.md).
   The flow is described in [sources of truth](/architecture/data-flow.md).
-- **"Schema to interface".** Four [layers](/content/layers.md) (Data, Backend,
-  AI, Interface) each have a colour and appear on the hero diagram, the
-  project cards and the share image.
+- **Every window is a URL.** Each route renders its window's full content on
+  the server (crawlable, works without JS); after hydration the window
+  becomes draggable and the front window keeps the URL in sync.
+- **Two modes.** Floating windows from 768 px up; on phones (or by choice) the
+  same windows stack in one column.
 - **Everything is static.** Every page and endpoint is prerendered at build
   time. Dates shown as "last updated" are build dates.
 - **Built to be found.** All crawlers, including AI training crawlers, are

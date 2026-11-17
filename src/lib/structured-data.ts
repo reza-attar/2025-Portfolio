@@ -51,12 +51,12 @@ export function websiteGraph() {
   };
 }
 
-// About page: Google's profile-page result
+// Home page (about.md): Google's profile-page result
 export function profilePage() {
   return {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
-    url: `${site.url}/about`,
+    url: site.url,
     mainEntity: person(),
   };
 }
