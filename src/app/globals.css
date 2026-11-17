@@ -108,6 +108,9 @@
   --win-line: rgba(0, 0, 0, 0.06);
 
   --focus-ring: #5b5bd6;
+  --danger: #d93036;
+  --success: #1a8a4a;
+  --warn: #b25e00;
 
   /* System layers: data → backend → AI → interface */
   --layer-data: #3f64ea;
@@ -149,6 +152,9 @@
   --win-line: rgba(255, 255, 255, 0.08);
 
   --focus-ring: #a5a3f7;
+  --danger: #ff6166;
+  --success: #3dd68c;
+  --warn: #ffb224;
 
   --layer-data: #7b93ff;
   --layer-backend: #ff6b70;

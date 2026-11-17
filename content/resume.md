@@ -5,7 +5,7 @@ role: Senior Engineer
 company: Dotin
 location: Iran
 experience: 11 years
-email: attarzadeh76@gmail.com
+email: contact@rezaattar.dev
 linkedin: https://www.linkedin.com/in/rezaattarzadeh/
 github: https://github.com/reza-attar
 stackoverflow: https://stackoverflow.com/users/9745726/re9inee

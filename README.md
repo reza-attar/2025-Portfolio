@@ -40,3 +40,15 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 Edit `content/resume.md`. The site reads it; `pnpm dev` rebuilds `public/Reza_Attar_Resume.pdf` on save, `pnpm resume:pdf` rebuilds it once, and `pnpm build` fails if the PDF is stale and Chrome isn't available. Commit the PDF and `content/resume.pdf.sha256` with it.
 
 Visitors can also use the browser's Print → Save as PDF on `/resume`; print styles hide the site chrome.
+
+## Contact form
+
+`/contact` posts to a server action (`src/features/contact/actions.ts`). Each message is validated with zod (same schema on the client and the server), saved to Postgres, and emailed to `contact@rezaattar.dev` with Reply-To set to the sender, so replying from the inbox answers them directly. If one of the two fails, the other is enough; if both fail, the visitor sees an error with a mailto link and keeps their text. Spam guards: a hidden honeypot field, a 3-second minimum fill time, and 5 messages per IP per hour (the IP is stored only as a salted hash).
+
+Setup (see `.env.example`):
+
+1. **Database**: Vercel → Storage → create a Neon Postgres database (or use neon.tech) and copy `DATABASE_URL` into `.env.local`. Run `bun run db:migrate` once to create the `contact_messages` table. Read messages in the Neon console's SQL editor: `select * from contact_messages order by created_at desc;`
+2. **Email**: create a Resend account, verify the `rezaattar.dev` domain (add the DNS records it shows), and set `RESEND_API_KEY`. `CONTACT_FROM_EMAIL` must use the verified domain.
+3. Add the same variables in Vercel → Project → Settings → Environment Variables.
+
+Without either variable, `bun dev` logs messages to the terminal instead.

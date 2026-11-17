@@ -7,6 +7,7 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/lib/**/*.{js,ts,jsx,tsx}",
+    "./src/features/**/*.{js,ts,jsx,tsx}",
   ],
   darkMode: ["class"],
   theme: {
@@ -119,6 +120,9 @@ export default {
           border: "var(--control-border)",
         },
         focus: "var(--focus-ring)",
+        danger: "var(--danger)",
+        success: "var(--success)",
+        warn: "var(--warn)",
         layer: {
           data: "var(--layer-data)",
           backend: "var(--layer-backend)",
