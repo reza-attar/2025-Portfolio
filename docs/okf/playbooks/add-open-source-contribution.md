@@ -1,7 +1,7 @@
 ---
 type: Playbook
 title: Add an open-source contribution
-description: Record a merged contribution so the home page and /llms.txt show the open-source section.
+description: Record a merged contribution so /llms.txt lists it.
 tags: [playbook, open-source]
 generated: { by: claude-code/2.1.326, at: 2026-11-17T10:00:00Z }
 sources:
@@ -22,10 +22,7 @@ sources:
    },
    ```
 
-2. Run the site. The home page now shows "Contributions so far" between
-   "Selected work" and "Experience", and the later section numbers move up by
-   one. Check that the hard-coded number on the closing "Let's work together"
-   block still makes sense ([known issues](/architecture/known-issues.md)).
-3. `/llms.txt` gains an "Open source" section.
+2. `/llms.txt` gains an "Open source" section. (No window shows contributions
+   yet; reza.os has no open-source window.)
 
 Only list merged work, linked to the PR, issue or commit itself.

@@ -1,46 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# reza.os
 
-## Getting Started
+The portfolio of Reza Attar, running as a small desktop OS in the browser. Every page
+(about, projects, a project, résumé, contact) opens as a draggable window on a desktop,
+and every window is also a real, statically rendered URL.
 
-First, run the development server:
+Next.js 16 (App Router), React 19, TypeScript, Zustand, plain CSS. Hosted on Vercel.
+
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+bun install
+bun run dev        # http://localhost:3000 (also rebuilds the resume PDF on save)
+bun run lint
+bun run test       # store unit tests (Vitest)
+bun run build
+bun run test:e2e   # Playwright against the production build (port 3100)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things live
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-## Documentation
-
-Project documentation lives in [`docs/okf/`](docs/okf/index.md), an [Open Knowledge Format](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) (OKF v0.2) bundle: architecture, pages, endpoints, content files, design system, SEO and step-by-step playbooks. Start at [`docs/okf/overview.md`](docs/okf/overview.md).
+- `src/app/` - routes only; each page renders `<RouteWindow id="…" />`
+- `src/features/os/` - the window manager: store, shell, taskbar, windows
+- `src/features/apps/` - what each window shows
+- `src/shared/components/ui/` - buttons, chips, tiles, terminal, tables
+- `src/lib/` - content: resume, projects, case studies, site data
+- `src/styles/` - design tokens and CSS
 
 ## Resume
 
-Edit `content/resume.md`. The site reads it; `pnpm dev` rebuilds `public/Reza_Attar_Resume.pdf` on save, `pnpm resume:pdf` rebuilds it once, and `pnpm build` fails if the PDF is stale and Chrome isn't available. Commit the PDF and `content/resume.pdf.sha256` with it.
+Edit `content/resume.md`. The site reads it; `bun run dev` rebuilds `public/Reza_Attar_Resume.pdf`
+on save, `bun run resume:pdf` rebuilds it once, and `bun run build` fails if the PDF is stale and
+Chrome isn't available. Commit the PDF and `content/resume.pdf.sha256` with it.
 
-Visitors can also use the browser's Print → Save as PDF on `/resume`; print styles hide the site chrome.
+## Documentation
+
+Project documentation lives in [`docs/okf/`](docs/okf/index.md), an
+[Open Knowledge Format](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)
+(OKF v0.2) bundle. Start at [`docs/okf/overview.md`](docs/okf/overview.md); the shell is described
+in [`docs/okf/architecture/window-manager.md`](docs/okf/architecture/window-manager.md).

@@ -5,32 +5,25 @@ import path from "node:path";
 const resumeLoader = path.resolve("scripts/resume/parse.cjs");
 
 const nextConfig: NextConfig = {
-  // Custom webpack only used when running next build --webpack (Turbopack is default in v16)
+  // Used only by `next build --webpack` (Turbopack is the default in v16)
   webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/i,
-      use: ["@svgr/webpack"],
-    });
-    config.module.rules.push({
-      test: /\.md$/i,
-      use: [resumeLoader],
-    });
-
+    config.module.rules.push({ test: /\.md$/i, use: [resumeLoader] });
     return config;
   },
 
-  // Turbopack config (top-level in v16; used by next dev and next build by default)
   turbopack: {
     rules: {
-      "*.svg": {
-        loaders: ["@svgr/webpack"],
-        as: "*.js",
-      },
-      "*.md": {
-        loaders: [resumeLoader],
-        as: "*.js",
-      },
+      "*.md": { loaders: [resumeLoader], as: "*.js" },
     },
+  },
+
+  // Routes from before reza.os, kept so old links and search results still land
+  async redirects() {
+    return [
+      { source: "/about", destination: "/", permanent: true },
+      { source: "/works", destination: "/projects", permanent: true },
+      { source: "/works/:slug", destination: "/projects/:slug", permanent: true },
+    ];
   },
 };
 

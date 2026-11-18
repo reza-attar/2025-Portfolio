@@ -3,7 +3,7 @@ import { resume } from "./resume";
 import { site } from "./site";
 
 // Per-page title, description, canonical URL and share-card tags.
-// `path` is relative to site.url, e.g. "/about".
+// `path` is relative to site.url, e.g. "/projects".
 export function pageMetadata({
   title,
   description = `${site.tagline} ${resume.role} · ${site.focus}`,

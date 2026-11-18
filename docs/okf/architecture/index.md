@@ -1,5 +1,6 @@
 # Architecture
 
+* [reza.os window manager](window-manager.md) - The desktop shell: store, windows, routing, simple mode, focus and tests.
 * [Tech stack](tech-stack.md) - Dependencies, scripts and tooling, with what each one is for.
 * [Project structure](project-structure.md) - What lives where in the repository, and the import aliases.
 * [Sources of truth and data flow](data-flow.md) - Which file owns each fact, what reads it, and the values copied by hand.

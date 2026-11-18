@@ -12,25 +12,19 @@ sources:
     title: Next.js ESLint docs (next lint removed in v16)
 ---
 
-Found on `main` at commit `cb3cb56`. Remove an entry when it is fixed and add a
+Updated for reza.os (the desktop-OS rewrite). Remove an entry when it is fixed and add a
 line to [the log](/log.md).
 
 # Bugs
 
-| Issue | Where | Fix |
-|-------|-------|-----|
-| `npm run lint` fails: Next.js 16 removed `next lint`.[^next16-eslint] | `package.json` | Change the script to `eslint .` |
-| `bg-win` is not a defined colour, so the contact window has no background class | `src/app/contact/page.tsx` | Use a defined token (e.g. `bg-panel`) or add `win` to `tailwind.config.ts` |
-| `border-field-border` is not a defined colour; the textarea border falls back to the default border colour | `src/app/contact/form.tsx` | Use `border-field-line` |
-| The "Let's work together" block hard-codes `// 06 next request`, but the home sections it follows are numbered up to 07 (08 when Open source is shown) | `LetsWorkTogether` in `src/components/ui/Widget.tsx` | Pass the index from `src/app/(Home)/page.tsx` like the other sections |
-| A case study that is not listed in `projects` or `moreCaseStudies` still gets a static path and a sitemap entry, but its page calls `notFound()` | `src/app/works/[slug]/page.tsx` | Always add a card when adding a case study ([playbook](/playbooks/add-case-study.md)) |
+None known. Fixed with reza.os: the `lint` script (now `eslint .`), and the
+Tailwind class bugs on the old contact page and home page (those pages are gone).
 
 # Documentation drift
 
 | Issue | Where |
 |-------|-------|
-| The README is mostly the `create-next-app` template. It says to edit `app/page.tsx` and mentions Geist, which the site does not use | `README.md` |
-| The README and `pdf.mjs` messages say `pnpm`; the project uses Bun | `README.md`, `scripts/resume/pdf.mjs` |
+| `pdf.mjs` messages say `pnpm`; the project uses Bun | `scripts/resume/pdf.mjs` |
 
 # Open items from the SEO checklist
 
@@ -42,10 +36,12 @@ See `docs/seo-checklist.md` for the full list.
 
 # Dead code
 
-- `AudioBook` export in `src/components/ui/Tag.tsx`, and the commented-out
-  "Tech Stack" and "Notebook" widgets in `GetToKnowMe.tsx`.
-- The `link` field on `MoreCaseStudy` (`src/lib/projects.ts`) is rendered only
-  when `href` is also set; no entry sets either.
-- The `@icons/*` alias is defined but unused.
+- `src/lib/layers.ts` keeps `summary`, `stack`, `metric` and `source`; only
+  `/og` reads the layers now.
+- `site.languages`, `site.products` and `site.pronunciation` in `src/lib/site.ts`
+  are unused since the old About and home pages were removed.
+- Images under `public/` that only the old pages used: `Widgets/`,
+  `Hand Arrow/`, `Contact Window/`, `icons/`, `Signature/`, `Gradient.webp`.
+  (`portrait.jpg` is still used by the JSON-LD.)
 
 [^next16-eslint]: Next.js ESLint docs (next lint removed in v16)

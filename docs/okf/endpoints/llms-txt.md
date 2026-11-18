@@ -34,7 +34,7 @@ Currently: <product role> on <product name>.
 ## Experience        one line per job from the resume
 ## Open source       only when src/lib/open-source.ts has entries
 ## Pages             About, Works, Resume, Contact (hard-coded list)
-## Case studies      in /works order, with each lede
+## Case studies      in ~/projects order, with each lede
 ## Resume files      /resume.md and the PDF
 ## Contact           email, LinkedIn, GitHub
 ```
@@ -43,4 +43,4 @@ Currently: <product role> on <product name>.
 
 Everything except the "Pages" list comes from data, so it stays in step with
 the pages. When adding a page, add it to that list in the route file
-([add a page](/playbooks/add-page.md)).
+([add a window](/playbooks/add-window.md)).

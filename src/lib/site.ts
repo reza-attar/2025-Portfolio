@@ -27,13 +27,6 @@ export const site = {
     { name: "Persian" },
   ] as { name: string; level?: string }[],
 
-  // Main pages, in the header and the footer
-  nav: [
-    { label: "About", href: "/about" },
-    { label: "Works", href: "/works" },
-    { label: "Contact", href: "/contact" },
-    { label: "Resume", href: "/resume" },
-  ],
 
   products: {
     myca: {
@@ -43,7 +36,3 @@ export const site = {
     },
   },
 };
-
-export const siteLanguages = site.languages
-  .map((l) => (l.level ? `${l.name} (${l.level})` : l.name))
-  .join(", ");

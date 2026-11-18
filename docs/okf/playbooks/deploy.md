@@ -34,7 +34,7 @@ Vercel builds with the `build` script.
 From `docs/seo-checklist.md`:
 
 1. `https://www.rezaattar.dev/robots.txt`, `/sitemap.xml` and `/llms.txt` load.
-2. PageSpeed Insights on `/` and `/works` (mobile): Core Web Vitals green.
+2. PageSpeed Insights on `/` and `/projects` (mobile): Core Web Vitals green.
 3. Search Console: no new coverage errors.
 4. When metadata or JSON-LD changed: Rich Results Test, and a share preview
    (LinkedIn Post Inspector, Facebook Sharing Debugger, opengraph.xyz).

@@ -1,5 +1,5 @@
 // The four layers of a product, from schema to interface.
-// The home page diagram, the "layer by layer" section and the project cards read from here.
+// The share image (/og) reads from here.
 // Metrics come from content/resume.md; keep them in sync.
 
 export type LayerId = "data" | "backend" | "ai" | "interface";
@@ -48,7 +48,7 @@ export const layers: Layer[] = [
       value: "2m 25s → 34s",
       caption: "Backend compile time after moving to SWC",
     },
-    source: { label: "Ticket Yar case study", href: "/works/ticket-yar" },
+    source: { label: "Ticket Yar case study", href: "/projects/ticket-yar" },
   },
   {
     id: "ai",
@@ -77,32 +77,6 @@ export const layers: Layer[] = [
       value: "58 → 98",
       caption: "Lighthouse performance on the Mora blog",
     },
-    source: { label: "Mora Blog case study", href: "/works/mora-blog" },
+    source: { label: "Mora Blog case study", href: "/projects/mora-blog" },
   },
 ];
-
-export const layerById = Object.fromEntries(
-  layers.map((layer) => [layer.id, layer]),
-) as Record<LayerId, Layer>;
-
-// Tailwind needs the full class names in source, so map them here.
-export const layerBg: Record<LayerId, string> = {
-  data: "bg-layer-data",
-  backend: "bg-layer-backend",
-  ai: "bg-layer-ai",
-  interface: "bg-layer-interface",
-};
-
-export const layerText: Record<LayerId, string> = {
-  data: "text-layer-data",
-  backend: "text-layer-backend",
-  ai: "text-layer-ai",
-  interface: "text-layer-interface",
-};
-
-export const layerVar: Record<LayerId, string> = {
-  data: "var(--layer-data)",
-  backend: "var(--layer-backend)",
-  ai: "var(--layer-ai)",
-  interface: "var(--layer-interface)",
-};

@@ -1,4 +1,4 @@
-import { caseStudies, caseStudyHref } from "@/lib/case-studies";
+import { projects } from "@/lib/projects";
 import { site } from "@/lib/site";
 import type { MetadataRoute } from "next";
 
@@ -6,14 +6,7 @@ import type { MetadataRoute } from "next";
 const built = new Date();
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = [
-    "/",
-    "/about",
-    "/works",
-    "/resume",
-    "/contact",
-    ...caseStudies.map((s) => caseStudyHref(s.slug)),
-  ];
+  const paths = ["/", "/projects", "/stack", "/resume", "/contact", ...projects.map((p) => `/projects/${p.slug}`)];
   return paths.map((path) => ({
     url: `${site.url}${path === "/" ? "" : path}`,
     lastModified: built,

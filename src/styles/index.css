@@ -1,0 +1,9 @@
+/* reza.os styles. Tokens first; components never use raw hex outside tokens.css,
+   except the always-light surfaces (pastel tiles, the terminal, the résumé paper). */
+@import "./tokens.css";
+@import "./base.css";
+@import "./os.css";
+@import "./window.css";
+@import "./ui.css";
+@import "./apps.css";
+@import "./simple.css";

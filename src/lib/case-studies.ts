@@ -51,7 +51,7 @@ export type CaseStudy = {
   sections: CaseStudySection[];
 };
 
-// Previous / next order comes from /works (src/lib/projects.ts), not from here.
+// Window order (~/projects, previous / next) comes from src/lib/projects.ts, not from here.
 export const caseStudies: CaseStudy[] = [
   {
     slug: "ticket-yar",
@@ -517,4 +517,6 @@ export const caseStudies: CaseStudy[] = [
   },
 ];
 
-export const caseStudyHref = (slug: string) => `/works/${slug}`;
+export const caseStudyHref = (slug: string) => `/projects/${slug}`;
+
+export const getCaseStudy = (slug: string) => caseStudies.find((s) => s.slug === slug);

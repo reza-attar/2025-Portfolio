@@ -24,8 +24,9 @@ sources:
    and starts `next dev` on http://localhost:3000. Without Chrome you get a
    warning and the PDF is not rebuilt.
 3. Build like production: `bun run build`, then `bun run start`.
-4. Lint: `npx eslint .` (the `lint` script uses the removed `next lint`; see
-   [known issues](/architecture/known-issues.md)).
+4. Lint: `bun run lint`. Types: `npx tsc --noEmit`.
+5. Tests: `bun run test` (store unit tests), then `bun run build` and
+   `bun run test:e2e` (Playwright, starts `next start` on port 3100).
 
 # Environment variables
 

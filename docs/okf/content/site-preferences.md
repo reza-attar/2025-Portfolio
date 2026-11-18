@@ -41,8 +41,7 @@ read through `@/lib/resume`.
 
 | Helper | Returns |
 |--------|---------|
-| `cn(...)` | Merged Tailwind classes (`clsx` + `tailwind-merge`) |
 | `generateEmailLink({ to, subject?, body? })` | A `mailto:` URL with encoded subject and body |
 | `getLinkedinLink()`, `getGithubLink()` | Profile URLs; keep in step with the resume front matter |
-| `getYoutubeLink()`, `getGoodreadsLink()` | Profile URLs that exist only here |
+| `getYoutubeLink()` | Profile URL that exists only here (JSON-LD `sameAs`) |
 | `slugify(text)` | `"Solution Apps DG GmbH"` → `"solution-apps-dg-gmbh"`, used for `/resume#<company>` |
